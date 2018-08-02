@@ -1,0 +1,30 @@
+\begin{thebibliography}{4}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Arrow et~al.(1961)Arrow, Hurwicz, and Uzawa]{ahu61}
+Kenneth~J. Arrow, Leonid Hurwicz, and Hirofumi Uzawa.
+\newblock Constraint qualifications in maximization problems.
+\newblock \emph{Naval Research Logistics Quarterly}, 8:\penalty0 175--191,
+  1961.
+
+\bibitem[ab9(1994)]{ab94}
+\emph{Infinite Dimensional Analysis}.
+\newblock Springer, Berlin, 1994.
+
+\bibitem[Maskin(1985)]{m85}
+Eric~S. Maskin.
+\newblock The theory of implementation in {N}ash equilibrium: a survey.
+\newblock In Leonid Hurwicz, David Schmeidler, and Hugo Sonnenschein, editors,
+  \emph{Social Goals and Social Organization}, pages 173--204. Cambridge
+  University Press, Cambridge, 1985.
+
+\bibitem[Fudenberg and Kreps(1988)]{m99}
+Drew Fudenberg and David~M. Kreps.
+\newblock A theyayory of learning, experimentation, and equilibrium in games.
+\newblock Unpublished paper, 1988.
+
+\end{thebibliography}

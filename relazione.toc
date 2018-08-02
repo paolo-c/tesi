@@ -1,0 +1,11 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Hyper-resolution principle}{5}{chapter.1}
+\contentsline {chapter}{\numberline {2}Nullstellensatz}{7}{chapter.2}
+\contentsline {chapter}{\numberline {3}Applications to graph theory}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Recalls of graph theory}{14}{section.3.1}
+\contentsline {subsection}{Directed graphs}{18}{section*.4}
+\contentsline {section}{\numberline {3.2}Resolution approach to colouring}{22}{section.3.2}
+\contentsline {subsection}{Bipartite graphs}{23}{section*.7}
+\contentsline {subsection}{Gallai-Hasse-Roy-Vitaver theorem}{27}{section*.10}
+\contentsline {subsection}{$\mu _n$ graphs}{30}{section*.11}
+\contentsline {chapter}{Bibliography}{33}{section*.15}

@@ -1,0 +1,20 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{tikz}
+\newcommand{\starcup}{$\sqcup$\kern-0.58em{$\star$}}
+\newcommand*\foobar{\includegraphics[scale=0.014]{not-predecessor.eps}}
+
+
+\newcommand{\foo}[1]{%
+\begin{tikzpicture}[#1]%
+\draw (0,0) -- (1ex,1ex);%
+\draw (0.5ex,0) -- (1.3ex,0.8ex);%
+\end{tikzpicture}%
+}
+\begin{document}
+Some text and the symbol \foo{} or scaled \foo{scale=2}
+\\ \starcup\\
+ciccio gianluco grigliava calamari \foobar in the navy 
+
+$$ \frac{x\foobar y \wedge y\foobar z}{ x\foobar z }  $$
+\end{document}

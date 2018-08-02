@@ -1,0 +1,601 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2016.12.28)  26 JUL 2018 16:29
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**relazione.tex
+(./relazione.tex
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 5 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk12.clo
+File: bk12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2016/02/24 3.9q The Babel package
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2012/08/20 v3.3p English support from the babel system
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2016/02/24 3.9q Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen103
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: dvips.def on input line 95.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvips.def
+File: dvips.def 2015/12/30 v3.0k Driver-dependent file (DPC,SPQR)
+))
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks15
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen106
+\captionmargin@=\dimen107
+\captionwidth=\dimen108
+\caption@tempdima=\dimen109
+\caption@indent=\dimen110
+\caption@parindent=\dimen111
+\caption@hangindent=\dimen112
+)
+\c@ContinuedFloat=\count89
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2015/03/04 v2.20.2
+\thm@style=\toks16
+\thm@bodyfont=\toks17
+\thm@headfont=\toks18
+\thm@notefont=\toks19
+\thm@headpunct=\toks20
+\thm@preskip=\skip43
+\thm@postskip=\skip44
+\thm@headsep=\skip45
+\dth@everypar=\toks21
+) (./prftree.sty
+Package: prftree 2016/09/03 Natural Deduction Proofs
+\prflinepadbefore=\dimen113
+\prflinepadafter=\dimen114
+\prflineextra=\dimen115
+\prflinethickness=\dimen116
+\prfemptylinethickness=\dimen117
+\prfrulenameskip=\dimen118
+\prflabelskip=\dimen119
+\prfinterspace=\dimen120
+\prfdoublelineinterspace=\dimen121
+\prfboundedstyle=\count90
+\prfsummarystyle=\count91
+\prf@@fancysummarybox=\box26
+\prf@@fancysymmarylen=\dimen122
+\prf@Lassum=\skip46
+\prf@Rassum=\skip47
+\prf@assumptionsbox=\box27
+\prf@conclusionbox=\box28
+\prf@rulenamebox=\box29
+\prf@labelbox=\box30
+\prf@linebox=\box31
+\prf@summarybox=\box32
+\prf@fancybox=\box33
+\c@prfassumptioncounter=\count92
+\c@prfsummarycounter=\count93
+\prf@summary@label=\box34
+\prf@@@@proofbox=\box35
+)
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup6
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/03/03 v2.15a AMS math features
+\@mathmargin=\skip48
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks22
+\ex@=\dimen123
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen124
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count94
+LaTeX Info: Redefining \frac on input line 199.
+\uproot@=\count95
+\leftroot@=\count96
+LaTeX Info: Redefining \overline on input line 297.
+\classnum@=\count97
+\DOTSCASE@=\count98
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
+\Mathstrutbox@=\box36
+\strutbox@=\box37
+\big@size=\dimen125
+LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
+\macc@depth=\count99
+\c@MaxMatrixCols=\count100
+\dotsspace@=\muskip10
+\c@parentequation=\count101
+\dspbrk@lvl=\count102
+\tag@help=\toks23
+\row@=\count103
+\column@=\count104
+\maxfields@=\count105
+\andhelp@=\toks24
+\eqnshift@=\dimen126
+\alignsep@=\dimen127
+\tagshift@=\dimen128
+\tagwidth@=\dimen129
+\totwidth@=\dimen130
+\lineht@=\dimen131
+\@envbody=\toks25
+\multlinegap=\skip49
+\multlinetaggap=\skip50
+\mathdisplay@stack=\toks26
+LaTeX Info: Redefining \[ on input line 2735.
+LaTeX Info: Redefining \] on input line 2736.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip51
+\f@ncyO@elh=\skip52
+\f@ncyO@erh=\skip53
+\f@ncyO@olh=\skip54
+\f@ncyO@orh=\skip55
+\f@ncyO@elf=\skip56
+\f@ncyO@erf=\skip57
+\f@ncyO@olf=\skip58
+\f@ncyO@orf=\skip59
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is not detected.
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode is ignored in DVI mode.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen132
+\Hy@linkcounter=\count106
+\Hy@pagecounter=\count107
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count108
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing ON on input line 4461.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4688.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/backref.sty
+Package: backref 2012/07/25 v1.38 Bibliographical back referencing
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+))
+\c@Hy@tempcnt=\count109
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen133
+\Fld@menulength=\count110
+\Field@Width=\dimen134
+\Fld@charsize=\dimen135
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing ON on input line 6308.
+Package hyperref Info: Link coloring OFF on input line 6315.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+\Hy@abspage=\count111
+\c@Item=\count112
+\c@Hfootnote=\count113
+)
+
+Package hyperref Message: Driver (default): hdvips.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hdvips.def
+File: hdvips.def 2012/11/06 v6.83m Hyperref driver for dvips
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pdfmark.def
+File: pdfmark.def 2012/11/06 v6.83m Hyperref definitions for pdfmark specials
+\pdf@docset=\toks27
+\pdf@box=\box38
+\pdf@toks=\toks28
+\pdf@defaulttoks=\toks29
+\HyField@AnnotCount=\count114
+\Fld@listcount=\count115
+\c@bookmark@seq@number=\count116
+\Hy@SectionHShift=\skip60
+))
+\c@theorem=\count117
+
+(./relazione.aux)
+\openout1 = `relazione.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\AtBeginShipoutBox=\box39
+Package hyperref Info: Link coloring OFF on input line 65.
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count118
+)
+LaTeX Info: Redefining \ref on input line 65.
+LaTeX Info: Redefining \pageref on input line 65.
+LaTeX Info: Redefining \nameref on input line 65.
+
+(./relazione.out) (./relazione.out)
+\@outlinefile=\write3
+\openout3 = `relazione.out'.
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 68.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 68.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 68.
+
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+) [1
+
+
+] [2
+
+]
+(./relazione.toc)
+\tf@toc=\write4
+\openout4 = `relazione.toc'.
+
+ [3]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 78.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 78.
+
+[4]
+Chapter 1.
+[5
+
+]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[6]
+Chapter 2.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7
+
+]
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 192--195
+
+ []
+
+[9]
+Overfull \hbox (38.99483pt too wide) in alignment at lines 238--253
+ [][][] []
+ []
+
+[10] [11] [12]
+Chapter 3.
+[13
+
+] [14] [15]
+File: bipartite.eps Graphic file (type eps)
+ <bipartite.eps> [16] [17]
+File: digraphs.eps Graphic file (type eps)
+ <digraphs.eps> [18] [19] [20]
+File: vitaver.eps Graphic file (type eps)
+
+<vitaver.eps> [21] [22]
+Overfull \hbox (35.68752pt too wide) detected at line 556
+[]
+ []
+
+[23]
+Overfull \hbox (35.70729pt too wide) in alignment at lines 566--578
+ [][][] []
+ []
+
+[24]
+File: oddcycles1.eps Graphic file (type eps)
+ <oddcycles1.eps> [25]
+File: oddcycles-interceptions.eps Graphic file (type eps)
+ <oddcycles-interceptions.eps> [26]
+File: ./simboli/predecessor.eps Graphic file (type eps)
+
+<./simboli/predecessor.eps> [27]
+File: ./simboli/predecessor.eps Graphic file (type eps)
+ <./simboli/predecessor.eps>
+File: ./simboli/predecessor.eps Graphic file (type eps)
+
+<./simboli/predecessor.eps>
+File: ./simboli/predecessor.eps Graphic file (type eps)
+ <./simboli/predecessor.eps>
+File: ./simboli/predecessor.eps Graphic file (type eps)
+
+<./simboli/predecessor.eps>
+File: ./simboli/predecessor.eps Graphic file (type eps)
+ <./simboli/predecessor.eps>
+File: ./simboli/predecessor.eps Graphic file (type eps)
+
+<./simboli/predecessor.eps>
+File: ./simboli/predecessor.eps Graphic file (type eps)
+ <./simboli/predecessor.eps>
+File: ./simboli/predecessor.eps Graphic file (type eps)
+
+<./simboli/predecessor.eps>
+File: ./simboli/predecessor.eps Graphic file (type eps)
+ <./simboli/predecessor.eps>
+File: ./simboli/predecessor.eps Graphic file (type eps)
+
+<./simboli/predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+ <./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+
+<./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+ <./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+
+<./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+ <./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+
+<./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+ <./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+
+<./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+ <./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+
+<./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+ <./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+
+<./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+ <./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+
+<./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+ <./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+
+<./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+ <./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+
+<./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+ <./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+
+<./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+ <./simboli/not-predecessor.eps>
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+
+<./simboli/not-predecessor.eps> [28]
+File: ./simboli/not-predecessor.eps Graphic file (type eps)
+ <./simboli/not-predecessor.eps> [29]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 703.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\mu' on input line 703.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 703.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 703.
+
+File: mu2.eps Graphic file (type eps)
+<mu2.eps> [30]
+File: mu2-con1.eps Graphic file (type eps)
+ <mu2-con1.eps>
+File: mu2-con2.eps Graphic file (type eps)
+ <mu2-con2.eps> [31] [32] (./relazione.brf)
+\tf@brf=\write5
+\openout5 = `relazione.brf'.
+
+
+[33
+
+]
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no “ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no Ì in font cmr12!
+Missing character: There is no ‹ in font cmr12!
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 800.
+ [34]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 800.
+ (./relazione.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 800.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 800.
+Package rerunfilecheck Info: File `relazione.out' has not changed.
+(rerunfilecheck)             Checksum: BAC413A1CBD897305D4B72B01214BB8E;632.
+Package rerunfilecheck Info: File `relazione.brf' has not changed.
+(rerunfilecheck)             Checksum: 3D82CE8117CC61140F23C6DBAAAE4416;431.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 800.
+ ) 
+Here is how much of TeX's memory you used:
+ 7678 strings out of 494911
+ 112248 string characters out of 6179861
+ 212588 words of memory out of 5000000
+ 10874 multiletter control sequences out of 15000+600000
+ 15210 words of font info for 61 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 36i,22n,46p,1235b,446s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on relazione.dvi (34 pages, 121568 bytes).
