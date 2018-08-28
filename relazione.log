@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2016.12.28)  26 JUL 2018 16:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2016.12.28)  28 AUG 2018 21:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -203,6 +203,14 @@ LaTeX Info: Redefining \] on input line 2736.
 \f@ncyO@olf=\skip58
 \f@ncyO@orf=\skip59
 )
+
+Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
+less on input line 20.
+
+
+Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
+less on input line 22.
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
@@ -334,25 +342,25 @@ File: pdfmark.def 2012/11/06 v6.83m Hyperref definitions for pdfmark specials
 (./relazione.aux)
 \openout1 = `relazione.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box39
-Package hyperref Info: Link coloring OFF on input line 65.
+Package hyperref Info: Link coloring OFF on input line 68.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -360,49 +368,51 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count118
 )
-LaTeX Info: Redefining \ref on input line 65.
-LaTeX Info: Redefining \pageref on input line 65.
-LaTeX Info: Redefining \nameref on input line 65.
+LaTeX Info: Redefining \ref on input line 68.
+LaTeX Info: Redefining \pageref on input line 68.
+LaTeX Info: Redefining \nameref on input line 68.
 
 (./relazione.out) (./relazione.out)
 \@outlinefile=\write3
 \openout3 = `relazione.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 68.
+LaTeX Font Info:    Try loading font information for U+msa on input line 71.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 68.
+LaTeX Font Info:    Try loading font information for U+msb on input line 71.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 68.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 71.
 
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [1
 
 
-] [2
-
 ]
 (./relazione.toc)
 \tf@toc=\write4
 \openout4 = `relazione.toc'.
 
- [3]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 78.
+ [1
+
+]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 85.
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 78.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 85.
 
-[4]
+[2
+
+]
 Chapter 1.
-[5
+[3
 
 ]
 
@@ -411,53 +421,59 @@ Package Fancyhdr Warning: \headheight is too small (0.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[6]
+[4] [5]
 Chapter 2.
+[6
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+] [7] [8] [9] [10]
+Overfull \hbox (8.74771pt too wide) in paragraph at lines 281--282
+[][][]\OT1/cmr/bx/n/12 Proposition 2.6. \OT1/cmr/m/it/12 If ev-ery so-lu-tions 
+of a sys-tem of lin-ear equa-tions $\OML/cmm/m/it/12 r[] \OT1/cmr/m/n/12 = 0\OM
+L/cmm/m/it/12 ; :::; r[] \OT1/cmr/m/n/12 = 0$
+ []
 
- [7
-
-]
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 192--195
+[11] [12] [13]
+Underfull \hbox (badness 10000) in paragraph at lines 338--341
 
  []
 
-[9]
-Overfull \hbox (38.99483pt too wide) in alignment at lines 238--253
+[14]
+Overfull \hbox (60.79741pt too wide) in alignment at lines 384--399
  [][][] []
  []
 
-[10] [11] [12]
+[15] [16] [17]
 Chapter 3.
-[13
+[18
 
-] [14] [15]
+] [19] [20]
 File: bipartite.eps Graphic file (type eps)
- <bipartite.eps> [16] [17]
+ <bipartite.eps> [21] [22]
 File: digraphs.eps Graphic file (type eps)
- <digraphs.eps> [18] [19] [20]
+ <digraphs.eps>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[23] [24]
 File: vitaver.eps Graphic file (type eps)
-
-<vitaver.eps> [21] [22]
-Overfull \hbox (35.68752pt too wide) detected at line 556
-[]
- []
-
-[23]
-Overfull \hbox (35.70729pt too wide) in alignment at lines 566--578
+ <vitaver.eps> [25] [26] [27]
+Overfull \hbox (26.60997pt too wide) in alignment at lines 679--688
  [][][] []
  []
 
-[24]
+[28]
+Overfull \hbox (53.98488pt too wide) in alignment at lines 726--738
+ [][][] []
+ []
+
+[29] [30]
 File: oddcycles1.eps Graphic file (type eps)
- <oddcycles1.eps> [25]
+ <oddcycles1.eps> [31]
 File: oddcycles-interceptions.eps Graphic file (type eps)
- <oddcycles-interceptions.eps> [26]
+ <oddcycles-interceptions.eps> [32] [33]
+[34]
 File: ./simboli/predecessor.eps Graphic file (type eps)
-
-<./simboli/predecessor.eps> [27]
+ <./simboli/predecessor.eps>
 File: ./simboli/predecessor.eps Graphic file (type eps)
  <./simboli/predecessor.eps>
 File: ./simboli/predecessor.eps Graphic file (type eps)
@@ -479,7 +495,7 @@ File: ./simboli/predecessor.eps Graphic file (type eps)
 
 <./simboli/predecessor.eps>
 File: ./simboli/predecessor.eps Graphic file (type eps)
- <./simboli/predecessor.eps>
+ <./simboli/predecessor.eps> [35]
 File: ./simboli/predecessor.eps Graphic file (type eps)
 
 <./simboli/predecessor.eps>
@@ -537,65 +553,63 @@ File: ./simboli/not-predecessor.eps Graphic file (type eps)
  <./simboli/not-predecessor.eps>
 File: ./simboli/not-predecessor.eps Graphic file (type eps)
 
-<./simboli/not-predecessor.eps> [28]
+<./simboli/not-predecessor.eps>
 File: ./simboli/not-predecessor.eps Graphic file (type eps)
- <./simboli/not-predecessor.eps> [29]
+ <./simboli/not-predecessor.eps>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 703.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mu' on input line 703.
+(hyperref)                removing `math shift' on input line 917.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 703.
+(hyperref)                removing `\mu' on input line 917.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 703.
+(hyperref)                removing `subscript' on input line 917.
 
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 917.
+
+[36] [37]
 File: mu2.eps Graphic file (type eps)
-<mu2.eps> [30]
+ <mu2.eps>
 File: mu2-con1.eps Graphic file (type eps)
  <mu2-con1.eps>
-File: mu2-con2.eps Graphic file (type eps)
- <mu2-con2.eps> [31] [32] (./relazione.brf)
+Overfull \hbox (43.89035pt too wide) in paragraph at lines 957--958
+ [][] 
+ []
+
+[38] [39] [40] (./relazione.brf)
 \tf@brf=\write5
 \openout5 = `relazione.brf'.
 
-
-[33
+ [41
 
 ]
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no “ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
 Missing character: There is no Ì in font cmr12!
 Missing character: There is no ‹ in font cmr12!
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 800.
- [34]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 800.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1091.
+ [42]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1091.
  (./relazione.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 800.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 800.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1091.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1091.
+
 Package rerunfilecheck Info: File `relazione.out' has not changed.
-(rerunfilecheck)             Checksum: BAC413A1CBD897305D4B72B01214BB8E;632.
+(rerunfilecheck)             Checksum: 267E6DCCE50AA79BFD19938359D1795F;1014.
 Package rerunfilecheck Info: File `relazione.brf' has not changed.
-(rerunfilecheck)             Checksum: 3D82CE8117CC61140F23C6DBAAAE4416;431.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 800.
+(rerunfilecheck)             Checksum: 3C3511BACB5B6F933DD8D573FC13C5F2;746.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1091.
  ) 
 Here is how much of TeX's memory you used:
- 7678 strings out of 494911
- 112248 string characters out of 6179861
- 212588 words of memory out of 5000000
- 10874 multiletter control sequences out of 15000+600000
+ 7714 strings out of 494911
+ 112621 string characters out of 6179861
+ 210499 words of memory out of 5000000
+ 10911 multiletter control sequences out of 15000+600000
  15210 words of font info for 61 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 36i,22n,46p,1235b,446s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,23n,53p,1036b,450s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on relazione.dvi (34 pages, 121568 bytes).
+Output written on relazione.dvi (43 pages, 180640 bytes).

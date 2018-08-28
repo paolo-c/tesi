@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt,twoside]{book}
+\documentclass[a4paper,12pt,oneside]{book}
 \usepackage[english]{babel} 
 %\usepackage[italian]{babel} 
 %\usepackage[latin1]{inputenc} 
@@ -10,7 +10,6 @@
 \usepackage{mathrsfs}
 \usepackage{graphicx}
 \usepackage{amsmath}
-%\usepackage{bookman}
 
 
 \usepackage{fancyhdr}
@@ -25,7 +24,7 @@
 %\renewcommand{\footrulewidth}{1pt}   %not visible if commented 
 
 \usepackage[pdfauthor={Paolo Comensoli},
-pdftitle={Hyper-resolution principle, applications to Nullstellensatz and graphs, 
+pdftitle={Hyper-resolution principle, applications to discrete mathematics, 
 Paolo Comensoli}, pagebackref=true]{hyperref}
 
 
@@ -35,9 +34,13 @@ Paolo Comensoli}, pagebackref=true]{hyperref}
 \setlength{\topmargin}{.25in}     % Distance from top to PAGE'S HEAD -1 inch
 \setlength{\textheight}{225mm}    % Height of the body of page
 \setlength{\headheight}{0mm}      % Height of a box containing the head
-\setlength{\parskip}{0.5mm}       % Extra vertical space before a paragraph
+\setlength{\parskip}{1mm}         % Extra vertical space before a paragraph
 \setlength{\parindent}{9mm}       % Width of the indentation 
 \linespread{1.65}                 % Line spacing        
+
+
+
+
 
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{proposition}[theorem]{Proposition}
@@ -46,9 +49,9 @@ Paolo Comensoli}, pagebackref=true]{hyperref}
 \newtheorem{corollary}[theorem]{Corollary}
 
 \newcommand{\E}{\mathscr{E}}
-\newcommand{\J}{\mathcal{J}}
 \newcommand*{\QEDF}{\hfill\ensuremath{\blacksquare}}
 \newcommand*{\QED}{\hfill\ensuremath{\square}}
+
 
 \newcommand*\npred{\,\includegraphics[scale=0.02]{./simboli/not-predecessor.eps}\,}
 \newcommand*\pred{\,\includegraphics[scale=0.02]{./simboli/predecessor.eps}\,}
@@ -63,15 +66,19 @@ Paolo Comensoli}, pagebackref=true]{hyperref}
 \date{14/05/2018}
 
 \begin{document}
-
+ 
 \maketitle
 \thispagestyle{empty}
+\setlength{\parskip}{0mm} 
 \tableofcontents
+\setlength{\parskip}{1mm} 
 \newpage
-\subsection*{Introduction}
 
-\thispagestyle{empty}
-\noindent In the first two sections I will expand some details of the Lifschitz's work \cite{lifschitz}.
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+
+In the first two sections I will expand some details of the Lifschitz's work \cite{lifschitz}.
 First of all I will briefly give the hyper-resolution principle and Robinson's theorem as stated by Lifschitz, then I will show the proof of Nullstellensatz with the aim to clarify every step.\\
 \textbf{Notation:}
 \begin{itemize}
@@ -82,6 +89,9 @@ First of all I will briefly give the hyper-resolution principle and Robinson's t
 
 
 \chapter{Hyper-resolution principle}
+\section{pro}
+
+
 
 Let $T$ be a set of propositional formulae, each of the form:
 $$\bigwedge_{i=1}^m A_i \rightarrow \bigvee_{j=1}^n B_j 
@@ -136,7 +146,7 @@ $\Pi '=\Gamma_1 '\cup ...\cup\Gamma_m '\cup\{B_1,...,B_n\}\subset\Pi$
 For every derivation of a clause $\Pi$ in $H_T$ there exists a derivation of some $\Pi '\subset\Pi $ in $H_T$ without trivial application of rules of inference.
 \end{lemma}
 
-\begin{theorem}[\textbf{Robinson's, version 4}]
+\begin{theorem}[\textbf{Robinson's, version 4}] \label{Robinson}
 For any clauses $\Gamma_1, \cdots ,\Gamma_l , \Delta$, if in every model of $T$, the following is valid 
 $$
 \overline{\Gamma}_1\e\cdots\e\overline{\Gamma}_l \rightarrow \overline{\Delta}
@@ -145,16 +155,152 @@ then there exists a derivation of some $\Delta' \subseteq \Delta$ from $\Gamma_1
 \end{theorem}
 
 
-\chapter{Nullstellensatz}
-Using Hyper-resolution principle and Robinson's theorem it is possible to prove the Nullstellensatz as stated here:
+\chapter{Applications to commutative algebra}
+In this chapter we show how it is possible to apply the hyper-resolution principle to commutative algebra; in particular we see how two algebraic theorems follow directly from Robinson's Theorem. Before starting with such applications, the first section briefly recalls few notions of algebra in order to fix notations and terminology, the main reference for this part is Lang's book \textit{Algebra} \cite{Lang}.
+The second section presents concrete applications of the hyper-resolution principle; first a  well known fact of linear algebra is proved, here we speak about vector spaces over a field, so the only operations required are addition and multiplication by a scalar. 
+Second a proof of the Hilbert's Nullstellensatz is presented; to do so we also need to represent the products between polynomials, so more axioms are required and the resolution calculus becomes richer.
 
-\noindent\textit{Let $K$ be a field and $f,f_1,\cdots, f_l \in K[\underline{x}]$, if in any extension of $K$, $f$ vanishes at all common zeros of $f_1,\cdots, f_l$, then there exists $p\in \mathbb{N}$ and $h_1,\cdots, h_l \in K[\underline{x}]$ such that} 
+The Nullstellensatz was first proved by Hilbert \cite{Hilbert} in 1892 , and is widely known to be a fundamental theorem for algebraic geometry. Lang, in his book,  shows Rabinowitsch's proof (1929) which is so terse that the original article \cite{Rabin} consists only of one page. 
+In the second section we see the proof proposed by Lifschitz \cite{lifschitz} in 1980, this proof relies on Robinson's theorem and has two main perks; it is completely constructive, and requires a minimal algebraic background. 
+
+
+
+
+\section{Recalls of commutative algebra}
+The aim of this section is to summarize few elements of algebra in order to show  Rabinowitsch's proof of the Hilbert's Nullstellensatz. All the notations and the proofs adopted here are from Lang's book \cite{Lang}. Many basic definitions, such as fields, polynomials and ideals, are not given here; indeed the main purpose is to show a classical proof of Nullstellensatz that can be compared with the Lifschitz's one.
+For the same reason, many results and theorems are taken for granted, and some proofs are not given.
+
+
+
+%Let $(A,+, \cdot)$ be a commutative ring; a subset $I$ of $A$ is an \textit{ideal} if
+%\begin{itemize}
+%\item[-] $(I,+)$ is a subgroup
+%\item[-] from $a\in I$, $b\in A$ follows $a\cdot b\in I$ 
+%\end{itemize}
+
+For a field $K$, the ring of the polynomials with coefficients in $K$ and $n$ variables is denoted as $K[x_1,...,x_n ]$. We often use vectorial notation, letting  $x$ denoting the n-tuple $(x_1,...,x_n)$ and $K[x]= K[x_1,...,x_n ] $.
+
+
+If $K$ is a field and $E$ an extension of it, we say that an element $x$ of $E$ is \textit{algebraic} over $K$ if there are $a_0, ... a_n\in K$ not all zero, such that
+$$ a_0 + a_1 \cdot \alpha + ...+ a_n \cdot \alpha^n=0 $$ 
+which amounts to require that $\alpha$  is a zero of some polynomial with coefficients in $K$. The extension $E$ is called \textit{algebraic} if every element of $E$ is algebraic over $K$. 
+Also, for $\alpha_1, ...,\alpha_n $, we denote as $K(\alpha_1, ...,\alpha_n) $ the smallest subfield of $E$ that contains $\alpha_1, ...,\alpha_n$. The field $E$ is said to be \textit{finitely generated} if for some $\alpha_1, ...,\alpha_n$, we have that $E=K(\alpha_1, ...,\alpha_n)$. 
+The following lemma gives a property about rings of polynomials that is used later.
+\begin{lemma}\label{finit_gen}
+Let $K$ be a field and $K[x]$ a finitely generated extension of it. If $K[x]$ is a field then is also algebraic over $K$
+\end{lemma}
+
+A field $K$ is called \textit{algebraically closed} if every non constant polynomial in $K[x]$ has a root in $K$. It is known that for any field $K$, there is an extension which is algebraically closed, algebraic over $K$ and unique up to isomorphism;  such extension will be called \textit{algebraic closure of $K$} and denoted as $K^a$. The algebraic closure is the maximal extension, indeed a field is algebraically closed if and only if it does not have proper algebraic extensions. 
+
+\begin{theorem}\label{zeros}
+Let $K$ be a field and $I$ an ideal in $K[x_1,...,x_n]$; then either $I=K[x]$ or $I$ has a zero in $K^a$
+\end{theorem}
+
+\textit{Proof:}
+Suppose $I\neq K[x]$. Then there is some maximal ideal $m$ that contains $I$, and $K[x]/m$ is a field. Such field is a finitely generated extension of $K$, because it is generated by $x_1, ... x_n$ mod $m$. By Lemma \ref{finit_gen} the field $K[x]/m$ is algebraic over $K$ and therefore can be embedded into $K^a$ by some map $e:K[x]/m \rightarrow\nobreak K^a$. Now consider the canonical map mod $m$ $\pi : K[x] \rightarrow K[x]/m$, then the homomorphism $h=e\circ\pi : K[x]\rightarrow K^a$ gives the desired zero of $I$. \QED
+
+Theorem \ref{zeros} implies that if a family of polynomials have a common zero in some field, then they have a common zero in the algebraic closure of $K$. 
+
+\begin{theorem}[Hilbert's Nullstellensatz]\label{langsnulls}
+Let $K$ be a field and $I$ an ideal in $K[x]$, let $f$ be a polynomial of $K[x]$ such that $f(c)=0$ for every zero of $I$ in $K^a$. Then there exists a natural number $p$ such that $f^p\in I$
+\end{theorem}
+
+\textit{Proof:} If $f=0$, clearly $f\in I$ since any ideal is a subgroup with respect to the addition; therefore  Let $f\neq 0$. We introduce a new variable $y$ and consider the ideal $I'$ generated by $I$ and $1-y\cdot f$. By Proposition \ref{zeros} and the current assumptions, the ideal $I'$ must be the whole polynomial ring $K[x,y]$. In particular, 1 is in $I'$ and so for some $g_0,..g_l\in K[x,y]$ and $f_1,..,f_l\in I$
+
+$$ 1= g_0 \cdot (1-y\cdot f) + g_1\cdot f_1 + ...+ g_l\cdot f_l  $$ 
+
+\noindent Now let $p$ be the max degree of the polynomials $g_1,...g_l$ for the variable $y$. Then
+substitute $y$ for $1/f$, and multiply both sides by  $f^p$ to clear all the denominators on the right-hand side. So by setting $h_i= f^p \cdot g_i$, we get
+
+$$ f^p= h_1\cdot f_1 + ...+ h_l\cdot f_l   $$
+that means $f^p\in I$  \QED
+
+\noindent Later we will see a proof of this theorem that uses resolutions methods, the formulation will be slightly different as follows:
+
+\noindent\textit{Let $K$ be a field and $f,f_1,\cdots, f_l \in K[{x}]$, if in any extension of $K$, $f$ vanishes at all common zeros of $f_1,\cdots, f_l$, then there exists $p\in \mathbb{N}$ and $h_1,\cdots, h_l \in K[{x}]$ such that} 
 $$
 f^p = \sum_{i=1}^l h_i \cdot f_i
 $$
-To this aim, consider the first order language $\mathscr{L}=\{+,\cdot,=\nobreak 0\}\cup\nobreak K$ where $+,\cdot$ are binary function symbols, $=0$ is a unary predicate symbol and the elements of $K$ are constants; so the terms are polynomials over $K$ and the atomic formulae are algebraic equations.
 
-\noindent Consider the theory given by the following axioms:
+\noindent The premises of this version is equivalent of the one stated in \ref{langsnulls}, that says\\ \textit{Let $f$ be a polynomial of $K[x]$ such that $f(c)=0$ for every zero of $I$ in $K^a$}.
+ Indeed if $f$ vanishes at all common zeros of $f_1,\cdots, f_l$, then $f$ belongs to the ideal $I$ generated by the polynomials  $f_i$. Conversely if $f$ vanishes for every zero of $I$, this is true in particular for some generators $f_1,...,f_l$ of $I$. Also if this happens in all extensions this is true in particular for $K^a$; and if it is true for all the zeros of $K^a$ it also holds for every zeros of every extensions.
+
+
+\section{Applications}
+Now two concrete cases are presented; both are described by Lifschitz \cite{lifschitz} with the purpose of establishing connections between proof theory and algebra. Besides that, the following examples show how it is possible to encode algebraic items, such as vector spaces and polynomials, into a hyper-resolution calculus. Once the calculus is properly defined, the problem becomes mainly proof theoretic, and we can use Robinson's theorem.
+
+
+\subsection*{Linear equations}
+\addcontentsline{toc}{subsection}{Linear equations}
+ 
+We want to give a hyper-resolution interpretation to the vector spaces over a given field $K$; consider the language with the following symbols\\
+- for any $\alpha\in K$, a unary function symbol $\alpha\cdot$ for multiplication by the scalr $\alpha$\\
+-  the binary function symbol +\\
+- the unary relation symbol $=0$\\
+Terms of this language are the linear forms of $K$, and atomic formulae are \\homogeneous linear equations. For any terms $r,s$, $r=s$ stands for $r-s=0$. Now consider the following axioms
+\begin{eqnarray}
+&0\cdot r =0 \\
+&r_1=0\rightarrow r_2 =0  \qquad (r_1,r_2 \texttt{ represent the same linear form}) \\
+& ( r=0 \e s=0 )\rightarrow r+s =0 \\
+& r=0 \rightarrow \alpha\cdot r =0
+\end{eqnarray}
+These axioms imply all equality axioms and axioms of vector spaces over $K$. The models of this theory, factorized with respect to $x=y$, are precisely the vector spaces over $K$.
+We will refer to the set of all possible instances of these axioms as the set $L$, which gives rise to the calculus $H_L$. 
+
+\noindent The inference rules of $H_L$ are
+
+\begin{equation} \label{rule1}
+\prftree{\Gamma}{\Gamma\cup\{0\cdot r=0\}}
+\end{equation}
+
+\begin{equation} \label{rule2}
+\prftree{\Gamma\cup\{r_1=0\}}{\Gamma\cup\{ r_2=0\}}
+\end{equation}
+
+\begin{equation} \label{rule3}
+\prftree{\Gamma\cup\{r=0\}} {\Delta\cup\{s=0\}}{\Gamma\cup\Delta\cup\{ r+s=0\}}
+\end{equation}
+
+\begin{equation} \label{rule4}
+\prftree{\Gamma\cup\{r=0\}}{\Gamma\cup\{ \alpha\cdot r=0\}}
+\end{equation}
+
+\noindent The following two lemmas give us informations about the behavior of trees in $H_L$
+\begin{lemma}\label{lemma_nempty}
+The clause $\emptyset$ cannot be derived in $H_L$
+\end{lemma}
+\textit{Proof:} Rules (\ref{rule1}), (\ref{rule2}), (\ref{rule4}) do not reduce the number of literals involved and therefore cannot be used to deduce $\emptyset$. Rule (\ref{rule3}) reduces the number of literals by one, but it works with two non-empty premises and therefore $\emptyset$ cannot be inferred using it. \QED
+
+\begin{lemma}\label{lemma_onlysingletons}
+Consider a derivation $\Gamma_1,...,\Gamma_l \vdash_{H_L} \Delta $ without trivial applications, 
+if $\Gamma_i$ is a singleton for $i=1,..,l$; then all the nodes of the derivation are singletons
+\end{lemma}
+\textit{Proof:} If the derivation has no trivial applications, the rule ($\ref{rule1}$) can be introduced only from $\emptyset$ which is not one of the premises $\Gamma_1,...,\Gamma_l$; therefore ($\ref{rule1}$)  does not appear. All the other rules transform singletons into a singleton, since all the premises are singletons all the other nodes of the derivations shall be singletons. \QED
+
+\begin{proposition} 
+If every solutions of a system of linear equations $r_1=0,...,r_l=\nobreak 0$  is a solution of a linear equation $s=0$; then $s$ is linear combination of $r_1,...,r_l$
+\end{proposition}
+
+\textit{Proof:} Let $\Delta$ be the singleton clause $\{s=0\}$, for each equation $r_i=0$  let $\Gamma_i=\{r_i=0\}$; then 
+$$ \bigwedge_{i=1}^l \Gamma_i \rightarrow \Delta $$
+by Robinson's Theorem, there is a derivation in $H_T$ of some $\Delta' \subseteq\Delta$ without trivial application. By Lemma \ref{lemma_nempty} $\Delta'$ is not the empty set,  and  since $\Delta$ is a singleton , $\Delta'=\Delta$ and $ \Gamma_1,...,\Gamma_l \vdash_{H_L} \Delta  $.
+Since all the premises are singletons, by Lemma \ref{lemma_onlysingletons} all the nodes are singletons. The literals in $H_L$ are linear equations and when used as premises for rules (\ref{rule2}), (\ref{rule3}), (\ref{rule4}), the conclusion is a linear combination of the premises. 
+Hence $s$ is linear combination of $r_1,...,r_l$.\QED
+
+
+\subsection*{Nullstellensatz}
+\addcontentsline{toc}{subsection}{Nullstellensatz}
+
+
+We want to prove the Nullstellensatz as stated here:
+
+\noindent\textit{Let $K$ be a field and $f,f_1,\cdots, f_l \in K[{x}]$, if in any extension of $K$, $f$ vanishes at all common zeros of $f_1,\cdots, f_l$, then there exists $p\in \mathbb{N}$ and $h_1,\cdots, h_l \in K[{x}]$ such that} 
+$$
+f^p = \sum_{i=1}^l h_i \cdot f_i
+$$
+We need to describe the extensions of a field and the polynomials over it. To this aim, consider the first order language $\mathscr{L}=\{+,\cdot,=\nobreak 0\}\cup\nobreak K$ where $+,\cdot$ are binary function symbols, $=0$ is a unary relation symbol and the elements of $K$ are constants; so the terms are polynomials over $K$ and the atomic formulae are algebraic equations.
+
+\noindent Now consider the theory given by the following axioms:
 \begin{eqnarray}
 & 0=0  \label{ax00} \\
 & \neg (1 =0) \\
@@ -165,7 +311,7 @@ To this aim, consider the first order language $\mathscr{L}=\{+,\cdot,=\nobreak 
 \end{eqnarray}
 One can prove the equality axioms, the axioms of integral domain and the diagram of $K$. It follows that the models of the theory are the integral domains that contains $K$. Lifschitz, instead of the axiom $\neg (1=0)$, uses the axioms  $\neg (\alpha =0)$ for each $\alpha\in K\setminus \{0\}$, however the one taken here is equivalent and simplifies the next arguments.  
 
-The calculus $H_T$ consists of the axiom $\{0=0\}$ and of the rules of inference:
+Let $N$ be the set of all possible instances of the axioms; the calculus $H_N$ consists of the axiom $\{0=0\}$ and of the rules of inference:
 
 \begin{equation}\label{non1=0}
 \prftree{\Gamma \cup \{1=0\}}{\Gamma}
@@ -193,58 +339,58 @@ $$
 we have $ |\Sigma| \leq   |\Gamma\cup\Delta|$; while for rule (\ref{intdom})
 we have $\Delta = \emptyset$ and  $ |\Sigma| =   |\Gamma| +1 $. \\
 
-For any derivation in $H_T$ there is a tree with all the applications of the rule (\ref{intdom}) at the bottom; this is ensured by the following.
-\begin{lemma}\textit{Every derivation in $H_T$ which contains non-trivial applications can be rearranged in such a way that any application of (\ref{intdom}) is either the last one or it is followed by an application of (\ref{intdom})}.
+For any derivation in $H_N$ there is a tree with all the applications of the rule (\ref{intdom}) at the bottom; this is ensured by the following.
+\begin{lemma}\label{lemma_nullest}\textit{Every derivation in $H_N$ which contains non-trivial applications can be rearranged in such a way that any application of (\ref{intdom}) is either the last one or it is followed by an application of (\ref{intdom})}.
 \end{lemma}
 \emph{\noindent \textit{Proof: }}Suppose to have a non-trivial application of a rule (\ref{intdom}) followed by a rule ($x$) different from (\ref{intdom}):
 $$
 \prftree[r]{$x$}
-{\prftree[r]{\ref{intdom}}
+{\prftree[r]{(\ref{intdom})}
 {\Gamma\cup\{r\cdot s=0 \}}
 {\Gamma\cup\{r=0, s=0 \}\,,}
 }
-{\Delta}
+{\Delta \hspace{13mm}} 
 {\hspace{7mm}\Sigma\cup\{r=0,s=0 \}\hspace{13mm}}
 $$
 
-\noindent Here $\Delta$ is the second premise in case ($x$) is the rule (\ref{somm}), otherwise it should be dropped. In the case that both $r=0$ and $s=0$ in the conclusion are different from $A_1$  shown in the scheme (\ref{axiom}) of the rule ($x$), then $A_1\in\Gamma$  and we can change the order as follow:
+\noindent Here $\Delta$ is the second premise in case ($x$) is the rule (\ref{somm}), otherwise it should be dropped. In the case that both $r=0$ and $s=0$ in the conclusion are different from $A_1$  shown in the scheme (\ref{axiom}) of the rule ($x$), then $A_1\in\Gamma$  and we can change the order as follows:
 
 $$
-\prftree[r]{\ref{intdom}}
+\prftree[r]{(\ref{intdom})}
 {\prftree[r]{$x$}
-{\Gamma\cup\{r\cdot s=0 \}, \hspace{7mm}}    {\Delta}
+{\Gamma\cup\{r\cdot s=0 \}, \hspace{7mm}}    {\Delta \hspace{5mm}}
 {\hspace{7mm}\Sigma\cup\{r\cdot s=0 \}\hspace{7mm}}}
 { {\Sigma\cup\{r=0, s=0 \}}} 
 $$
 
-Otherwise let $\{r=0\}$ be $A_1$ of ($x$), depending on whether ($x$) is (\ref{non1=0}),(\ref{eqpoly}) ,(\ref{somm}) or (\ref{mol}), change the derivation according to one of the schemes below
+\noindent Otherwise let $\{r=0\}$ be $A_1$ of ($x$), depending on whether ($x$) is (\ref{non1=0}),(\ref{eqpoly}), (\ref{somm}) or (\ref{mol}), change the derivation according to one of the schemes below
 
 
 \begin{eqnarray*}
-\prftree[r]{\ref{non1=0}} { \prftree[r]{\ref{intdom}} {\Gamma \cup  \{1\cdot s=0\}} {\Gamma \cup  \{1=0, s=0\}} } {\Gamma \cup \{s=0\}}
+\prftree[r]{(\ref{non1=0})} { \prftree[r]{(\ref{intdom})} {\Gamma \cup  \{1\cdot s=0\}} {\Gamma \cup  \{1=0, s=0\}} } {\Gamma \cup \{s=0\}}
 &  \leadsto 
- &\prftree[r]{\ref{eqpoly}} { \Gamma \cup \{1\cdot s=0\}   } {\Gamma \cup \{s=0\}}
+ &\prftree[r]{(\ref{eqpoly})} { \Gamma \cup \{1\cdot s=0\}   } {\Gamma \cup \{s=0\}}
 \end{eqnarray*}
 
 
 
 \begin{eqnarray*}
-\prftree[r]{\ref{eqpoly}} { \prftree[r]{\ref{intdom}} {\Gamma \cup  \{r_1\cdot s=0\}} {\Gamma \cup  \{r_1=0, s=0\}} } {\Gamma \cup \{r_2=0, s=0\}}
+\prftree[r]{(\ref{eqpoly})} { \prftree[r]{(\ref{intdom})} {\Gamma \cup  \{r_1\cdot s=0\}} {\Gamma \cup  \{r_1=0, s=0\}} } {\Gamma \cup \{r_2=0, s=0\}}
 &  \leadsto 
-\prftree[r]{\ref{intdom}} { \prftree[r]{\ref{eqpoly}} {\Gamma \cup  \{r_1\cdot s=0\}} {\Gamma \cup  \{r_2\cdot s=0\}} } {\Gamma \cup \{r_2=0, s=0\}}
+\prftree[r]{(\ref{intdom})} { \prftree[r]{(\ref{eqpoly})} {\Gamma \cup  \{r_1\cdot s=0\}} {\Gamma \cup  \{r_2\cdot s=0\}} } {\Gamma \cup \{r_2=0, s=0\}}
 \end{eqnarray*}
 
 
 \begin{eqnarray*}
 \prfrulenameskip=0.4em\prflinepadbefore=1ex
-\prftree[r]{\ref{somm}} { \prftree[r]{\ref{intdom}} { \Gamma \cup \{ r\cdot s=0\}} { \Gamma \cup \{ r=0,s=0\} }  }{ \Delta \cup \{t=0\} }
+\prftree[l]{(\ref{somm})} { \prftree[l]{(\ref{intdom})} { \Gamma \cup \{ r\cdot s=0\}} { \Gamma \cup \{ r=0,s=0\} }  }{ \Delta \cup \{t=0\} }
 {\hspace{11mm}\Gamma \cup \Delta \cup\{r+t=0, s=0\}\hspace{11mm}}
 & \leadsto
-& \prftree[r]{\ref{intdom}} 
-{\prftree[r]{\ref{eqpoly}}
+& \prftree[r]{(\ref{intdom})} 
+{\prftree[r]{(\ref{eqpoly})}
 { 
-\prftree[r]{\ref{somm}}{\Gamma \cup \{r\cdot s=0\},} 
-{ \prftree[r]{\ref{mol}} {\Delta \cup \{t=0\}  }  {\Delta \cup \{t\cdot s=0\} }}
+\prftree[r]{(\ref{somm})}{\Gamma \cup \{r\cdot s=0\},} 
+{ \prftree[r]{(\ref{mol})} {\Delta \cup \{t=0\}  }  {\Delta \cup \{t\cdot s=0\} }}
 {\Gamma \cup \Delta \cup \{r\cdot s+t\cdot s=0\} }
 }
 {\Gamma \cup \Delta \cup \{(r+t)\cdot s=0\} }
@@ -254,13 +400,13 @@ Otherwise let $\{r=0\}$ be $A_1$ of ($x$), depending on whether ($x$) is (\ref{n
 
 
 \begin{eqnarray*}
-\prftree[r]{\ref{mol}} { \prftree[r]{\ref{intdom}} {\Gamma \cup  \{r\cdot s=0\}} {\Gamma \cup  \{r=0, s=0\}} } {\Gamma \cup \{r\cdot t=0, s=0\}}
+\prftree[r]{(\ref{mol})} { \prftree[r]{(\ref{intdom})} {\Gamma \cup  \{r\cdot s=0\}} {\Gamma \cup  \{r=0, s=0\}} } {\Gamma \cup \{r\cdot t=0, s=0\}}
 &  \leadsto 
-\prftree[r]{\ref{intdom}} 
-{ \prftree[r]{\ref{eqpoly}} 
-{\prftree[r]{\ref{mol}}
+\prftree[r]{(\ref{intdom})} 
+{ \prftree[r]{(\ref{eqpoly})} 
+{\prftree[r]{(\ref{mol})}
 {\Gamma \cup \{r\cdot s=0\}}
-{\Gamma\cup\{ (r\cdot s) \cdot t \}} } 
+{\Gamma\cup\{ (r\cdot s) \cdot t=0 \}} } 
 {\Gamma \cup  \{(r\cdot t) \cdot s=0\}} } 
 {\Gamma \cup \{r\cdot t=0, s=0\}}
 \end{eqnarray*}
@@ -268,36 +414,42 @@ By a series of application of this procedure, we obtained a derivation as requir
 
 \QED
 
-Now we have all the tools to achieve the proof of nullstellentsatz:
-\\\textbf{\textit{Proof: }} Let $K$ be a field and $f,f_1 \cdots f_l \in K[\underline{x}] $  such that  in any extension of $K$, $f$ vanishes at all common zeros of $f_1\cdots f_l$. 
-This amounts to require that in every model of (\ref{ax00}-\ref{axintdom}) the following is valid:
+\begin{theorem}[Hilbert's Nullstellentsatz]
+Let $K$ be a field and $f,f_1,\cdots, f_l \in K[{x}]$, if in any extension of $K$, $f$ vanishes at all common zeros of $f_1,\cdots, f_l$, then there exists $p\in \mathbb{N}$ and $h_1,\cdots, h_l \in K[{x}]$ such that
+$$
+f^p = \sum_{i=1}^l h_i \cdot f_i
+$$
+\end{theorem}
+\newpage
+\textit{Proof: }If $f$ vanishes at all common zeros of $f_1\cdots f_l$, in every model of the axioms \ref{ax00}-\ref{axintdom} the following is valid:
 $$ \Gamma_1\e\cdots\e\Gamma_l\rightarrow\Delta$$
-where $\Gamma_i=\{f_i=0\}$ and $\Delta =\{f=0\}$.\\ Then by Robinson's theorem: $\Gamma_1,\cdots ,\Gamma_l \vdash_{H_T} \Delta '$ where either $\Delta '=\emptyset$ or $\Delta '=\{f=0\}$. 
-In particular take a derivation without trivial applications and where all the applications of (\ref{intdom}) are at the bottom, the existence of such tree is ensured by the lemma shown above. The tree is of the form:
-\begin{equation}
-\prfsummary[only rules \ref{intdom}] {\prftree[r]{\ref{non1=0}-\ref{mol}}{\Gamma_1,}{...,}{\Gamma_l}{\Sigma}}{\Delta '}
-\end{equation}
-Since all the $\Gamma_i$'s are singletons, and since the rules (\ref{non1=0}-\ref{mol}) do not increase the size of the clauses, $\Sigma$ is either a singleton or the empty set. Let's treat separately the cases of $\Delta '$.
+where $\Gamma_i=\{f_i=0\}$ and $\Delta =\{f=0\}$.\\ By Robinson's theorem: $\Gamma_1,\cdots ,\Gamma_l \vdash_{H_N} \Delta '$ where either $\Delta '=\emptyset$ or $\Delta '=\{f=0\}$. 
+In particular take a derivation without trivial applications and where all the applications of (\ref{intdom}) are at the bottom, the possibility of building such tree is ensured by Lemma \ref{lemma_nullest}. The tree is of the form:
+\begin{equation*}
+\prfsummary[only rules (\ref{intdom})] {\prftree[r]{(\ref{non1=0})-(\ref{mol})}{\Gamma_1,}{...,}{\Gamma_l}{\Sigma}}{\Delta '}
+\end{equation*}
+Since all the $\Gamma_i$'s are singletons, and since the rules (\ref{non1=0})-(\ref{mol}) do not increase the size of the clauses, $\Sigma$ is either a singleton or the empty set. Let's treat separately the cases of $\Delta '$.
 
 \textbf{\emph{Case $\Delta '=\emptyset$}} \\
-The only way to get $\emptyset$ out of the rules of inference is by applying (\ref{non1=0}), in this case rule (\ref{intdom}) does not apply at all and the tree is of the form: 
+The only way to get $\emptyset$ out of the rules of inference is by applying (\ref{non1=0}), in this case rule (\ref{intdom}) does not apply at all, and the tree is of the form: 
 $$
-\prftree[r]{\ref{non1=0}}
-{ \prftree[r]{\ref{eqpoly} - \ref{mol}}
+\prftree[r]{(\ref{non1=0})}
+{ \prftree[r]{(\ref{eqpoly}) - ( \ref{mol})}
 { \Gamma_1, }{\cdots ,}{\Gamma_l}
 {\hspace{5mm}\{1=0\}\hspace{5mm}	} 
 }
 {\emptyset }
 $$
-1 is obtained by a series of applications of rules (\ref{eqpoly} - \ref{mol}), therefore it is a linear  combination of $f_1,\cdots ,f_l\;$ : 
+1 is obtained by a series of applications of rules (\ref{eqpoly}) - (\ref{mol}), and therefore is a linear  combination of $f_1,\cdots ,f_l\;$ : 
 $$f^0=1 = \sum_{i=1}^l h_i \cdot f_i$$
 
+\newpage
 
 \textbf{\emph{Case $\Delta '=\{f=0\}$ }} \\
 Suppose that rule (\ref{intdom}) applies $p-1$ times, (\ref{non1=0}) does not apply at all and the tree is of the form:
 $$
-\prftree[r]{$(p-1)$ applications of \ref{intdom}}
-{ \prftree[r]{\ref{eqpoly} - \ref{mol}}
+\prftree[r]{$(p-1)$ applications of (\ref{intdom})}
+{ \prftree[r]{(\ref{eqpoly}) - (\ref{mol})}
 { \Gamma_1, }{\cdots ,}{\Gamma_l}
 {\hspace{7mm}\Sigma\hspace{7mm}	} 
 }
@@ -306,14 +458,14 @@ $$
 Since (\ref{intdom}) applies and $\Sigma$ is a singleton, $\Sigma$ must be of the form $ \{ t_1 \cdot r_1 =0 \}$. Suppose that the $A_1$ of the $i^{th}$ application is $r_i=t_{i+1}\cdot r_{i+1}$, then the tree is:
 $$
 \prfsummary{
-\prftree[r]{ \ref{intdom}}
-{ \prftree[r]{\ref{eqpoly} - \ref{mol}}
+\prftree[r]{ (\ref{intdom})}
+{ \prftree[r]{(\ref{eqpoly}) - (\ref{mol})}
 { \Gamma_1, }{\cdots ,}{\Gamma_l}
 {\hspace{7mm}\{t_1 \cdot r_1=0\}\hspace{7mm}	} 
 }
 {\{ t_1=0, t_2 \cdot r_2=0\} }
 }
-{\prftree[r]{\ref{intdom}}
+{\prftree[r]{(\ref{intdom})}
 {\{ t_1=0,\cdots t_{p-2}=0, t_{p-1}\cdot r_{p-1}=0\}  }
 {\{ t_1=0,\cdots ,t_{p-1}=0,r_{p-1}=0\}}
 }
@@ -321,53 +473,32 @@ $$
 Since the root of the tree must be the singleton $\Delta '=\{f=0\}$, it is the case that for any $i$: $t_i=r_{p-1}=f $.
 Therefore $\Sigma= \{ f^p =0 \}$ and we conclude 
 $$f^p = \sum_{i=1}^l h_i \cdot f_i $$
-
+because  $f^p$ is obtained by a series of applications of rules (\ref{eqpoly}) - (\ref{mol}).
 
 \QED
-%
-%\newpage
-%$$
-%\prftree[r,l]{$\o^-$}{yay $\quad$}
-%{\prftree[r]{$\rightarrow^-$}{A}{A \rightarrow B\o C}{B\o C} }
-%{\prfboundedassumption{C}}
-%{\prftree[r]{$\rightarrow^-$}{\prftree[r]{$\rightarrow^-$}{\prfboundedassumption{B}}{\neg B}{\bot}}{ \prfsummary{EFQ}{\bot \rightarrow C}}{C} }
-%{C}
-%$$
-%
-%
-%
-%
-%
-%$$\prftree[r]{$\scriptstyle\supset\mathrm{I}$}
-%{\prftree[r]{$\scriptstyle\supset\mathrm{I}$}
-%{\prftree[r]{$\scriptstyle\supset\mathrm{E}$}
-%{\prfboundedassumption{A}}
-%{\prfboundedassumption{\neg A}}
-%{\bot}}
-%{\neg\neg A}}
-%{A \supset \neg\neg A}
-%$$
+
 
 
 
 \chapter{Applications to graph theory}
-In this chapter I will discuss applications of the resolution principle to graph theory, in particular we will face two different and equivalent ways of describing $n$-colourable graphs via resolution. The first approach relies on propositions of the kind "the vertex $x$ has the same colour of the vertex $y$", this method will be used to give a constructive proof that a graph is 2-colourable if and only if it does not contain odd cycles. The second approach assigns to each colour a number and relies on proposition of the kind "the vertex $x$ has a colour number smaller than the one of $y$", in other words this method introduces a partial order on the vertices and therefore it will introduce a stronger transitivity rule; this method will be used to prove Gallai-Hasse-Roy-Vitaver theorem, which gives a characterization of the chromatic number of a simple graph, by describing a partial order among vertices using directed paths and retrieving the $n$-colurable property by showing that such order can be used also for colours. Finally I will show another characterization of the chromatic number which generalizes the characterization of bipartite graphs and that may be used to state the four colour theorem.
+In this chapter I discuss applications of the hyper-resolution principle to graph theory, in particular we  face two different and equivalent ways of describing $n$-colourable graphs via resolution. The first approach relies on propositions of the kind "the vertex $x$ has the same colour of the vertex $y$", this method is used to give a constructive proof that a graph is 2-colourable if and only if it does not contain odd cycles. The second approach assigns to each colour a number and relies on proposition of the kind "the vertex $x$ has a colour number smaller than the one of $y$", in other words this method introduces a partial order on the vertices and therefore it introduces a stronger transitivity rule; this method is used to prove Gallai-Hasse-Roy-Vitaver theorem, which gives a characterization of the chromatic number of a simple graph, by describing a partial order among vertices using directed paths and retrieving the $n$-colurable property by showing that such order can be used also for colours. 
+Both this methods are described by Matiyasevich in 1975\cite{mat-1}; in this article Matiyasevich defines how it is possible to apply hyper-resolutions to discrete mathematics, and applies his method to colouring problems.
+Last, we describe the $\mu_n$ graphs, a family of graphs introduced in 1972 by Matiyasevich \cite{mat-2}, in order to give an inductive definition of the property "a graph which cannot be coloured with $n$ colours". This definition let us generalizes the characterization of bipartite (2-colourable) graphs, and can be used to state the four colour theorem in terms of $\mu_4$ graphs.
 
 
-\newpage
 \section{Recalls of graph theory}
-In this section I will briefly recall some notions of graph theory, for the part on simple graphs I will adopt the notation and terminology of Diestel \cite{diestel}, while for directed graphs I will mainly refer to Chartrand-Zhang \cite{chrom}. Some of the result shown here will be also shown in the next section using resolution methods, it might be interesting to compare the proofs and how different they are.
 
-A simple graph $G$ is a couple of sets $(V,E)$ such that the elements of $E$ are unordered couples of elements of $V$. The elements of $V$ are called \textit{vertices} and the elements of $E$ are called \textit{edges}. A vertex $v$ is \textit{incident} with an edge $e$ if $v$ is one of the two elements of $e$, the two vertices incidents an edge are called its \textit{ends} and are said to be \textit{adjacent}; an edge whose endpoints are $x$ and $y$ is denoted as $xy$. 
+In this section we briefly recall some notions of graph theory, for the part on simple graphs we adopt the notation and terminology of Diestel \cite{diestel}; while for directed graphs the main reference is Chartrand-Zhang \cite{chrom}. Some of the result shown here are also shown in the next section using resolution methods, it might be interesting to compare the proofs and how different they are.
+
+A simple graph $G$ is a couple of sets $(V,E)$ such that the elements of $E$ are unordered couples of elements of $V$. The elements of $V$ are called \textit{vertices} and the elements of $E$ are called \textit{edges}. A vertex $v$ is \textit{incident} with an edge $e$ if $v$ is one of the two elements of $e$, the two vertices incidents an edge are called its \textit{ends} and are said to be \textit{adjacent}; an edge whose endpoints are $x$ and $y$ is denoted as $xy$. A graph is called  \textit{complete} if all of its vertices are pairwise adjacent; a complete graph with $n$ vertices is denoted with $K^n$.
 A graph $G'=(V',E')$ is a \textit{subgraph} of G if $V' \subseteq V$ and $E' \subseteq E$.
 
 A \textit{path} is a graph $P=(V,E)$ of the form:
 $$ V=\{x_0,x_1, ..., x_n\} \qquad E=\{x_0 x_1, x_1x_2,.. x_{n-1}x_n\}$$ 
-where the vertices are pairwise different, the length of the path is defined as the cardinality of $E$ which is $n$; we often refer to a path by the natural sequence of the vertices, writing $P=x_0x_1...x_n$. A graph is \textit{connected} if for any two distinct vertices, there is a path between them.  
+where the vertices are pairwise different, the length of the path is defined as the cardinality of $E$ which is $n$; we often refer to a path by the natural sequence of the vertices, writing $P=x_0x_1...x_n$. A graph is \textit{connected} if for any two distinct vertices, there is a path between them which is a subgraph of the given graph.  
 A \textit{cycle} is a path where $x_n$ coincides with $x_0$; a cycle of length $n$ will be briefly called n-cycle; if a n-cycle is a subgraph of $G$, we say that $G$ has a n-cycle. 
+ A connected graph which has no cycle is called \textit{tree}, trees are characterized by the following theorem 
 
-\noindent A connected graph which has no cycle is called \textit{tree}, trees are characterized by the following theorem
-\newpage
 \begin{theorem}[characterization of trees] The following are equivalent:
 \begin{itemize}
 \item[(1)] $T$ is a tree
@@ -391,28 +522,28 @@ If it is connected and there is a cycle, for any two distinct vertices of the cy
 If it's maximally acyclic it is also connected, indeed if the vertices $u,v$ are not linked by a path, $T+uv$ would be an acyclic graph and $T$ not maximally acyclic. 
 
 (3)$\Rightarrow$(4):\\
-Let $u,v$ be two distinct vertices of $T$, such that $uv$ is not an edge of $T$, if $u,v$ are connected by a path, there is a cycle in $T+uv$, hence $T$ is maximally acyclic.
+Let $u,v$ be two distinct vertices of $T$, such that $uv$ is not an edge of $T$, if $u,v$ are connected by a path, there is a cycle in $T+uv$, hence $T$ is maximally acyclic. \QED
 
-\QED
-\newpage For any connected graph $G$, it is always possible to obtain a tree by only removing edges, this tree is called \textit{spanning tree} and its existence is ensured by the following constructive proof.
+ For any connected graph $G$, it is always possible to obtain a tree by only removing edges; this tree is called \textit{spanning tree} and its existence is ensured by the following constructive proof.
 \begin{proposition}[Spanning Tree]
-Let $G=(V,E)$ be a connected graph, then there is a tree $T=(V,E')$ such that $E'\subseteq E$
+Let $G=(V,E)$ be a connected graph; then there is a tree $T=(V,E')$ such that $E'\subseteq E$
 \end{proposition}
-\noindent\textit{Proof:}
+\textit{Proof:}
 Consider the following procedure: If $G$ has no cycle than it is a tree and we have obtained what we were seeking; otherwise let $e$ be an edge of $G$ that belongs to a cycle, then $G-e$ is still connected and we restart the procedure with $G-e$.
 The algorithm always ends since $E$ is a finite set and it returns the required tree.\QED
 
 
 A \textit{k-colouring} of a graph $G=(V,E)$ is a map $c:V \rightarrow \{1,..,k\} $ such that $c(v) \neq c(w) $ whenever $v$ and $w$ are adjacent; a graph is \textit{k-colourable} if it admits a k-colouring. The minimum positive integer $k$ such that $G$ is $k-$colurable is the \textit{chromatic number} and is denoted by $\chi (G)$.
 
-A graph $G=(V,E)$ is bipartite if $V$ admits a partition in two subsets such that every edge has its ends in different subsets; clearly a graph is bipartite if and only if it is 2-colourable since we can assign a colour to each partition to obtain a 2-colouring and conversely whenever we have a 2-colouring we immediately obtain the partitions dividing vertices according to their colour. 
+A graph $G=(V,E)$ is \textit{bipartite} if $V$ admits a partition into two subsets such that every edge has its ends in different subsets; clearly a graph is bipartite if and only if it is 2-colourable since we can assign a colour to each partition to obtain a 2-colouring and conversely whenever we have a 2-colouring we immediately obtain the partitions dividing vertices according to their colour. 
 \begin{figure} 
 \begin{center}
-\includegraphics[scale=0.3]{bipartite.eps}
+\includegraphics[scale=0.28]{bipartite.eps}
 \caption{A bipartite graph coloured with two colours}\label{bip}
 \end{center}
 \end{figure}
 
+\newpage
 Another important characterization of bipartite graph is the property of not having cycles of odd length.
 \begin{theorem}
 A graph $G=(V,E)$ is bipartite if and only if it does not contain odd cycles.
@@ -429,65 +560,66 @@ Conversely, let $G$ be a graph without odd cycles. A graph is bipartite if all i
 Clearly $U\cap W =\emptyset$ and $U\cup W=V$, it remains to show that any $e\in E$ has its ends in different partitions. 
 Let $xy\in E$, if it is the case that $xy\in E'$ then $d(x)=d(y)\pm 1$ and therefore they belong to different partitions. If $xy\notin E'$, then adding it to the spanning tree creates a cycle $C$ which is even since it is also e cycle of $G$; thus $C-xy$ is the unique path in $T$ from $x$ to $y$ and is of odd length, whence $d(x)$ and $d(y)$ have different parity.\QED
 
+
 \subsection*{Directed graphs}
 \addcontentsline{toc}{subsection}{Directed graphs}
 
 A \textit{digraph} (or directed graph) $D$  is a couple of sets $(V,A)$ where the elements of $A$ are ordered couples of $V$. Elements of $V$ are still called vertices while elements of $E$ are called \textit{arcs} or \textit{directed edges}. For instance a representation of the digraph $D=(\{x,y,z\}, \{(x,y),(y,x),(x,z),(z,y)\})$ is shown in fig. \ref{digraph}
 
-If for each pair of distinct vertices $u,v$ of a digraph $D$, at most one of $(u,v)$ and $(v,u)$ is an arc, $D$ is an \textit{oriented graph}. In fig. \ref{digraph} $D$ is not an oriented graph while $D_1$ and $D_2$ are good examples. Thus an oriented graph can be obtained from a simple graph $G$ by assigning a direction to each one of its edges, the digraph obtained in this way is said to be an \textit{orientation} of $G$; on the other hand starting from an oriented graph $D$ we obtain the \textit{underlying graph } by replacing all arcs $(u,v)$ with an edge $uv$. 
+If for each pair of distinct vertices $u,v$ of a digraph $D$, at most one of $(u,v)$ and $(v,u)$ is an arc, $D$ is an \textit{oriented graph}. In fig. \ref{digraph} $D$ is not an oriented graph while $D_1$ and $D_2$ are good examples. Thus an oriented graph can be obtained from a simple graph $G$ by assigning a direction to each one of its edges, and the digraph obtained in this way is said to be an \textit{orientation} of $G$. On the other hand starting from an oriented graph $D$ we obtain the \textit{underlying graph } by replacing all arcs $(u,v)$ with an edge $uv$. 
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.7]{digraphs.eps}
+\includegraphics[scale=0.55]{digraphs.eps}
 \caption{$D$ is a generic digraph;
 		$D_1$ is an acyclic oriented graph;
 		$D_2$ is a directed cycle;
 		$G$ is the underlying graph of $D,D_1,D_2$}\label{digraph}
 \end{figure}
 
-\newpage
-A sequence $x_0,...,x_n$ of distinct vertices of a digraph $D$ is a \textit{(directed) path} if for any $i$ $(x_i,x_{i+1})$ is an arc of $D$; a path in which $x_n$ coincides with $x_0$ and is called \textit{direct cycle}. Note that Fig. \ref{digraph} shows that an acyclic oriented graph may have an underlying graph with a cycle. As simple graphs have spanning trees and they are easy to obtain, digraphs have spanning acyclic digraph, they also have a maximality property, i.e. whichever arc is added, it creates a directed cycle.
 
+A sequence $x_0,...,x_n$ of distinct vertices of a digraph $D$ is a \textit{(directed) path} if for any $i$ $(x_i,x_{i+1})$ is an arc of $D$; a path in which $x_n$ coincides with $x_0$ and is called \textit{direct cycle}. Note that Fig. \ref{digraph} shows that an acyclic oriented graph may have an underlying graph with a cycle. As simple graphs have spanning trees and they are easy to obtain, digraphs have spanning acyclic digraphs; they also have a maximality property, i.e. whichever arc is added, it creates a directed cycle.
+
+\newpage
 \begin{lemma}[\textbf{Spanning acyclic digraph}]
-Let $D=(V,A)$ be a connected digraph, then there is an acyclic oriented cycle $T$ which is connected and obtained by $D$ only by removing arcs.
+Let $D=(V,A)$ be a connected digraph; then there is an acyclic oriented cycle $T$ which is connected and obtained by $D$ only by removing arcs.
 \end{lemma}
 
-The orientations of a simple graph can be useful to find the chromatic number, a characterization of $\chi (G)$ was found independently by L.M. Vitaver \cite{vitaver}(1962), M. Hasse \cite{hasse}(1963), B. Roy \cite{roy}(1967), T. Gallai \cite{gallai}(1969); here I will show the proof given by Chartrand and Zhang in their book \cite{chrom}, and later I will show the method adopted by Matijasevi\v{c} \cite{mat-1} which uses hyper-resolution.
-
-Given a simple graph $G$ and an orientation $D$ of $G$, we define $\ell(D)$ as the length of the longest directed path in $D$. 
+The orientations of a simple graph can be useful to find the chromatic number. A characterization of $\chi (G)$ was found independently by L.M. Vitaver \cite{vitaver}(1962), M. Hasse \cite{hasse}(1963), B. Roy \cite{roy}(1967), T. Gallai \cite{gallai}(1969); here I will show the proof given by Chartrand and Zhang in their book \cite{chrom}, and later I will show the method adopted by Matijasevi\v{c} \cite{mat-1} which uses hyper-resolution.
+\begin{definition}\label{prova}
+Let $G$ be a simple graph and $D$ an orientation of $G$;\\ we define $\ell (D)$ as the length of a longest directed path of $D$
+\end{definition}
 \begin{proposition}\label{prop-vitaver-easy}
 There is an orientation $D$ of $G=(V,E)$ such that $$ \chi (G) \geq 1+\ell(D) $$
-\end{proposition}   
-We take a colouring map $c:V\rightarrow \{1,...,\chi (G)\}$, we build an orientation
+\end{proposition}
+
+\textit{Proof:}  We take a colouring map $c:V\rightarrow \{1,...,\chi (G)\}$, we build an orientation
  $D$ choosing a direction for each edge $uv$ of $G$, in particular we pick the arc 
  $(u,v)$ if $c(u)< c(v)$. In such orientation, any path is long at most $\chi 
  (G)-1$ whence $\ell(D)\leq \chi (G)-1  $, that is $ \chi (G) \geq 1+\ell(D) $ 
- 
- \QED
-\newpage
+\QED
+
 \begin{theorem}[The Gallai-Hasse-Roy-Vitaver theorem]\label{vitaver}
 For every orientation $D$ of a graph $G=(V,E)$ $$\chi (G)\leq 1 + \ell(D)$$
 \end{theorem}
-Let $D$ be an orientation of $G$ and $D'$ a spanning acyclic subdigraph of $D$, we define a colouring map $c$ on $G$ by assigning to each vertex $v$ the colour 1 plus the length of the longest directed path of $D'$ that ends in $v$. Clearly the number of colours used is $1+\ell(D)$, indeed the longest path of $D'$ is also in $D$, otherwise $D'$ would not be maximal. 
+\textit{Proof: }Let $D$ be an orientation of $G$ and $D'$ a spanning acyclic subdigraph of $D$, we define a colouring map $c$ on $G$ by assigning to each vertex $v$ the colour 1 plus the length of the longest directed path of $D'$ that ends in $v$. Clearly the number of colours used is $1+\ell(D)$, indeed the longest path of $D'$ is also in $D$, otherwise $D'$ would not be maximal. 
 
-Thus it remains to show that $c$ is a proper colouring, i.e. that if $uv\in E$, $c(u)\neq c(v) $, to this aim consider an arc $(u,v)$ of $D$, if it is also an arc of $D'$ then $c(u)<c(v)$; otherwise if it is not in $D'$, adding it creates a directed cycle which is the case only if there is a path from $v$ to $u$, thus $c(v)<c(u)$ 
-
-\QED
+Thus it remains to show that $c$ is a proper colouring, i.e. that if $uv\in E$, $c(u)\neq c(v) $, to this aim consider an arc $(u,v)$ of $D$, if it is also an arc of $D'$ then $c(u)<c(v)$; otherwise if it is not in $D'$, adding it creates a directed cycle which is the case only if there is a path from $v$ to $u$, thus $c(v)<c(u)$ \QED
 
 \noindent The following result characterizes the chromatic number of a simple graphs and is a direct consequence of the last propositions.
 \begin{corollary}\label{cor-vitaver}
-Let $G$ be a graph and $\ell$ the minimum possible value of $\ell(D)$, $D$ orientation of $G$, then   
+Let $G$ be a graph and $\ell$ the minimum possible value of $\ell(D)$, $D$ orientation of $G$; then   
 $$\chi (G)=1+\ell$$
 \end{corollary}
 
-\noindent\textit{Proof:}\\
+\textit{Proof:}
 Let $D$ be an orientation of $G$ such that 
 $$\ell(D)=\ell=\textrm{min}\{\ell(D') \; 	,D' \textrm{ orientation of } G\}$$ 
 then by Theorem \ref{vitaver} $\chi(G) \leq 1+\ell$. On the other hand by Proposition \ref{prop-vitaver-easy} for some orientatin $D'$  of $G$, $\chi(G)\geq 1+\ell(D')$; therefore, since $\ell(D')\geq\ell$ 
-$$\chi (G)=1+\ell$$ \QED
+$$\chi (G)=1+\ell$$\QED
 
-\newpage 
-The figure \ref{fig-vitaver} displays hot the Gallai-Hasse-Roy-Vitaver theorem applies to a cycle of length five, there are shown four different orientations of the cycle and to each vertex is assigned a colour based on how long is the longest directed path that reaches it. The rightmost orientation is not acyclic, every vertex is reached by a directed path of length five and they would all receive the same colour. The leftmost orientation is one that achieves the minimum $\ell(D)$ which in the case of odd cycles is 2, indeed the chromatic number for odd cycles is 3
+ 
+The figure \ref{fig-vitaver} displays how the Gallai-Hasse-Roy-Vitaver theorem applies to a cycle of length five, there are shown four different orientations of the cycle and to each vertex is assigned a colour based on how long is the longest directed path that reaches it. The rightmost orientation is not acyclic, every vertex is reached by a directed path of length five and they would all receive the same colour. The leftmost orientation is one that achieves the minimum $\ell(D)$, which in the case of odd cycles is 2, and the chromatic number of odd cycles is 3
 \vspace{2cm}
 \begin{figure}[h]
 \centering\includegraphics[scale=0.7]{vitaver.eps}
@@ -497,8 +629,9 @@ The figure \ref{fig-vitaver} displays hot the Gallai-Hasse-Roy-Vitaver theorem a
 \newpage
 \section{Resolution approach to colouring}
 Every colouring can be uniquely described (up to renaming the colours) by the symmetric binary relation "vertices $x$ and $y$ have the same colour", which we denote by  $\E xy$. 
-Such binary relation, in order to represent a colouring map, should respect a transitivity axiom, and be false whenever the two vertices are adjacent 
+Such binary relation, in order to represent a colouring map, should respect a symmetry axiom, a transitivity axiom, and be false whenever the two vertices are adjacent 
 \begin{gather}
+\E xy \rightarrow \E yx \label{symmetry-axiom}\\
 \E xy \wedge \E yz \rightarrow  \E xz \label{color-prop1}\\
 ( xy \in E \Rightarrow ) \qquad  \neg \E xy \label{color-prop2}
 \end{gather}
@@ -506,7 +639,15 @@ Also for an $n$-colouring we require that whenever we pick $n+1$ vertices at lea
 \begin{equation} \label{color-prop3}
 \bigvee_{i=0}^{n-1} \bigvee_{j=i+1}^{n} \E x_i x_j
 \end{equation}
-Conversely if a binary symbol satisfies the above axioms, then it corresponds to some colouring map. More formally, for every graph $G=(V,E)$, we consider a language $\mathscr{L}=\{\E\}\cup V\cup E$, where $\E$ is a binary relation symbols and $V\cup E$ are constants; the models of the formulae (\ref{color-prop1}-\ref{color-prop3}) are the $n$-colourable graphs that contain $G$, if $G$ is not $n$-colurable the axioms are inconsistent and there are no models. The formulae (\ref{color-prop1}-\ref{color-prop3}) give rise to the calculus $H_G$ which consists of the following inference rules:
+Conversely if a binary symbol satisfies the above axioms, then it corresponds to some colouring map. More formally, for every graph $G=(V,E)$, we consider the language $\mathscr{L}=\{\E\}\cup V\cup E$, where $\E$ is a binary relation symbol, and $V\cup E$ contains the constants. The models of the formulae (\ref{symmetry-axiom})-(\ref{color-prop3}) are the $n$-colourable graphs that contain $G$; and if $G$ is not $n$-colourable, then  the axioms are inconsistent and there are no models. 
+\begin{definition}
+Let $G$ be a simple graph and $n$ a positive natural number; then we call $C_{G,n}$ the set of all possible formualae of the form (\ref{color-prop1}), (\ref{symmetry-axiom}), (\ref{color-prop2}), and (\ref{color-prop3}). The resolution calculus that comes from $C_{G,n}$ is denoted as $H_{G,n}$.
+\end{definition}
+The hyper-resolution calculus $H_{G,n}$ has the following rules
+\begin{equation}
+\label{symm}
+\prftree{\Gamma \cup \{\E xy \}}{ \Gamma\cup \{\E yx \}}
+\end{equation}
 \begin{equation}
 \label{trans}
  \prftree{\Gamma \cup \{\E xy \}}{\Delta \cup \{\E yz \}}{\Gamma \cup \Delta \cup \{\E xz \}}
@@ -519,103 +660,136 @@ Conversely if a binary symbol satisfies the above axioms, then it corresponds to
  \label{ax-col}
 \prftree{\Gamma}{ \Gamma \cup \{\E x_0 x_1 , ... , \E x_{n-1} x_n  \}}
 \end{equation}
-Note that any tree made with these rules have (\ref{ax-col}) as leaves; on the other hand, if there are no trivial applications, rule (\ref{ax-col}) appears only at leaves, indeed $\emptyset\in\Gamma$ for every non-empty $\Gamma$.  \\
-Besides axioms (\ref{color-prop1}), (\ref{color-prop2}), (\ref{color-prop3}) it should be necessary to add the axiom $\E xx$, I preferred to keep it implicit in the definition of the proposition symbol $\E$ in order to keep the formalism slightly lighter.
+Note that, since (\ref{ax-col}) is the only rule with empty premise, any tree made in $H_{G,n}$  has (\ref{ax-col}) as leaves. The following lemma ensures that every tree can be rearranged in such a way that the rules appear in a precise order: First the literals are introduced from $\emptyset$ by the rule (\ref{ax-col}); second all the symmetry rules (\ref{symm}) apply, followed by the transitivity rule (\ref{trans}); last literals are eventually removed by the elimination rule (\ref{jred}).
 
-\subsection*{Bipartite graphs}
-\addcontentsline{toc}{subsection}{Bipartite graphs}
 
-\begin{proposition}
-A graph $G=(V,E)$ that contains an odd cycle is not 2-colourable 
-\end{proposition}
-I will show that if there is an odd cycle the empty clause is derivable in $H_G$, i.e. $\vdash_{H_G} \emptyset$, and that therefore the propositions 	(\ref{color-prop1}-\ref{color-prop3}) are inconsistent.\\
-Let $\{x_1, ..., x_{2n+1}\} $ be an odd cycle, by definition for $i=1,2,..., 2n$ $x_i x_{i+1} \in E$ and $ x_{2n+1} x_1 \in E$. Then consider the following deduction in $H_G$:
-$$\prftree[r]{(\ref{trans})}
-{
-\prfsummary{ 
-\prftree[r]{(\ref{trans})}
-{\prftree[r]{(\ref{jred})}{
-\prftree {\E x_1 x_2 , \E x_2 x_3 , \E x_1 x_3 }
-{\E x_2 x_3 , \E x_1 x_3  }
-}
-{\E x_1 x_3}}
-{ \prftree[r]{(\ref{jred})}
-{ \prftree{ \E x_3 x_5 , \E x_4 x_5 , \E x_3 x_5}
-{\E x_4 x_5 , \E x_3 x_5}
-}
-{\E x_3 x_5}}
-{\E x_1 x_5}
-}
-{\E x_1 x_{2n-1}}
-}
-{
-\prftree[r]{(\ref{jred})}{ \prftree{\E x_{2n-1} x_{2n},\E x_{2n} x_{2n+1},\E x_{2n-1} x_{2n+1} }{\E x_{2n} x_{2n+1},\E x_{2n-1} x_{2n+1}} }
-{\E x_{2n-1} x_{2n+1}}
-}
-{\prftree[r]{(\ref{jred})}{\E x_1 x_{2n+1}}{\emptyset}} 
-$$
-
-The idea shown by this tree is that, if the graph is 2-colourable with a ($2n+1$)-cycle and $c$ is a 2-colouring map, whenever we pick three consecutive vertices $x_i,x_{i+1},x_{i+2}$ of the cycle, two of them must be of the same colour and since adjacent vertices have different colours, we have $c(x_i)=c(x_{i+2})$; whence $c(x_1)=c(x_3)=c(x_5)=...=c(x_{2n+1})$ which is impossible since $x_1x_{2n+1} \in E$.
-
-\newpage
-Before proving the opposite direction, we need the following result.
 \begin{lemma}\label{lemma_rules}
-Every derivation in $H_G$ can be rearranged in such a way that any application of (\ref{jred}) is either the last one or it is followed by an application of (\ref{jred}).
-\end{lemma}
-\emph{Proof:}
+For any derivation in $H_{G,n}$, there is a tree that respect the followings
+\begin{itemize}
+\item[1)] (\ref{ax-col}) is preceded only by other applications of (\ref{ax-col}); also if the derivation has no trivial application, then (\ref{ax-col}) appears only at leaves.
+\item[2)] (\ref{symm}) is preceded only by applications of (\ref{symm}) or (\ref{ax-col})
+\item[3)] (\ref{trans}) is not preceded by  applications of (\ref{jred})
+\item[4)] (\ref{jred}) is followed only by  applications of (\ref{jred})
+\end{itemize}\end{lemma}
+\noindent\emph{Proof:}
+
+\noindent 1) Suppose to have a rule $x$ that precedes (\ref{ax-col}), switch them in the following way. 
+
+%% axiom colours and any rule
 \begin{eqnarray*}
 \prfrulenameskip=0.4em\prflinepadbefore=1ex
-\prftree[r]{\ref{trans}} 
-{\prftree[l,r]{\ref{jred}}{$xy \in E$}{\Gamma \cup \{\E xy ,\E ab \}}{\Gamma \cup \{\E ab \}}}
+\prftree[r]{(\ref{ax-col})}{
+\prftree[r]{$x$}{\Gamma}{\qquad\Delta}{\qquad\Sigma\qquad}
+}{\Sigma\cup\{\E x_0 x_1 , ... , \E x_{n-1} x_n  \}}
+& \leadsto
+&\prftree[r]{$x$}{
+\prftree[r]{(\ref{ax-col})}{\Gamma}{\Gamma\cup\{\E x_0 x_1 , ... , \E x_{n-1} x_n  \}}
+}{\qquad\Delta\qquad\quad}{\Sigma\cup\{\E x_0 x_1 , ... , \E x_{n-1} x_n  \}}
+ \end{eqnarray*}
+Here $\Delta$ is the second premise in the case that $x$ is (\ref{trans}), otherwise it should be dropped. Also, if the tree has  no trivial application, (\ref{ax-col}) cannot be preceded by anything and it must be a leaf. Indeed, if we apply (\ref{ax-col}) to a non empty clause $\Gamma$, such application is trivial since $\emptyset\in\Gamma$.
+ 
+\noindent 2) Because of point 1, we can always achieve a tree where (\ref{ax-col}) is never applied below (\ref{symm}), it remains to check the case when  (\ref{trans}) or (\ref{jred}) precedes (\ref{symm}).
+
+% symmetria e trans
+\begin{eqnarray*}
+\prfrulenameskip=0.4em\prflinepadbefore=1ex
+\prftree[r]{(\ref{symm})} {\prftree[r]{(\ref{trans})}{\Gamma\cup\{\E ab\} }{\Delta\cup\{\E bc\}}
+{\Gamma\cup\Delta\cup\{\E ac\} } 
+ }{\Gamma\cup\Delta\cup\{\E ca\} } 
+& \leadsto
+&\prftree[r]{(\ref{trans})} 
+ { \prftree[r]{(\ref{symm})}{\Delta\cup\{\E bc \}} { \Delta\cup\{\E cb \} } }
+ {\prftree[r]{(\ref{symm})}{\Gamma\cup\{\E ab \}} { \Gamma\cup\{\E ba \} } }
+{\Delta\cup\Gamma\cup\{\E ca\}}
+ \end{eqnarray*}
+
+
+%eliminazione e simmetria 
+\begin{eqnarray*}
+\prfrulenameskip=0.4em\prflinepadbefore=1ex
+\prftree[r]{(\ref{symm})} 
+{\prftree[l,r]{(\ref{jred})}{$xy \in E$}{\Gamma \cup \{\E xy ,\E ab \}}{\Gamma \cup \{\E ab \}}}
+{\Gamma  \cup \{\E ba \}}
+& \leadsto
+&\prftree[l,r]{(\ref{jred})}{$xy \in E$} 
+{\prftree[r]{(\ref{symm})}
+{\Gamma \cup \{\E xy ,\E ab \}}
+{\Gamma\cup \{\E xy , \E ba \} }}
+{\Gamma \cup \{\E ba \}}
+ \end{eqnarray*}
+
+
+
+\noindent 3) From point 1 and 2, we know that there is a tree in which the transitivity rule (\ref{trans}) cannot be followed by (\ref{ax-col}) nor (\ref{symm}). It remains to show how to rearrange it when (\ref{jred}) precedes (\ref{trans})
+
+% eliminazione e trans
+\begin{eqnarray*}
+\prfrulenameskip=0.4em\prflinepadbefore=1ex
+\prftree[r]{(\ref{trans})} 
+{\prftree[l,r]{(\ref{jred})}{$xy \in E$}{\Gamma \cup \{\E xy ,\E ab \}}{\Gamma \cup \{\E ab \}}}
 {\Delta \cup \{\E bc \} \hspace{0.7cm}}
 {\Gamma \cup \Delta \cup \{\E ac \}}
 & \leadsto
-&\prftree[l,r]{\ref{jred}}{$xy \in E$} 
-{\prftree[r]{\ref{trans}}
+&\prftree[l,r]{(\ref{jred})}{$xy \in E$} 
+{\prftree[r]{(\ref{trans})}
 {\Gamma \cup \{\E xy ,\E ab \}}{\Delta \cup \{\E bc \}}
 {\Gamma\cup\Delta \cup \{\E xy , \E ac \} }}
 {\Gamma \cup \Delta \cup \{\E ac \}}
  \end{eqnarray*}
 
+\noindent 4) If a derivation respects all the previous points, then the elimination rule (\ref{jred}) is either the last one or is followed only by other applications of itself. Indeed if an other rule follows the elimination one, either the point 1, 2 or 3 does not hold.
+
+\QED
+
+
+\subsection*{Bipartite graphs}
+\addcontentsline{toc}{subsection}{Bipartite graphs}
+Now we see, using resolution methods, that a graph is bipartite  if and only if it does not contain odd cycles. First we show that any graph $G$ with an odd cycle is not 2-colourable and therefore not bipartite; this can be done by directly showing that the empty set can be derived in $H_{G,2}$. 
+Second, that whenever a graph $G$ is not 2-colurable, there is an odd cylce in $G$. This second proof relies on Robinson's Theorem and is constructive; given a non bipartite graph, it shows how to build an odd cycle which is a subgraph of it. 
+
 \begin{proposition}
-If a graph $G=(V,E)$ is not 2-colourable, then it has an odd cycle
+Let $G=(V,E)$ be a graph that contains an odd cycle; then $G$ is not 2-colourable 
 \end{proposition}
-If $G$ is not 2-colourbale, also every graph that contains $G$ is not 2-colourable; by Robinson's theorem and lemma \ref{lemma_rules}, we know that  $\vdash_{H_G} \emptyset$ and in particular there is a derivation without trivial application where all the applications of (\ref{jred}) are close to the root.
-Now we proceed by induction on the number $k$ of application of (\ref{trans}).
-If $k=0$ the tree is of the form:
-\begin{eqnarray*}
-\prftree[r]{$xy \in E$}{
-\prftree[r]{$yz \in E$}{
-\prftree[r]{$xz \in E$}{
-\prftree[r]{\ref{ax-col}} { }{ \{ \E xy , \E yz, \E xz  \} } } 
-{\{ \E xy , \E yz \} } } 
-{\{\E xy \} } }
-{ \emptyset }
-\end{eqnarray*}
-Then $xy,xz,yz \in E$ and the 3-cycle $\{x,y,z,x\}$ is a subgraph of $G$.
- 
-For $k >0$ the tree is of the form:
+\textit{Proof:}
+We show that if there is an odd cycle in $G$, then the empty clause is derivable in $H_ {G,2}$, i.e. $\vdash_{H_{G,2}} \emptyset$, and that therefore the axioms \ref{symmetry-axiom} ,\ref{color-prop1}, \ref{color-prop2} and \ref{color-prop3} are inconsistent.
+
+Let $x_1, ..., x_{2n+1} $ be an odd cycle, by definition for $i=1,2,..., 2n$ $x_i x_{i+1} \in E$ and $ x_{2n+1} x_1 \in E$. For $i=1,2,...,2n-1$ consider the tree $A_i$ in $H_{G,2}$:
+
 $$
-\prftree[r]{\ref{trans}}
-{\prfsummary{\emptyset}{\Gamma \cup \{\E xy \}}}
-{\prfsummary{\emptyset}{\Delta \cup \{\E yz \}}}
-{\prfsummary{\Sigma \cup \{\E xz \}}{\emptyset}}
+\prftree[r,l]{(\ref{jred})}{$x_{i+1} x_{i+2} \in E$}{
+\prftree[r,l]{(\ref{jred})}{$x_i x_{i+1} \in E$} 
+{ \prftree[r]{(\ref{ax-col})}{\emptyset}
+{\E x_i x_{i+1} , \E x_{i} x_{i+2} , \E x_{i+1} x_{i+2}} }
+{\E x_{i} x_{i+2} , \E x_{i+1} x_{i+2}  }
+}
+{\E x_i x_{i+2}}
 $$
-Whence $xz\in E$ and if $\E ab \in \Gamma\cup\Delta$ then $ab\in E$.\\
-Consider $E'=E\cup\{xy,yz\}$, the graph $G'=(V,E' )$ has $G$ as subgraph, thus we have the following trees in $H_G$z
-\begin{eqnarray*}
-\prfsummary[$\Gamma \subseteq \Sigma$]{
-\prftree[r]{$xy \in E'$}{\prfsummary{\emptyset}{\Gamma \cup\{\E xy\}}}{\Gamma}}
+\newpage Using the trees $A_1,...,A_{2n-1}$, we obtain the following derivation of the empty set in $H_{G,2}$:
+$$
+\prftree[r,l]{(\ref{jred})}{$x_{2n+1}x_1\in E$}
+{ \prftree[r]{(\ref{symm})}
+{\prftree[r]{(\ref{trans})} 
+{\prftree{ \prftree[l]{(\ref{trans})}{ \prfsummary{A_1} {\E x_1x_3}  }{  \prfsummary{A_3}{\E x_3x_5} }
+{\E x_1 x_5}}{\prfsummary{ A_5}{ }}{ \prfsummary{...}{} }{\prfsummary{ A_{2n-3}}{ }}
+{ \E x_1 x_{2n-1}}}{\prfsummary{A_{2n-1}} { \E x_{2n-1}x_{2n+1}}}
+{\E x_1 x_{2n+1} } }  
+{\E x_{2n+1}x_1} }
 {\emptyset}
-&\prfsummary[$\Delta \subseteq \Sigma$]{
-\prftree[r]{$yz \in E'$}{\prfsummary{\emptyset}{\Delta \cup\{\E yz\}}}{\Delta}}
-{\emptyset}
-\end{eqnarray*}
-by induction hypothesis $G'$ has two odd cycles $C_1$ and $C_2$.
-\\If $y \notin C_1$ (or $C_2$), then $C_2$ (or $C_1$) is an odd cycle of $G$.
-\\Thus let $y\in C_1\cap C_2$, if $x\notin C_1$ (or $z\notin C_2$), then $C_1$ (or $C_2$) is an odd cycle of $G$;
-\\so consider $x\in C_1$ and $z\in C_2$, if $x\in C_2$ (or $z\in C_1$) then $\E xy \in \Delta$ (or $\E yz \in \Gamma$) and $xy\in E$ (or $yz\in E$) and $C_1$ (or $C_2$) is an odd cycle of $G$.
-\\ The last case to be considered is  $y\in C_1\cap C_2$, $x\in C_1 \backslash C_2$, 
+$$
+\QED
+
+The idea shown by the last tree is that, if the graph is 2-colourable with a ($2n+1$)-cycle and $c$ is a 2-colouring map, whenever we pick three consecutive vertices $x_i,x_{i+1},x_{i+2}$ of the cycle, two of them must be of the same colour and since adjacent vertices have different colours, we have $c(x_i)=c(x_{i+2})$; whence $c(x_1)=c(x_3)=c(x_5)=...=c(x_{2n+1})$ which is impossible since $x_{2n+1}x_1 \in E$.
+
+The opposite direction is less trivial and uses Robinson's theorem; before showing it, we need the following lemma about odd cycles.
+
+\begin{lemma}\label{tech-lemma-graph}
+Let $G'=(V,E)$ be a simple graph with two different edges $xy,yz\in E$; if $G'$ has two distinct odd cycles, then $G=(V,E\setminus\{xy,yz\}\cup\{xz\})$ has an odd cycle.
+\end{lemma}
+\textit{Proof:}
+Let's denote the two odd cycles $C_1$ and $C_2$. If $y$ does not belong to one of them, say $y\notin C_1$, then $C_2$ is in $G$; thus let $y\in C_1\cap C_2$. 
+If $x$ or $z$ does not belong to at least one of the cycles, say $x\notin C_1$, then $C_2$ is in $G$.
+If $x$ and $z$ belongs to same cycle, say $C_1$, then $C_2$ is a cycle of $G$.  
+\\ Therefore it remains to consider the case when $y\in C_1\cap C_2$, $x\in C_1 \backslash C_2$, 
 $z\in C_2 \backslash C_1$; let $2n+1$ and $2m+1$ respectively the length of $C_1$ and $C_2$, if $y$ is the only vertex in the intersection,	 by removing the edges $xy,yz$ and adding $xz$ we get a cycle in $G$ of length $2(n+m)+1$. 
 \begin{figure*}[h]
 \includegraphics[scale=0.25]{oddcycles1.eps}
@@ -631,14 +805,54 @@ Then $P\cup Q$ is a cycle that pass trough the edges $xy$ and $yz$, if the lengt
 \end{figure}
 If $P\cup Q$ is an odd cycle, consider the remaining part which namely consists of $C_1\cap C_2$ and of $\tilde{C}_1,..,\tilde{C}_l$ cycles, then at at least one of them must be odd since $|P\cup Q|$ is odd and the following holds $$2n+1+2m+1-|P\cup Q| = \sum^l_{i=1} length(\tilde{C}_i) + 2\cdot |C_1\cap C_2|   $$
 Finally, since $xy\in P$ and $yz\in Q$, such odd cycle is also in $G$. 
+\QED
+
+
+
+\begin{proposition} \label{mio}
+If a graph $G=(V,E)$ is not 2-colourable, then it has an odd cycle
+\end{proposition}
+\textit{Proof:}
+If $G$ is not 2-colourbale, also every graph that contains $G$ is not 2-colourable; therefore by Robinson's Theorem, we know that  $\vdash_{H_{G,2}} \emptyset$. Consider a derivation of $\emptyset$  that respects Lemma \ref{lemma_rules}, in particular that it does not have trivial application, and all the applications of the elimination rule (\ref{jred}) are close to the root.
+Now we proceed by induction on the number $k$ of applications of the transitivity rule (\ref{trans}).
+If $k=0$ the tree is of the form:
+\begin{eqnarray*}
+\prftree[r,l]{(\ref{jred})}{$xy \in E$}{
+\prftree[r,l]{(\ref{jred})}{$yz \in E$}{
+\prftree[r,l]{(\ref{jred})}{$xz \in E$}{
+\prftree[r]{(\ref{ax-col})} { }{ \{ \E xy , \E yz, \E xz  \} } } 
+{\{ \E xy , \E yz \} } } 
+{\{\E xy \} } }
+{ \emptyset }
+\end{eqnarray*}
+Then $xy,xz,yz \in E$ and the 3-cycle $xyz$ is a subgraph of $G$.
+ 
+For $k >0$ the tree is of the following form, 
+$$
+\prftree[r]{(\ref{trans})}
+{\prfsummary[$D_1$]{\emptyset}{\Gamma_1 \cup \{\E xy \}}}
+{\prfsummary[$D_2$]{\emptyset}{\Gamma_2 \cup \{\E yz \}}}
+{\prfsummary{\Sigma \cup \{\E xz \}}{\emptyset}}
+$$
+Let $E'=E\cup\{xy,yz\}$ and $G'=(V,E' )$ ; then the derivations $D_1$ and $D_2$ are valid also in $H_{G',2}$. 
+Since there are no trivial applications, $\E xy \notin \Gamma_1 $ and $\E yz \notin \Gamma_2 $; therefore for any $\E ab \in \Gamma_i$, $ab \in E'$, whence $\Gamma_i \vdash_{H_{G',2}} \emptyset$. \\Thus we have the two following trees in  $H_{G',2}$ :
+\begin{eqnarray*}
+\prfsummary{
+\prftree[r]{$xy \in E'$}{\prfsummary[$D_1$]{\emptyset}{\Gamma_1 \cup\{\E xy\}}}{\Gamma_1}}
+{\emptyset}
+&\prfsummary{
+\prftree[r]{$yz \in E'$}{\prfsummary[$D_2$]{\emptyset}{\Gamma_2 \cup\{\E yz\}}}{\Gamma_2}}
+{\emptyset}
+\end{eqnarray*}
+In both trees the number of applications of the rule (\ref{trans}) is certainly less than $k$; then by induction hypothesis $G'$ has two odd cycles $C_1$ and $C_2$.Then we can apply Lemma  \ref{tech-lemma-graph}, to get the required odd cycle of $G$.
 
 \QED
 
-\newpage
+
 \subsection*{Gallai-Hasse-Roy-Vitaver theorem}
 \addcontentsline{toc}{subsection}{Gallai-Hasse-Roy-Vitaver theorem}
 
-Another way to describe a proper colouring of a graph, is by introducing an order on the colours, indeed we may use the binary symbol $<$ and write $x<y$ to say "the vertex $x$ is coloured in a colour smaller than the one of the vertex $y$". We shall write $x\geq y $ instead of $\neg (x<y)$. The role of the formulas (\ref{color-prop1}), (\ref{color-prop2}) and (\ref{color-prop3}) is now played by 
+Another way to describe a proper colouring of a graph, is by introducing a partial order on the colours, indeed we may use the binary symbol $<$ and write $x<y$ to say "the vertex $x$ is coloured in a colour smaller than the one of the vertex $y$". We shall write $x\geq y $ instead of $\neg (x<y)$. The role of the formulas (\ref{color-prop1}), (\ref{color-prop2}) and (\ref{color-prop3}) is now played by 
 
 \begin{gather}
 x\geq x\\
@@ -688,94 +902,171 @@ Thus if we consider the language  $\mathscr{L}=\{\npred\}\cup V\cup E$, the mode
 { \Gamma\cup\Sigma} \qquad &\qquad \prftree{\Gamma}
 {\Gamma\cup\{x_0\npred x_1 ,..., x_{n-1}\npred x_n \}}
 \end{align*}
-Clearly the rules have the same shape of the ones given for $\geq$, we can therefore conclude that $\npred$ describes an $n$-coloring for $G$ where
+Clearly the rules have the same shape as the ones given for $\geq$. We can therefore conclude that $\npred$ describes an $n$-coloring for $G$ where
 $$n=1+\min\{\ell(D'), D' \textrm{ spanning acyclic digraph of an orientation } \textrm{ of }G\}$$
 If we consider an orientation $D$ of $G$ and a spanning acyclic digraph $D'$ of $D$, we have $\ell (D') \leq \ell(D)$ whence 
 $$n\leq 1+ \ell $$
 where $\ell$ is  $\min\{\ell(D), D \textrm{ orientation of }G\}$ as in corollary \ref{cor-vitaver}.\\
-Finally recalling that P ropositions \ref{prop-vitaver-easy} says that for some orientation $D$
+Finally recalling that Proposition \ref{prop-vitaver-easy} says that for some orientation $D$
 $$\chi (G) \geq 1+ \ell (D)$$
 we reach the same conclusion of Corollary \ref{cor-vitaver}, i.e. 
 $$\chi (G) = 1+\ell$$
 
-\newpage
+
 \subsection*{$\mu_n$ graphs}
 \addcontentsline{toc}{subsection}{$\mu_n$ graphs}
 
-The $\mu_n$ graphs are a family of graphs defined by Matiyasevich \cite{mat-1} with the purpose to characterize $n$-colurable graphs, first of all we will define the $\mu_2$ graphs then I will discuss the Matiyasevich theorem and how it can be used to rephrase problem such as the four colour theorem.
+The $\mu_n$ graphs are a family of graphs defined by Matiyasevich \cite{mat-2} with the purpose to characterize the graphs that cannot be coloured in $n$ colours. 
+Such graphs are build starting from the complete graphs with $n+1$ vertices, which is not $n$ colourable; 
+and every step of the construction ensures that the result is still not $n$ colourable. Matiyasevich's theorem tells us that every graph that cannot be coloured in $n$ colours, contains a $\mu_n$ graph.
+They are defined by induction as follows
 
-\begin{definition}
-$\mu_n-graph$Matiyasevich
+\begin{definition}\label{def_mun}
+$\mu_n-graph$
 \end{definition}
 \begin{itemize}
 \item[-] Every complete graph with $n+1$ vertices is a $\mu_n$-graph
-\item[-] If $G=(V,E)$ and $G'=(V',E')$ are $\mu_n$-graphs and $a,b,c$ are distinct vertices such that
-$$ a,b\in V \quad b,c\in V'  $$
+\item[-] If $G_1=(V_1,E_1)$ and $G_2=(V_2,E_2)$ are $\mu_n$-graphs and $a,b,c$ are distinct vertices such that
+$$ a,b\in V_1 \quad b,c\in V_2  $$
 and
-$$ ab\in E, ab\notin E' \qquad  bc\in E', bc\notin E$$
-Then the graph $G''=(V\cup V', E\cup E'\cup\{ac\} \setminus\{ab,bc\} )$ is a $\mu_n$-graph.
+$$ ab\in E_1, ab\notin E_2 \qquad  bc\in E_2, bc\notin E_1$$
+Then the graph $G=(V_1\cup V_2, E_1\cup E_2\cup\{ac\} \setminus\{ab,bc\} )$ is a $\mu_n$-graph.
 \end{itemize} 
-To understand better how such graphs look like, it is convenient to explore the $\mu_2$ graphs
-\begin{proposition}
-The odd cycles are $\mu_2$ graphs
-\end{proposition}
-\noindent\textit{Proof:}\\
-Since the $\mu_2$ graphs are defined by induction, the proof will proceed by induction on the number of vertices.
-First, the 3-cycle is the complete graph with 3 vertices then it is $\mu_2$ by definition. Thus let $x_1...x_n$ be a cycle with $n$ odd, the cycles $x_1x_2x_3$ and $x_3x_4...x_n$ are of odd length and therefore by induction they are $\mu_2$, then the second point of the definition applies by taking 	$a=x_1$, $b=x_3$ and $c=x_n$, hence the original cycle is $\mu_2$
-\QED
 
-\noindent On the other hand, not all $\mu_2$ graphs are odd cycles, the following example shows a $\mu_2$ graph which is not a cycle and which can be built using the definition and starting by a 3-cycle and a 5-cycle 
+The $\mu_1$ graphs are of little interest. The complete graph with two vertices is a single edge; when two edges are composed according to the definition, the result is a single edge. Thus all $\mu_1$ graphs are single edges; and all graphs that contains  an edge, contains a $\mu_1$ graph. Clearly $\mu_1$ graphs are not 1-colourable; and graphs that are not 1-colourable contains at least one edge.
+
+\newpage
+$\mu_2$ graphs are more interesting; they characterize bipartite graphs, and can give a better insight of generic $\mu_n$ graphs.
+\begin{proposition}\label{contains-odd}
+Let $G$ be $\mu_2$ graph; then it contains an odd cycle.
+\end{proposition}
+
+\textit{Proof:} 
+We proceed by induction on the number of vertices $n$. If $n=3$, the only $\mu_2$ graph is the complete graph which is a 3-cycle. If $n>3$, let $G_1=(V_1,E_1)$, $G_2=(V_2,E_2)$, and $G=(V_1\cup V_2, E_1\cup E_2\cup\{ac\} \setminus\{ab,bc\} )$ as in Definition \ref{def_mun}. 
+\\By induction hypothesis, bot $G_1$ and $G_2$ contain an odd cycle; then by considering $G'=(V_1\cup V_2, E_1\cup E_2)$ in Lemma \ref{tech-lemma-graph}, $G$ has an odd cycle. \QED
+
+
+\noindent Clearly all the odd cylces are $\mu_2$ graphs. On the other hand, not all $\mu_2$ graphs are odd cycles, the following example shows a $\mu_2$ graph which is not a cycle and which can be built using the definition and starting by a 3-cycle and a 5-cycle 
 \begin{figure*}[h]
 \centering\includegraphics[scale=0.25]{mu2.eps}
 \end{figure*}
 
-\noindent They do not even need to be connected, indeed starting from these two $\mu_2$ graphs
+\noindent They do not even need to be connected, indeed starting from two $\mu_2$ graphs of the kind shown above, we obtain a $\mu_2$ graph with an isolated vertex.
+
 \begin{figure*}[h]
 \centering\includegraphics[scale=0.25]{mu2-con1.eps}
 \end{figure*}
 
-\noindent we can apply the definition to make the following construction that produces a non-connected $\mu_2$ graph 
-\begin{figure*}[h]
-\centering\includegraphics[scale=0.25]{mu2-con2.eps}
-\end{figure*}
 
-\newpage
-The result obtained Matiyasevich gives a characterization of $n$-colourable graphs, the proof is 
+
+\newpage\noindent 
+Now we move to a generic family $\mu_n$, first we show that they cannot be coloured in $n$ colours. Second, we see that there is always $\mu_n$ subgraph in a graph which is not $n$-colourable.
+\begin{proposition}\label{pr-nocolor}
+Let $G$ be a $\mu_n$ graph; then $G$ is not $n$-colourable.
+\end{proposition}
+\textit{Proof:} 
+We proceed by induction on Definition \ref{def_mun}. If $G$ is a complete graph with $n+1$ vertices, clearly is not $n$-colourable. Then let $G_1$ and $G_2$ as in the Definition \ref{def_mun}; by inductive hypothesis they are not  $n$-colourable, then the empty set is derivable in both calculus $H_{G_1,n}$ and $H_{G_2,n}$.
+Since $G$ does not have the edges $ab$ and $bc$, we have two deductions in $H_{G,n}$:
+$$
+ D_1:\; \vdash_{G,n} \{\E ab \} \quad D_2:\; \vdash_{G,n} \{\E bc \}
+$$
+
+Recalling that $ac$ is en edge of $G$ by definition, we get the following deduction of the empty set in $H_{G,n}$, which implies that $G$ is not $n$-colourable
+
+%\prftree[r]{(\ref{jred})}{
+%{\prftree[r]{(\ref{trans})} 
+%{\prfsummary[D_1]{\emptyset}{ \{\E ab \} }   }{\prfsummary[D_2]{\emptyset}{ \{\E bc \} }} 
+%{\{\E ac \}} }}
+%{\emptyset}
+
+
+\begin{equation*}
+\prftree[r]{(\ref{jred})} 
+{  \prftree[r]{(\ref{trans})}  
+{  \prfsummary[$D_1$]{\emptyset}{\{\E ab \},} }{ \prfsummary[$D_2$]{\emptyset}{\{\E bc \} }} 
+ {\{\E ac \}} } 
+{\emptyset}
+\end{equation*}
+
+\QED
+
+
+
+\begin{theorem}[Matiyasevich]\label{mati-thm}
+Let $G$ be a graph that is not $n$-colourable; then it has a $\mu_n$ graph as subgraph.
+\end{theorem}
+The proof of this theorem is a generalization of the one seen in Proposition \ref{mio}. It starts by applying Robinson's theorem to get $\vdash_{G,n}\emptyset$, and then it proceed by induction on the number of the application of the transitivity rule (\ref{trans}). In this case the role of Lemma \ref{tech-lemma-graph} is played by the Definition \ref{def_mun}. Now the characterization of bipartite graphs comes as corollary of Matiyasevich's theorem
+
+\begin{corollary}
+A graph $G$ is 2-colourable if and only if it does not contain odd cycles.
+\end{corollary}
+\textit{Proof:}
+We show that $G$ is not 2-colurable if and only if it contains an odd cycle.
+If $G$ is not 2-colurable, by Theorem \ref{mati-thm} it contains a $\mu_2$ graph, which contains an odd cycle by Proposition \ref{contains-odd}. Conversely; since odd cycles are $\mu_2$, and since $\mu_2$ graphs are not 2-colurable by Proposition \ref{pr-nocolor}, if $G$  contains an odd cyles, then it is not 2-colurable. \QED
+
+Matiyasevich's theorem and $\mu_n$ graphs can be used to rewrite several problems of graph theory, for instance we can rephrase the four colour Theorem as follows
+
+\begin{corollary}
+Every planar graph is 4-colourable if and only if no $\mu_4$ is planar.
+\end{corollary}
+\textit{Proof:}
+Suppose first that every planar graph is 4-colourable, then every graph which is not 4-colourable is not planar. By Proposition \ref{pr-nocolor} $\mu_4$ graphs are not 4-colourable, and therefore are not planar.
+Conversely suppose that no $\mu_4$ is planar. If a graph is planar, then it does not contain $\mu_4$ subgraphs and by Matiyasevich's theorem is 4-colourable.
+\QED
+
+It may be interesting to notice that, because of this last corollary, the four colour theorem would   immediately follow from the conjecture below
+
+\textit{Every $\mu_n$ graph has the complete graph with $n+1$ vertices as minor }
+
+\noindent Indeed, by Kuratowski's Theorem any graph that has $K^5$ as minor, is not planar. For $n=1$, the conjecture is trivially true. For $n=2$, it follows from Proposition \ref{contains-odd}, since odd cycles has $K^3$ as minor. 
 
 \newpage
 \phantomsection
 \addcontentsline{toc}{chapter}{Bibliography}
 \begin{thebibliography}{9}
-\bibitem{lifschitz} 
-Vladimir Lifschitz.
-\textit{Semantical completeness theorems in logic and algebra.} 
-American Mathematical Society, Vol. 79 No. 1, May 1980, Pages: 89-96 
+
  
 \bibitem{robinson} 
 John Alan Robinson.  
 \textit{A Machine-oriented logic based on the resolution principle.} 
-Journal of the association for computing machinery, Vol. 12 No. 1, January 1965, Pages:23-41
+Journal of the association for computing machinery, Vol. 12 No. 1, January 1965, Pages: 23-41
 
 \bibitem{rob}
 John Alan Robinson.  
 \textit{Automatic deduction with hyperresolution} 
-Int. J. Comp. Math. , Vol. 1, 1965, Pages:227-234
+Int. J. Comp. Math. , Vol. 1, 1965, Pages: 227-234
  
 \bibitem{robinson-general} 
 John Alan Robinson.  
 \textit{The generalized resolution principle.} 
 ??????
 
+\bibitem{gallier} Jean H. Gallier. \textit{Logic for Computer Science, Foundations of automatic theorem proving }
+
+\bibitem{lifschitz} 
+Vladimir Lifschitz.
+\textit{Semantical completeness theorems in logic and algebra.} 
+American Mathematical Society, Vol. 79 No. 1, May 1980, Pages: 89-96 
+
+\bibitem{Hilbert}
+David Hilbert. \textit{\"Uber die vollen Invariantensysteme.} Math. Ann. 42, September 1892, Pages: 313-373
+
+\bibitem{Lang}
+Lang, \textit{Algebra}
+
+\bibitem{Rabin}
+J.L. Rabinowitsch, \textit{Zum Hilbertschen Nullstellensatz} Math. Ann. , 102 (1929) Page: 520
+
+
 \bibitem{mat-1} 
 Jurij Vladimirovi\v{c} Matijasevi\v{c}.
 \textit{Mathematical approach to proving theorems of discrete mathematics.} 
-Seminar in mathematics, Steklov mathematical institute, Leningrad, 1975, Pages:31-48
+Seminar in mathematics, Steklov mathematical institute, Leningrad, 1975, Pages: 31-48
 
 \bibitem{mat-2}
 Jurij Vladimirovi\v{c} Matijasevi\v{c}.
 \textit{Application of the methods of the theory of logical derivation to graph- theory.} Mathematicheskie Zametki, Vol. 12 No. 6, December 1972, Pages: 781-790
  
-\bibitem{gallier} Jean H. Gallier. \textit{Logic for Computer Science, Foundations of automatic theorem proving }
 
 \bibitem{diestel} Reinhard Diestel. \textit{Graph Theory}
 
@@ -783,9 +1074,9 @@ Jurij Vladimirovi\v{c} Matijasevi\v{c}.
 
 \bibitem{vitaver} L.M. Vitaver \textit{Determination of minimal colorings of graph vertices with the aid of boolean powers of the adjacency matrix.} Dokl. Akad. Nauk SSSR, 147 No 4., 1962, Pages: 758-759
 
-\bibitem{hasse} Maria Hasse \textit{Zur algebraischen Begrundung der Graphentheorie. I} Mathematische Nachrichten (in German), 1965, Pages: 275–290,
+\bibitem{hasse} Maria Hasse \textit{Zur algebraischen Begr\"undung der Graphentheorie. I} Mathematische Nachrichten, 1965, Pages: 275-290,
 
-\bibitem{roy}B. Roy, Nombre chromatique et plus longs chemins d’un graph. Rev AFIRO
+\bibitem{roy}B. Roy, Nombre chromatique et plus longs chemins d'un graph. Rev AFIRO
 1 (1967) 127-132.
 
 \bibitem{gallai}T. Gallai, \textit{On directed paths and circuits}. In: Theory of Graphs; Proceedings of the Colloquium held at Tihany, Hungary, 1969 (P. Erd ̋s and G. Katona,eds). Academic Press, New York (1969) 115-118.
