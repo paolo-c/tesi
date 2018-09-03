@@ -1,16 +1,18 @@
-\BOOKMARK [0][-]{chapter*.2}{Introduction}{}% 1
-\BOOKMARK [0][-]{chapter.1}{Hyper-resolution principle}{}% 2
-\BOOKMARK [1][-]{section.1.1}{pro}{chapter.1}% 3
-\BOOKMARK [0][-]{chapter.2}{Applications to commutative algebra}{}% 4
-\BOOKMARK [1][-]{section.2.1}{Recalls of commutative algebra}{chapter.2}% 5
-\BOOKMARK [1][-]{section.2.2}{Applications}{chapter.2}% 6
-\BOOKMARK [2][-]{section*.3}{Linear equations}{section.2.2}% 7
-\BOOKMARK [2][-]{section*.4}{Nullstellensatz}{section.2.2}% 8
-\BOOKMARK [0][-]{chapter.3}{Applications to graph theory}{}% 9
-\BOOKMARK [1][-]{section.3.1}{Recalls of graph theory}{chapter.3}% 10
-\BOOKMARK [2][-]{section*.6}{Directed graphs}{section.3.1}% 11
-\BOOKMARK [1][-]{section.3.2}{Resolution approach to colouring}{chapter.3}% 12
-\BOOKMARK [2][-]{section*.9}{Bipartite graphs}{section.3.2}% 13
-\BOOKMARK [2][-]{section*.12}{Gallai-Hasse-Roy-Vitaver theorem}{section.3.2}% 14
-\BOOKMARK [2][-]{section*.13}{n graphs}{section.3.2}% 15
-\BOOKMARK [0][-]{section*.16}{Bibliography}{}% 16
+\BOOKMARK [0][]{Contents.0}{Contents}{}% 1
+\BOOKMARK [0][]{chapter.1}{Hyper-resolution principle}{}% 2
+\BOOKMARK [1][]{section.1.1}{Formal prelimaries}{chapter.1}% 3
+\BOOKMARK [1][]{section.1.2}{Lifschitz's calculus}{chapter.1}% 4
+\BOOKMARK [2][]{section*.2}{Trivial applications}{section.1.2}% 5
+\BOOKMARK [0][]{chapter.2}{Applications to commutative algebra}{}% 6
+\BOOKMARK [1][]{section.2.1}{Recalls of commutative algebra}{chapter.2}% 7
+\BOOKMARK [1][]{section.2.2}{Applications}{chapter.2}% 8
+\BOOKMARK [2][]{section*.3}{Linear equations}{section.2.2}% 9
+\BOOKMARK [2][]{section*.4}{Nullstellensatz}{section.2.2}% 10
+\BOOKMARK [0][]{chapter.3}{Applications to graph theory}{}% 11
+\BOOKMARK [1][]{section.3.1}{Recalls of graph theory}{chapter.3}% 12
+\BOOKMARK [2][]{section*.6}{Directed graphs}{section.3.1}% 13
+\BOOKMARK [1][]{section.3.2}{Hyper-resolution approach to colouring}{chapter.3}% 14
+\BOOKMARK [2][]{section*.9}{Bipartite graphs}{section.3.2}% 15
+\BOOKMARK [2][]{section*.12}{Gallai-Hasse-Roy-Vitaver theorem}{section.3.2}% 16
+\BOOKMARK [2][]{section*.13}{n graphs}{section.3.2}% 17
+\BOOKMARK [0][]{section*.16}{Bibliography}{}% 18

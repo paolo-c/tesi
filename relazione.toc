@@ -1,17 +1,18 @@
 \select@language {english}
-\contentsline {chapter}{Introduction}{2}{chapter*.2}
-\contentsline {chapter}{\numberline {1}Hyper-resolution principle}{3}{chapter.1}
-\contentsline {section}{\numberline {1.1}pro}{3}{section.1.1}
-\contentsline {chapter}{\numberline {2}Applications to commutative algebra}{6}{chapter.2}
-\contentsline {section}{\numberline {2.1}Recalls of commutative algebra}{7}{section.2.1}
-\contentsline {section}{\numberline {2.2}Applications}{10}{section.2.2}
-\contentsline {subsection}{Linear equations}{10}{section*.3}
-\contentsline {subsection}{Nullstellensatz}{12}{section*.4}
-\contentsline {chapter}{\numberline {3}Applications to graph theory}{18}{chapter.3}
-\contentsline {section}{\numberline {3.1}Recalls of graph theory}{19}{section.3.1}
-\contentsline {subsection}{Directed graphs}{23}{section*.6}
-\contentsline {section}{\numberline {3.2}Resolution approach to colouring}{27}{section.3.2}
-\contentsline {subsection}{Bipartite graphs}{30}{section*.9}
-\contentsline {subsection}{Gallai-Hasse-Roy-Vitaver theorem}{34}{section*.12}
-\contentsline {subsection}{$\mu _n$ graphs}{37}{section*.13}
-\contentsline {chapter}{Bibliography}{41}{section*.16}
+\contentsline {chapter}{\numberline {1}Hyper-resolution principle}{2}{chapter.1}
+\contentsline {section}{\numberline {1.1}Formal prelimaries}{2}{section.1.1}
+\contentsline {section}{\numberline {1.2}Lifschitz's calculus}{4}{section.1.2}
+\contentsline {subsection}{Trivial applications}{7}{section*.2}
+\contentsline {chapter}{\numberline {2}Applications to commutative algebra}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}Recalls of commutative algebra}{10}{section.2.1}
+\contentsline {section}{\numberline {2.2}Applications}{13}{section.2.2}
+\contentsline {subsection}{Linear equations}{13}{section*.3}
+\contentsline {subsection}{Nullstellensatz}{15}{section*.4}
+\contentsline {chapter}{\numberline {3}Applications to graph theory}{21}{chapter.3}
+\contentsline {section}{\numberline {3.1}Recalls of graph theory}{22}{section.3.1}
+\contentsline {subsection}{Directed graphs}{26}{section*.6}
+\contentsline {section}{\numberline {3.2}Hyper-resolution approach to colouring}{30}{section.3.2}
+\contentsline {subsection}{Bipartite graphs}{33}{section*.9}
+\contentsline {subsection}{Gallai-Hasse-Roy-Vitaver theorem}{37}{section*.12}
+\contentsline {subsection}{$\mu _n$ graphs}{40}{section*.13}
+\contentsline {chapter}{Bibliography}{44}{section*.16}

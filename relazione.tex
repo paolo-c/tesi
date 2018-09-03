@@ -24,8 +24,10 @@
 %\renewcommand{\footrulewidth}{1pt}   %not visible if commented 
 
 \usepackage[pdfauthor={Paolo Comensoli},
-pdftitle={Hyper-resolution principle, applications to discrete mathematics, 
-Paolo Comensoli}, pagebackref=true]{hyperref}
+pdftitle={Applications of hyper-resolution principle, 
+Paolo Comensoli}, pagebackref=false,bookmarksopen=true]{hyperref}
+% pagebackref: se vero, ad ogni voce di bibliografia aggiunge il numero della pagine in cui viene citata
+% bookmarksopen: se  vero, il pdf mostra il menu' dei contenuti gia' esploso
 
 
 % Dimensione della pagina
@@ -60,92 +62,226 @@ Paolo Comensoli}, pagebackref=true]{hyperref}
 \let\emptyset\varnothing
 \let\o\vee
 \let\e\wedge
+\let\bottom\perp
 
-\title{Hyper-resolution principle, applications to discrete mathematics}
+\title{Applications of hyper-resolution principle}
 \author{Paolo Comensoli}
-\date{14/05/2018}
+\date{03/09/2018}
 
 \begin{document}
  
 \maketitle
 \thispagestyle{empty}
-\setlength{\parskip}{0mm} 
+\setlength{\parskip}{-0.5mm} 
+\pdfbookmark{\contentsname}{Contents}
 \tableofcontents
 \setlength{\parskip}{1mm} 
 \newpage
 
-\chapter*{Introduction}
-\addcontentsline{toc}{chapter}{Introduction}
+%\chapter*{Introduction}
+%\addcontentsline{toc}{chapter}{Introduction}
 
 
-In the first two sections I will expand some details of the Lifschitz's work \cite{lifschitz}.
-First of all I will briefly give the hyper-resolution principle and Robinson's theorem as stated by Lifschitz, then I will show the proof of Nullstellensatz with the aim to clarify every step.\\
-\textbf{Notation:}
-\begin{itemize}
-\item \textit{Literal:} an atomic formula or a negation of an atomic formula.
-\item \textit{Clause:} a finite set of literals.
-\item if $\Gamma$ is a clause, $\overline{\Gamma}$ is the disjunction of the elements of $\Gamma$ in a fixed order.
-\end{itemize}
+
+
 
 
 \chapter{Hyper-resolution principle}
-\section{pro}
+In 1965, Robinson presented a first order logic which is specifically designed for use as theoretical instrument of a computer theorem-proving program \cite{robinson}. A prominent feature of this logic system is that is based on one single inference principle, the resolution principle. 
+The formalism is based upon the notions on unsatisfiability and refutation rather than upon validity and proof. The resolution technique uses proof by contradiction, and is based on the fact that any formula in propositional logic can be transformed into an equivalent formula in conjunctive normal form. 
+The hyper-resolution principle is a generalization \cite{rob,robinson-general} that simplifies the steps 
+\section{Formal prelimaries}
+
+The syntax of the hyper-resolution calculs 
+
+\begin{itemize}
+\item A \textit{literal:} is either an atomic formula, or has the form $\neg A$ where $\neg$ is the negation symbol and $A$ is an atomic formula. The literals $A,\,\neg A$ are \textit{complementary}, and each is the \textit{complement} of the other. Literals will be denoted using capital Latin letters $A,B,C,...$.
+\item A \textit{clause:} is a finite set of literals. Clauses are denoted by Greek capital letters $\Gamma,\Sigma ,\Pi,...$. The singleton $\{A\}$ is denoted by its element $A$, so that $\Gamma\cup A$ stands for $\Gamma\cup\{A\}$.
+\item if $\Gamma$ is a clause, $\overline{\Gamma}$ is the disjunction of the elements of $\Gamma$ in a fixed order.
+\item A \textit{tree of clauses} is a tree to each node of which is attached a clause. The leafs are called \textit{assumptions of the tree}, and the root \textit{conclusion of the tree}.
+\end{itemize}
+
+\begin{definition}[resolvent]
+Let $\Gamma_1$ and $\Gamma_2$ be two clauses, if there is a literal $P$ such that $P\in\Gamma_1$ and $\neg P\in\Gamma_2$; then $\Pi =\Gamma_1\cup\Gamma_2\setminus\{P,\neg P\}$ is called the resolvent of $\Gamma_1$ and $\Gamma_2$.
+\end{definition}
+The \textit{resolution principle} can be stated as follow:
+\textit{If $\Pi$ is unsatisfiable and is the resolvent of  $\Gamma_1$ and $\Gamma_2$; then  $\Gamma_1$ and $\Gamma_2$ are unsatisfiable.}
+A tree of clause is called \textit{resolution tree}, if it is binary, and each node is either a leaf or the resolvent of its two immediate predecessor.
+
+\textbf{Examples\\}
+\begin{center}
+\begin{tabular}{ccc}
+$\prftree{A}{\neg A}{\emptyset}$& \hspace{4cm}&
+$\prftree{\{A,P \}}{\{B, \neg P \}}{\{A,B \}}$
+\end{tabular}
+\end{center}
+This two trees are resolution trees, both with only one application of the resolution principle. If the clauses are interpreted as disjunction of their elements, the second tree has an analogous made with the rules of natural deduction 
+\begin{equation*}
+\prftree{\prfassumption{A\o P}}
+{\prftree{\prfboundedassumption{A} }{A\o B}}
+{\prftree{\prfassumption{B\o\neg P} }{\prftree{\prfboundedassumption{B} }{A\o B}}
+ { \prftree{ \prftree{\prfboundedassumption{P}}{\prfboundedassumption{\neg P}}{\bottom}}{\prfassumption{ \bottom\rightarrow A\o B }}{A\o B} } 
+{ A\o B} }
+{A\o B}
+\end{equation*}
+%alternativa che richiede DNA
+%\begin{equation*}
+%\prfsummary{ \prftree{ \prftree{A\o B\;} {\prfboundedassumption{A} }
+%{ \prftree{\prftree{\prfboundedassumption{B}}{\prftree{\prfboundedassumption{\neg B \e\neg C}}{\neg B}}{\bottom}}
+%{\prfassumption{\bottom\rightarrow A}}{A} }  {A}}
+%{ \prftree{\neg A\o C\;} {\prfboundedassumption{\neg A} }
+%{ \prftree{\prftree{\prfboundedassumption{C}}{\prftree{\prfboundedassumption{\neg B \e\neg C}}{\neg C}}{\bottom}}
+%{ \prfassumption{\bottom\rightarrow \neg A}}{\neg  A} }  {\neg A}}
+%{ \prftree{\bottom} 
+%{ (\neg B \e \neg C ) \rightarrow\bottom}}}
+%{B\o C}
+%\end{equation*}
+
+The examples suggest that the clause shall be read as a disjunction of its elements and the empty clause as \textit{false}. Indeed we interpret the disjunction symbol $\bigvee$ as a function from truth values to truth values, which is defined for a clause $\Gamma$ as follow:
+\begin{itemize}
+\item $\bigvee \Gamma$ is  \textit{True} if there is $A\in\Gamma$ such that $A$ is true
+\item  $\bigvee \Gamma$ is \textit{False} otherwise
+\end{itemize}
+Therefore $\bigvee\emptyset$ is false. We say that, if the empty set is the conclusion of some resolution tree, such tree is a \textit{refutation} of its leaves; the soundness theorem ensure that if there is a refutation for a set of clauses $S$, such set is also \textit{unsatisfiable}. The Robinson's theorem \cite{robinson} give us also the completeness.
+\begin{theorem}[Robinson's]
+If a set $S$ of clauses is unsatisfiable, then there is a refutation of $S$.
+\end{theorem}
 
 
+
+
+
+
+
+
+
+\section{Lifschitz's calculus}
 
 Let $T$ be a set of propositional formulae, each of the form:
-$$\bigwedge_{i=1}^m A_i \rightarrow \bigvee_{j=1}^n B_j 
-$$Where the $A_i$'s and $B_j$'s are literals and $m+n>0$.\\
-We have the calculus $H_T$: the objects derivable are clauses and the rules of inference are:
+\begin{equation}\label{prototipo}
+\bigwedge_{i=1}^m A_i \rightarrow \bigvee_{j=1}^n B_j 
+\end{equation}
+Where the $A_i$'s and $B_j$'s are literals and $m+n>0$. For $m=0$, the formula is an axiom and will be denoted only by the disjunction $B_1\o\cdots\o B_n$. While for $n=0$, we interpret the empty disjunction as falsum, and we denote the formula by $\neg (A_1\e\cdots\e A_m)$.\\
+Consider the following calculus $H_T$: the objects derivable are clauses and the rules of inference are:
 \begin{equation}\label{axiom}
 \prftree{\Gamma_1 \cup \{A_1\} ,} {\cdots,} {\Gamma_m \cup \{A_m\} } 
 {\Gamma_1\cup\cdots\cup\Gamma_m\cup\{ B_1 ,\cdots ,B_n\}}
 \end{equation}
-for every element of $T$. The formulae of the set $T$ will be called the \textit{non-logical axioms} of $H_T$
+for every element of $T$. We write derivation in $H_T$ in tree form; the leaves of the tree are called \textit{assumptions}, and the root \textit{conclusion}.
 
 
-\noindent\textbf{Example} Let $T=\{ A \rightarrow B \o C ,\; A,\; \neg B \}$, then $H_T$ has three rules:
+\noindent\textbf{Example} Let $T=\{ A \e B \rightarrow C \o D ,\; A,\; B,\; \neg C \}$, then $H_T$ has four rules:
 
 \begin{center}
-\begin{tabular}{ccc}
-$$\prftree{\Gamma \cup \{A\} }  {\Gamma\cup \{B,C\}} 
+\begin{tabular}{cccc}
+$$\prftree{\Gamma_1 \cup A } {\Gamma_2\cup B} {\Gamma_1\cup\Gamma_2\cup \{C,D\}} 
 $$
 & \hspace{5mm}
-$$\prftree{\Gamma }  {\Gamma\cup \{A\}} 
+$$\prftree{\Gamma }  {\Gamma\cup A} 
 $$
 & \hspace{5mm}
-$$\prftree{\Gamma \cup \{B\} }  {\Gamma }
+$$\prftree{\Gamma }  {\Gamma\cup B} 
+$$
+& \hspace{5mm}
+$$\prftree{\Gamma \cup C }  {\Gamma }
 $$
 \end{tabular}
 \end{center}
 Using such rules we get the tree:
 $$
-\prftree{\prftree{\emptyset}{\{A\}}}
-{\prftree{\{B , C\}}{\{C\}}}
+\prftree{\prftree{\emptyset}{A}}{\prftree{\emptyset}{B}}
+{\prftree{\{C , D\}}{D}}
 $$
-and we write $\emptyset \vdash_{H_T} \{C\}$
+and we write $\emptyset \vdash_{H_T} D$.  When the only assumption is the empty set, as in the example, it can be dropped and write $\vdash_{H_T} D$.
 
-Given a rule in the form (\ref{axiom}) and an application of it in a derivation, whenever $A_i \in \Gamma_i$ for some $i$, we call such application \textit{trivial}. The following two lemmas ensure that such kind of application can always be removed.
+Now Robinson's theorem can be state as follows
+\begin{theorem}[Robinson's theorem, version 1]
+If $T$ is contradictory, then $\vdash_{H_T} \emptyset$
+\end{theorem}
+ 
+
+Lifschitz \cite{lifschitz} this theorem in order to be applied to 
+
+\begin{theorem}[Robinson's, version 2]\label{robinson2}
+For any clauses $\Gamma_1,\cdots,\Gamma_l,\Delta$, 
+if  then $\Gamma_1,\cdots\Gamma_l\vdash_{H_T} \Delta'$ for some $\Delta'\subseteq\Delta$
+\end{theorem}
+
+\textit{Proof}: Let $\Delta=\{C_1,\cdots,C_m\}$, and $T'= T\cup\{ \overline{\Gamma}_1, \cdots ,\overline{\Gamma}_l, \neg C_1,\cdots ,\neg C_m\}  $; then $T'$ is contradictory.
+The calculs $H_{T'}$, consists of the rules of $H_T$, the axioms $\Gamma_1,\cdots\Gamma_l$ and the rules
+\begin{equation}\label{negCi}
+\prftree{\Gamma\cup C_i }{\Gamma }
+\end{equation}
+By Robinson's theorem, there exists a derivation of $\emptyset$ in $H_{T'}$. If none of the rules (\ref{negCi}) appear in such derivation, then $\Gamma_1,\cdots\Gamma_l\vdash_{H_T} \Delta'$ with $\Delta'=\emptyset$. Otherwise, consider an application of (\ref{negCi}), replace every clause $\Sigma$ that appears below it with $\Sigma\cup C_i$; the result is still a derivation in $H_{T'}$, and now the conclusion also has the literal $C_i$. Repeat this procedures until all applications of (\ref{negCi}) are eliminated, the conclusion is some subset $\Delta'$ of 	$\{C_1,\cdots,C_m\}$; the final tree uses only rules of $H_T$ or some of the axioms $\Gamma_i$, then 
+$\Gamma_1,\cdots\Gamma_l\vdash_{H_T} \Delta'$
+
+\QED
+
+
+\noindent\textbf{Example} Let $T=\{ A ,\; \neg A \}$. Then for any $B$, $T\vdash A\rightarrow B$.
+By the second version of Robinson's theorem, either $ A \vdash_{H_T} B $ or  $ A \vdash_{H_T} \emptyset$. \\Now the calculus $H_T$ has two rules:
+
+\begin{center}
+\begin{tabular}{cc}
+
+$$\prftree{\Gamma }  {\Gamma\cup A} 
+$$
+& \hspace{10mm}
+$$\prftree{\Gamma \cup A }  {\Gamma }
+$$
+\end{tabular}
+\end{center}
+Using this two rules, the clause $B$ is not derivable from $A$; however using the second rule we get $ A \vdash_{H_T} \emptyset$.
+
+ 
+
+In the next chapters we deal with applications of hyper-resolution principle which are in first order logic, while formulae of the kind \ref{prototipo} are quantifier free. For this reason, we consider a third version of Robinson's theorem. 
+
+\begin{theorem}[\textbf{Robinson's , version 3}] \label{Robinson3}
+For any clauses $\Gamma_1, \cdots ,\Gamma_l , \Delta$, if in every model of $T$, the following is valid 
+\begin{equation}\label{f_rob3}
+\overline{\Gamma}_1\e\cdots\e\overline{\Gamma}_l \rightarrow \overline{\Delta}
+\end{equation}
+then  $\Gamma_1, \cdots ,\Gamma_l \vdash_{H_T} \Delta'$ , for some $\Delta' \subseteq \Delta$.
+\end{theorem}
+
+\textit{Proof:} If \ref{f_rob3} is valid in every model of $T$, since all the formulae in $T$ and \ref{f_rob3} are quantifier free; by completness of the propositional calculus $T\vdash (\overline{\Gamma}_1\e\cdots\e\overline{\Gamma}_l )\rightarrow\overline{\Delta}$. Then by the second version of Robinson's theorem, there is $\Delta' \subseteq \Delta$ such that $\Gamma_1, \cdots ,\Gamma_l \vdash_{H_T} \Delta'$ \QED
+
+
+\subsection*{Trivial applications}
+\addcontentsline{toc}{subsection}{Trivial applications}
+	
+Given a rule in the form (\ref{axiom}) and an application of it in a derivation, whenever $A_i \in \Gamma_i$ for some $i$, we call such application \textit{trivial}. The following two lemmas ensure that such kind of applications can always be removed.
 
 \begin{lemma}
-Let $\Pi$ be obtained from $\Sigma_1,...,\Sigma_m$ by one application of a rule $H_T$. For any $\Sigma_1' \subset \Sigma_1,...,\Sigma_m' \subset \Sigma_m  $, one of the two following holds:\\
-(a) $\Sigma_i' \subset \Pi$ for some $i$\\
-(b) some $\Pi '\subset\Pi$ can be obtained from $\Sigma_1 ',...,\Sigma_m '$ by an application of the same rule
+Let $\Pi$ be obtained from $\Sigma_1,...,\Sigma_m$ by one application of a rule $H_T$. For any $\Sigma_1' \subseteq \Sigma_1,...,\Sigma_m' \subseteq \Sigma_m  $, one of the two following holds:\\
+(a) $\Sigma_i' \subseteq \Pi$ for some $i$\\
+(b) some $\Pi '\subseteq\Pi$ can be obtained from $\Sigma_1 ',...,\Sigma_m '$ by an application of the same rule
 \end{lemma}
 
 \emph{Proof:} Consider an application of (\ref{axiom}) leading from  $\Sigma_1,...,\Sigma_m$ to $\Pi$, for this application:
-$$\Sigma_1=\Gamma_1\cup\{A_1\},...,\Gamma_m\cup\{A_m\}  $$
+$$\Sigma_1=\Gamma_1\cup A_1,...,\Gamma_m\cup A_m  $$
 $$\Pi=\Gamma_1\cup ...\cup\Gamma_m\cup\{B_1,...,B_n\}$$
 Consider the following two cases:\\
-(a) $A_i \notin \Sigma_i '$ form some $i$. Then $\Sigma_i '\subset\Gamma_i\subset\Pi$
-\\(b) $A_i \in \Sigma_i '$ for every $i$. Then $\Sigma_i '=\Gamma_i ' \cup \{A_i\}$ where $\Gamma_i '=\Sigma_i '\backslash \{A_i\}$, one application of (\ref{axiom}) to 
+(a) $A_i \notin \Sigma_i '$ form some $i$. Then $\Sigma_i '\subseteq\Gamma_i\subseteq\Pi$
+\\(b) $A_i \in \Sigma_i '$ for every $i$. Then $\Sigma_i '=\Gamma_i ' \cup A_i$ where $\Gamma_i '=\Sigma_i '\backslash A_i $, one application of (\ref{axiom}) to 
 $\Sigma_1 ',...,\Sigma_m '$ gives 
-$\Pi '=\Gamma_1 '\cup ...\cup\Gamma_m '\cup\{B_1,...,B_n\}\subset\Pi$
+$\Pi '=\Gamma_1 '\cup ...\cup\Gamma_m '\cup\{B_1,...,B_n\}\subseteq\Pi$
 
+\QED
 \begin{lemma}
 For every derivation of a clause $\Pi$ in $H_T$ there exists a derivation of some $\Pi '\subset\Pi $ in $H_T$ without trivial application of rules of inference.
 \end{lemma}
 
+\textit{Proof:} Consider a trivial application of a rule in a given derivation
+
+$$
+\prftree{\prfsummary[$D_1$]{}{\Sigma_1}}{\cdots}{\prfsummary[$D_m$]{}{\Sigma_m}}
+{\prfsummary{\Pi}{}}
+$$
+Say, without loss of generality, that $\Sigma_1\subseteq\Pi$\\ ....
+
+This last lemma and Theorem \ref{Robinson3}  let us give a final version of Robinson's theorem.
 \begin{theorem}[\textbf{Robinson's, version 4}] \label{Robinson}
 For any clauses $\Gamma_1, \cdots ,\Gamma_l , \Delta$, if in every model of $T$, the following is valid 
 $$
@@ -250,19 +386,19 @@ We will refer to the set of all possible instances of these axioms as the set $L
 \noindent The inference rules of $H_L$ are
 
 \begin{equation} \label{rule1}
-\prftree{\Gamma}{\Gamma\cup\{0\cdot r=0\}}
+\prftree{\Gamma}{\Gamma\cup 0\cdot r=0 }
 \end{equation}
 
 \begin{equation} \label{rule2}
-\prftree{\Gamma\cup\{r_1=0\}}{\Gamma\cup\{ r_2=0\}}
+\prftree{\Gamma\cup r_1=0 }{\Gamma\cup r_2=0 }
 \end{equation}
 
 \begin{equation} \label{rule3}
-\prftree{\Gamma\cup\{r=0\}} {\Delta\cup\{s=0\}}{\Gamma\cup\Delta\cup\{ r+s=0\}}
+\prftree{\Gamma\cup r=0} {\Delta\cup s=0 }{\Gamma\cup\Delta\cup  r+s=0}
 \end{equation}
 
 \begin{equation} \label{rule4}
-\prftree{\Gamma\cup\{r=0\}}{\Gamma\cup\{ \alpha\cdot r=0\}}
+\prftree{\Gamma\cup r=0}{\Gamma\cup \alpha\cdot r=0 }
 \end{equation}
 
 \noindent The following two lemmas give us informations about the behavior of trees in $H_L$
@@ -314,23 +450,23 @@ One can prove the equality axioms, the axioms of integral domain and the diagram
 Let $N$ be the set of all possible instances of the axioms; the calculus $H_N$ consists of the axiom $\{0=0\}$ and of the rules of inference:
 
 \begin{equation}\label{non1=0}
-\prftree{\Gamma \cup \{1=0\}}{\Gamma}
+\prftree{\Gamma \cup 1=0}{\Gamma}
 \end{equation}
 
 \begin{equation}\label{eqpoly}
-\prftree{\Gamma \cup \{r_1=0\} } { \Gamma \cup \{r_2=0\} } \qquad r_1,r_2\texttt{ are equal polynomials}
+\prftree{\Gamma \cup r_1=0 } { \Gamma \cup r_2=0 } \qquad r_1,r_2\texttt{ are equal polynomials}
 \end{equation}
 
 \begin{equation}\label{somm}
-\prftree{\Gamma \cup \{r=0\},}{\Delta \cup \{s=0\}}{\Gamma \cup \Delta \cup \{r+s=0\} } 
+\prftree{\Gamma \cup r=0 \, ,}{\Delta \cup s=0}{\Gamma \cup \Delta \cup r+s=0 } 
 \end{equation}
 
 \begin{equation} \label{mol}
-\prftree{\Gamma \cup \{r=0\}}{\Gamma \cup  \{r\cdot s=0\} } 
+\prftree{\Gamma \cup r=0}{\Gamma \cup r\cdot s=0 } 
 \end{equation}
 
 \begin{equation} \label{intdom}
-\prftree{\Gamma \cup \{r\cdot s=0\}}{\Gamma \cup  \{r=0,s=0\} } 
+\prftree{\Gamma \cup r\cdot s=0}{\Gamma \cup  \{r=0,s=0\} } 
 \end{equation}
 Note that the rules (\ref{non1=0}-\ref{mol}) do not increase the number of elements of the clauses, precisely for an application 
 $$
@@ -346,7 +482,7 @@ For any derivation in $H_N$ there is a tree with all the applications of the rul
 $$
 \prftree[r]{$x$}
 {\prftree[r]{(\ref{intdom})}
-{\Gamma\cup\{r\cdot s=0 \}}
+{\Gamma\cup r\cdot s=0 }
 {\Gamma\cup\{r=0, s=0 \}\,,}
 }
 {\Delta \hspace{13mm}} 
@@ -358,8 +494,8 @@ $$
 $$
 \prftree[r]{(\ref{intdom})}
 {\prftree[r]{$x$}
-{\Gamma\cup\{r\cdot s=0 \}, \hspace{7mm}}    {\Delta \hspace{5mm}}
-{\hspace{7mm}\Sigma\cup\{r\cdot s=0 \}\hspace{7mm}}}
+{\Gamma\cup r\cdot s=0 \, , \hspace{7mm}}    {\Delta \hspace{5mm}}
+{\hspace{7mm}\Sigma\cup r\cdot s=0 \hspace{7mm}}}
 { {\Sigma\cup\{r=0, s=0 \}}} 
 $$
 
@@ -367,47 +503,47 @@ $$
 
 
 \begin{eqnarray*}
-\prftree[r]{(\ref{non1=0})} { \prftree[r]{(\ref{intdom})} {\Gamma \cup  \{1\cdot s=0\}} {\Gamma \cup  \{1=0, s=0\}} } {\Gamma \cup \{s=0\}}
+\prftree[r]{(\ref{non1=0})} { \prftree[r]{(\ref{intdom})} {\Gamma \cup  1\cdot s=0 } {\Gamma \cup  \{1=0, s=0\}} } {\Gamma \cup s=0 }
 &  \leadsto 
- &\prftree[r]{(\ref{eqpoly})} { \Gamma \cup \{1\cdot s=0\}   } {\Gamma \cup \{s=0\}}
+ &\prftree[r]{(\ref{eqpoly})} { \Gamma \cup 1\cdot s=0    } {\Gamma \cup s=0}
 \end{eqnarray*}
 
 
 
 \begin{eqnarray*}
-\prftree[r]{(\ref{eqpoly})} { \prftree[r]{(\ref{intdom})} {\Gamma \cup  \{r_1\cdot s=0\}} {\Gamma \cup  \{r_1=0, s=0\}} } {\Gamma \cup \{r_2=0, s=0\}}
+\prftree[r]{(\ref{eqpoly})} { \prftree[r]{(\ref{intdom})} {\Gamma \cup  r_1\cdot s=0} {\Gamma \cup  \{r_1=0, s=0\}} } {\Gamma \cup \{r_2=0, s=0\}}
 &  \leadsto 
-\prftree[r]{(\ref{intdom})} { \prftree[r]{(\ref{eqpoly})} {\Gamma \cup  \{r_1\cdot s=0\}} {\Gamma \cup  \{r_2\cdot s=0\}} } {\Gamma \cup \{r_2=0, s=0\}}
+\prftree[r]{(\ref{intdom})} { \prftree[r]{(\ref{eqpoly})} {\Gamma \cup  r_1\cdot s=0} {\Gamma \cup  r_2\cdot s=0} } {\Gamma \cup \{r_2=0, s=0\}}
 \end{eqnarray*}
 
 
 \begin{eqnarray*}
 \prfrulenameskip=0.4em\prflinepadbefore=1ex
-\prftree[l]{(\ref{somm})} { \prftree[l]{(\ref{intdom})} { \Gamma \cup \{ r\cdot s=0\}} { \Gamma \cup \{ r=0,s=0\} }  }{ \Delta \cup \{t=0\} }
+\prftree[l]{(\ref{somm})} { \prftree[l]{(\ref{intdom})} { \Gamma \cup  r\cdot s=0} { \Gamma \cup \{ r=0,s=0\} }  }{ \Delta \cup t=0 }
 {\hspace{11mm}\Gamma \cup \Delta \cup\{r+t=0, s=0\}\hspace{11mm}}
 & \leadsto
 & \prftree[r]{(\ref{intdom})} 
 {\prftree[r]{(\ref{eqpoly})}
 { 
-\prftree[r]{(\ref{somm})}{\Gamma \cup \{r\cdot s=0\},} 
-{ \prftree[r]{(\ref{mol})} {\Delta \cup \{t=0\}  }  {\Delta \cup \{t\cdot s=0\} }}
-{\Gamma \cup \Delta \cup \{r\cdot s+t\cdot s=0\} }
+\prftree[r]{(\ref{somm})}{\Gamma \cup r\cdot s=0,} 
+{ \prftree[r]{(\ref{mol})} {\Delta \cup t=0  }  {\Delta \cup t\cdot s=0 }}
+{\Gamma \cup \Delta \cup r\cdot s+t\cdot s=0 }
 }
-{\Gamma \cup \Delta \cup \{(r+t)\cdot s=0\} }
+{\Gamma \cup \Delta \cup (r+t)\cdot s=0 }
 }
 {\Gamma \cup \Delta \cup\{r+t=0, s=0\}}
 \end{eqnarray*}
 
 
 \begin{eqnarray*}
-\prftree[r]{(\ref{mol})} { \prftree[r]{(\ref{intdom})} {\Gamma \cup  \{r\cdot s=0\}} {\Gamma \cup  \{r=0, s=0\}} } {\Gamma \cup \{r\cdot t=0, s=0\}}
+\prftree[r]{(\ref{mol})} { \prftree[r]{(\ref{intdom})} {\Gamma \cup  r\cdot s=0} {\Gamma \cup  \{r=0, s=0\}} } {\Gamma \cup \{r\cdot t=0, s=0\}}
 &  \leadsto 
 \prftree[r]{(\ref{intdom})} 
 { \prftree[r]{(\ref{eqpoly})} 
 {\prftree[r]{(\ref{mol})}
-{\Gamma \cup \{r\cdot s=0\}}
-{\Gamma\cup\{ (r\cdot s) \cdot t=0 \}} } 
-{\Gamma \cup  \{(r\cdot t) \cdot s=0\}} } 
+{\Gamma \cup r\cdot s=0}
+{\Gamma\cup (r\cdot s) \cdot t=0 } } 
+{\Gamma \cup  (r\cdot t) \cdot s=0} } 
 {\Gamma \cup \{r\cdot t=0, s=0\}}
 \end{eqnarray*}
 By a series of application of this procedure, we obtained a derivation as required. 
@@ -627,7 +763,7 @@ The figure \ref{fig-vitaver} displays how the Gallai-Hasse-Roy-Vitaver theorem a
 \end{figure}
 
 \newpage
-\section{Resolution approach to colouring}
+\section{Hyper-resolution approach to colouring}
 Every colouring can be uniquely described (up to renaming the colours) by the symmetric binary relation "vertices $x$ and $y$ have the same colour", which we denote by  $\E xy$. 
 Such binary relation, in order to represent a colouring map, should respect a symmetry axiom, a transitivity axiom, and be false whenever the two vertices are adjacent 
 \begin{gather}
@@ -646,15 +782,15 @@ Let $G$ be a simple graph and $n$ a positive natural number; then we call $C_{G,
 The hyper-resolution calculus $H_{G,n}$ has the following rules
 \begin{equation}
 \label{symm}
-\prftree{\Gamma \cup \{\E xy \}}{ \Gamma\cup \{\E yx \}}
+\prftree{\Gamma \cup \E xy }{ \Gamma\cup \E yx }
 \end{equation}
 \begin{equation}
 \label{trans}
- \prftree{\Gamma \cup \{\E xy \}}{\Delta \cup \{\E yz \}}{\Gamma \cup \Delta \cup \{\E xz \}}
+ \prftree{\Gamma \cup \E xy }{\Delta \cup \E yz }{\Gamma \cup \Delta \cup \E xz }
 \end{equation}
 \begin{equation}
 \label{jred}
-\prftree[r]{$\quad xy \in E $}{\Gamma \cup \{\E xy \}}{ \Gamma}
+\prftree[r]{$\quad xy \in E $}{\Gamma \cup \E xy }{ \Gamma}
 \end{equation}
 \begin{equation}
  \label{ax-col}
@@ -693,14 +829,14 @@ Here $\Delta$ is the second premise in the case that $x$ is (\ref{trans}), other
 % symmetria e trans
 \begin{eqnarray*}
 \prfrulenameskip=0.4em\prflinepadbefore=1ex
-\prftree[r]{(\ref{symm})} {\prftree[r]{(\ref{trans})}{\Gamma\cup\{\E ab\} }{\Delta\cup\{\E bc\}}
-{\Gamma\cup\Delta\cup\{\E ac\} } 
- }{\Gamma\cup\Delta\cup\{\E ca\} } 
+\prftree[r]{(\ref{symm})} {\prftree[r]{(\ref{trans})}{\Gamma\cup \E ab  }{\Delta\cup \E bc}
+{\Gamma\cup\Delta\cup \E ac } 
+ }{\Gamma\cup\Delta\cup\E ca } 
 & \leadsto
 &\prftree[r]{(\ref{trans})} 
- { \prftree[r]{(\ref{symm})}{\Delta\cup\{\E bc \}} { \Delta\cup\{\E cb \} } }
- {\prftree[r]{(\ref{symm})}{\Gamma\cup\{\E ab \}} { \Gamma\cup\{\E ba \} } }
-{\Delta\cup\Gamma\cup\{\E ca\}}
+ { \prftree[r]{(\ref{symm})}{\Delta\cup\E bc } { \Delta\cup\E cb  } }
+ {\prftree[r]{(\ref{symm})}{\Gamma\cup\E ab} { \Gamma\cup\E ba  } }
+{\Delta\cup\Gamma\cup\E ca}
  \end{eqnarray*}
 
 
@@ -708,14 +844,14 @@ Here $\Delta$ is the second premise in the case that $x$ is (\ref{trans}), other
 \begin{eqnarray*}
 \prfrulenameskip=0.4em\prflinepadbefore=1ex
 \prftree[r]{(\ref{symm})} 
-{\prftree[l,r]{(\ref{jred})}{$xy \in E$}{\Gamma \cup \{\E xy ,\E ab \}}{\Gamma \cup \{\E ab \}}}
-{\Gamma  \cup \{\E ba \}}
+{\prftree[l,r]{(\ref{jred})}{$xy \in E$}{\Gamma \cup \{\E xy ,\E ab \}}{\Gamma \cup \E ab }}
+{\Gamma  \cup \E ba }
 & \leadsto
 &\prftree[l,r]{(\ref{jred})}{$xy \in E$} 
 {\prftree[r]{(\ref{symm})}
 {\Gamma \cup \{\E xy ,\E ab \}}
 {\Gamma\cup \{\E xy , \E ba \} }}
-{\Gamma \cup \{\E ba \}}
+{\Gamma \cup \E ba }
  \end{eqnarray*}
 
 
@@ -726,15 +862,15 @@ Here $\Delta$ is the second premise in the case that $x$ is (\ref{trans}), other
 \begin{eqnarray*}
 \prfrulenameskip=0.4em\prflinepadbefore=1ex
 \prftree[r]{(\ref{trans})} 
-{\prftree[l,r]{(\ref{jred})}{$xy \in E$}{\Gamma \cup \{\E xy ,\E ab \}}{\Gamma \cup \{\E ab \}}}
-{\Delta \cup \{\E bc \} \hspace{0.7cm}}
-{\Gamma \cup \Delta \cup \{\E ac \}}
+{\prftree[l,r]{(\ref{jred})}{$xy \in E$}{\Gamma \cup \{\E xy ,\E ab \}}{\Gamma \cup \E ab }}
+{ \prfassumption{\Delta \cup \E bc  }}
+{\Gamma \cup \Delta \cup \E ac }
 & \leadsto
 &\prftree[l,r]{(\ref{jred})}{$xy \in E$} 
 {\prftree[r]{(\ref{trans})}
-{\Gamma \cup \{\E xy ,\E ab \}}{\Delta \cup \{\E bc \}}
+{\Gamma \cup \{\E xy ,\E ab \}}{\Delta \cup \E bc }
 {\Gamma\cup\Delta \cup \{\E xy , \E ac \} }}
-{\Gamma \cup \Delta \cup \{\E ac \}}
+{\Gamma \cup \Delta \cup \E ac }
  \end{eqnarray*}
 
 \noindent 4) If a derivation respects all the previous points, then the elimination rule (\ref{jred}) is either the last one or is followed only by other applications of itself. Indeed if an other rule follows the elimination one, either the point 1, 2 or 3 does not hold.
@@ -759,8 +895,8 @@ $$
 \prftree[r,l]{(\ref{jred})}{$x_{i+1} x_{i+2} \in E$}{
 \prftree[r,l]{(\ref{jred})}{$x_i x_{i+1} \in E$} 
 { \prftree[r]{(\ref{ax-col})}{\emptyset}
-{\E x_i x_{i+1} , \E x_{i} x_{i+2} , \E x_{i+1} x_{i+2}} }
-{\E x_{i} x_{i+2} , \E x_{i+1} x_{i+2}  }
+{\{\E x_i x_{i+1} , \E x_{i} x_{i+2} , \E x_{i+1} x_{i+2}\}}}
+{\{ \E x_{i} x_{i+2} , \E x_{i+1} x_{i+2}  \}}
 }
 {\E x_i x_{i+2}}
 $$
@@ -780,7 +916,7 @@ $$
 
 The idea shown by the last tree is that, if the graph is 2-colourable with a ($2n+1$)-cycle and $c$ is a 2-colouring map, whenever we pick three consecutive vertices $x_i,x_{i+1},x_{i+2}$ of the cycle, two of them must be of the same colour and since adjacent vertices have different colours, we have $c(x_i)=c(x_{i+2})$; whence $c(x_1)=c(x_3)=c(x_5)=...=c(x_{2n+1})$ which is impossible since $x_{2n+1}x_1 \in E$.
 
-The opposite direction is less trivial and uses Robinson's theorem; before showing it, we need the following lemma about odd cycles.
+The opposite direction is less trivial, and the proof requires  Robinson's theorem; before showing it, we need the following lemma about odd cycles.
 
 \begin{lemma}\label{tech-lemma-graph}
 Let $G'=(V,E)$ be a simple graph with two different edges $xy,yz\in E$; if $G'$ has two distinct odd cycles, then $G=(V,E\setminus\{xy,yz\}\cup\{xz\})$ has an odd cycle.
@@ -796,7 +932,7 @@ $z\in C_2 \backslash C_1$; let $2n+1$ and $2m+1$ respectively the length of $C_1
 \end{figure*}
 
 It remains to consider when $C_1$ and $C_2$ intersect multiple times, let $P$ and $Q$ be the longest path respectively of $C_1$ and $C_2$ with $y\in P\cap Q$ and where the only vertices that belong to $C_1\cap C_2$ are the endpoints of the paths.
-Then $P\cup Q$ is a cycle that pass trough the edges $xy$ and $yz$, if the length of such cycle is even, by removing $xy,yz$ and adding $xz$ we get an odd cycle in $G$.
+Then $P\cup Q$ is a cycle that passes trough the edges $xy$ and $yz$, if the length of such cycle is even, by removing $xy,yz$ and adding $xz$ we get an odd cycle in $G$.
 
 \begin{figure}[h]
 \centering
@@ -822,7 +958,7 @@ If $k=0$ the tree is of the form:
 \prftree[r,l]{(\ref{jred})}{$xz \in E$}{
 \prftree[r]{(\ref{ax-col})} { }{ \{ \E xy , \E yz, \E xz  \} } } 
 {\{ \E xy , \E yz \} } } 
-{\{\E xy \} } }
+{ \E xy  } }
 { \emptyset }
 \end{eqnarray*}
 Then $xy,xz,yz \in E$ and the 3-cycle $xyz$ is a subgraph of $G$.
@@ -830,18 +966,18 @@ Then $xy,xz,yz \in E$ and the 3-cycle $xyz$ is a subgraph of $G$.
 For $k >0$ the tree is of the following form, 
 $$
 \prftree[r]{(\ref{trans})}
-{\prfsummary[$D_1$]{\emptyset}{\Gamma_1 \cup \{\E xy \}}}
-{\prfsummary[$D_2$]{\emptyset}{\Gamma_2 \cup \{\E yz \}}}
-{\prfsummary{\Sigma \cup \{\E xz \}}{\emptyset}}
+{\prfsummary[$D_1$]{\emptyset}{\Gamma_1 \cup \E xy }}
+{\prfsummary[$D_2$]{\emptyset}{\Gamma_2 \cup \E yz }}
+{\prfsummary{\Sigma \cup \E xz }{\emptyset}}
 $$
 Let $E'=E\cup\{xy,yz\}$ and $G'=(V,E' )$ ; then the derivations $D_1$ and $D_2$ are valid also in $H_{G',2}$. 
 Since there are no trivial applications, $\E xy \notin \Gamma_1 $ and $\E yz \notin \Gamma_2 $; therefore for any $\E ab \in \Gamma_i$, $ab \in E'$, whence $\Gamma_i \vdash_{H_{G',2}} \emptyset$. \\Thus we have the two following trees in  $H_{G',2}$ :
 \begin{eqnarray*}
 \prfsummary{
-\prftree[r]{$xy \in E'$}{\prfsummary[$D_1$]{\emptyset}{\Gamma_1 \cup\{\E xy\}}}{\Gamma_1}}
+\prftree[r]{$xy \in E'$}{\prfsummary[$D_1$]{\emptyset}{\Gamma_1 \cup \E xy}}{\Gamma_1}}
 {\emptyset}
 &\prfsummary{
-\prftree[r]{$yz \in E'$}{\prfsummary[$D_2$]{\emptyset}{\Gamma_2 \cup\{\E yz\}}}{\Gamma_2}}
+\prftree[r]{$yz \in E'$}{\prfsummary[$D_2$]{\emptyset}{\Gamma_2 \cup\E yz}}{\Gamma_2}}
 {\emptyset}
 \end{eqnarray*}
 In both trees the number of applications of the rule (\ref{trans}) is certainly less than $k$; then by induction hypothesis $G'$ has two odd cycles $C_1$ and $C_2$.Then we can apply Lemma  \ref{tech-lemma-graph}, to get the required odd cycle of $G$.
@@ -862,10 +998,10 @@ x<y \e y<z \rightarrow x<z \\
 \end{gather}
 In the formalism of hyper resolution, for a given graph $G=(V,E)$ we consider the language $\mathscr{L}=\{\geq\}\cup V\cup E$, where $V\cup E$ are constants; the models are the $n$-colourable graphs that contains $G$ while the inference rules are
 \begin{align*}
-\prftree{\Gamma}{\Gamma \cup \{x\geq x\}}\qquad \qquad\qquad
-& \qquad\prftree{\Gamma\cup\{x\geq y\}}{ \Sigma\cup\{y\geq z\} }{\Gamma\cup\Sigma\cup\{x\geq z\}} \\
+\prftree{\Gamma}{\Gamma \cup x\geq x }\qquad \qquad\qquad
+& \qquad\prftree{\Gamma\cup x\geq y}{ \Sigma\cup y\geq z }{\Gamma\cup\Sigma\cup x\geq z } \\
 \,&\,\\
-\prftree[l]{$\quad xy \in E $}{\Gamma \cup \{ x\geq y \}}{\Sigma \cup \{ y\geq x \}}
+\prftree[l]{$\quad xy \in E $}{\Gamma \cup  x\geq y }{\Sigma \cup  y\geq x }
 { \Gamma\cup\Sigma} \qquad &\qquad \prftree{\Gamma}
 {\Gamma\cup\{x_0\geq x_1 ,..., x_{n-1}\geq x_n \}}
 \end{align*}
@@ -895,10 +1031,10 @@ x\npred x
 
 Thus if we consider the language  $\mathscr{L}=\{\npred\}\cup V\cup E$, the models are the acyclic orientation of a subgraph of $G$ and the rules of inference are
 \begin{align*}
-\prftree{\Gamma}{\Gamma \cup \{x\npred x\}}\qquad \qquad\qquad
-& \qquad\prftree{\Gamma\cup\{x\npred y\}}{ \Sigma\cup\{y\npred z\} }{\Gamma\cup\Sigma\cup\{x\npred z\}} \\
+\prftree{\Gamma}{\Gamma \cup x\npred x }\qquad \qquad\qquad
+& \qquad\prftree{\Gamma\cup x\npred y }{ \Sigma\cup y\npred z  }{\Gamma\cup\Sigma\cup x\npred z } \\
 \,&\,\\
-\prftree[l]{$\quad xy \in E $}{\Gamma \cup \{ x\npred y \}}{\Sigma \cup \{ y\npred x \}}
+\prftree[l]{$\quad xy \in E $}{\Gamma \cup  x\npred y }{\Sigma \cup  y\npred x }
 { \Gamma\cup\Sigma} \qquad &\qquad \prftree{\Gamma}
 {\Gamma\cup\{x_0\npred x_1 ,..., x_{n-1}\npred x_n \}}
 \end{align*}
@@ -933,20 +1069,10 @@ $$ ab\in E_1, ab\notin E_2 \qquad  bc\in E_2, bc\notin E_1$$
 Then the graph $G=(V_1\cup V_2, E_1\cup E_2\cup\{ac\} \setminus\{ab,bc\} )$ is a $\mu_n$-graph.
 \end{itemize} 
 
-The $\mu_1$ graphs are of little interest. The complete graph with two vertices is a single edge; when two edges are composed according to the definition, the result is a single edge. Thus all $\mu_1$ graphs are single edges; and all graphs that contains  an edge, contains a $\mu_1$ graph. Clearly $\mu_1$ graphs are not 1-colourable; and graphs that are not 1-colourable contains at least one edge.
+The $\mu_1$ graphs are of little interest. The complete graph with two vertices, $K^2$, is a single edge; when two edges are composed according to the definition, the result is a single edge. Thus all $\mu_1$ graphs are single edges; and all graphs that contains  an edge, contains a $\mu_1$ graph. Clearly $\mu_1$ graphs are not 1-colourable; and graphs that are not 1-colourable contains at least one edge.
 
 \newpage
-$\mu_2$ graphs are more interesting; they characterize bipartite graphs, and can give a better insight of generic $\mu_n$ graphs.
-\begin{proposition}\label{contains-odd}
-Let $G$ be $\mu_2$ graph; then it contains an odd cycle.
-\end{proposition}
-
-\textit{Proof:} 
-We proceed by induction on the number of vertices $n$. If $n=3$, the only $\mu_2$ graph is the complete graph which is a 3-cycle. If $n>3$, let $G_1=(V_1,E_1)$, $G_2=(V_2,E_2)$, and $G=(V_1\cup V_2, E_1\cup E_2\cup\{ac\} \setminus\{ab,bc\} )$ as in Definition \ref{def_mun}. 
-\\By induction hypothesis, bot $G_1$ and $G_2$ contain an odd cycle; then by considering $G'=(V_1\cup V_2, E_1\cup E_2)$ in Lemma \ref{tech-lemma-graph}, $G$ has an odd cycle. \QED
-
-
-\noindent Clearly all the odd cylces are $\mu_2$ graphs. On the other hand, not all $\mu_2$ graphs are odd cycles, the following example shows a $\mu_2$ graph which is not a cycle and which can be built using the definition and starting by a 3-cycle and a 5-cycle 
+$\mu_2$ graphs are more interesting; they characterize bipartite graphs, and can give a better insight of generic $\mu_n$ graphs. Clearly all the odd cylces are $\mu_2$ graphs; on the other hand, not all $\mu_2$ graphs are odd cycles, the following example shows a $\mu_2$ graph which is not a cycle and which can be built using the definition and starting by a 3-cycle and a 5-cycle 
 \begin{figure*}[h]
 \centering\includegraphics[scale=0.25]{mu2.eps}
 \end{figure*}
@@ -957,18 +1083,26 @@ We proceed by induction on the number of vertices $n$. If $n=3$, the only $\mu_2
 \centering\includegraphics[scale=0.25]{mu2-con1.eps}
 \end{figure*}
 
+\noindent The examples suggest that $\mu_2$ graphs always contain an odd cycle, this can be readily proved thanks to Lemma  \ref{tech-lemma-graph}, which was used to prove that  non bipartite graphs have at least an odd cycle.
+\begin{proposition}\label{contains-odd}
+Let $G$ be $\mu_2$ graph; then it contains an odd cycle.
+\end{proposition}
+
+\textit{Proof:} 
+We proceed by induction on the number of vertices $n$. If $n=3$, the only $\mu_2$ graph is the complete graph which is a 3-cycle. If $n>3$, let $G_1=(V_1,E_1)$, $G_2=(V_2,E_2)$, and $G=(V_1\cup V_2, E_1\cup E_2\cup\{ac\} \setminus\{ab,bc\} )$ as in Definition \ref{def_mun}. 
+\\By induction hypothesis, both $G_1$ and $G_2$ contain an odd cycle; then by considering $G'=(V_1\cup V_2, E_1\cup E_2)$ in Lemma \ref{tech-lemma-graph}, $G$ has an odd cycle. \QED
 
 
-\newpage\noindent 
+\noindent 
 Now we move to a generic family $\mu_n$, first we show that they cannot be coloured in $n$ colours. Second, we see that there is always $\mu_n$ subgraph in a graph which is not $n$-colourable.
 \begin{proposition}\label{pr-nocolor}
 Let $G$ be a $\mu_n$ graph; then $G$ is not $n$-colourable.
 \end{proposition}
 \textit{Proof:} 
-We proceed by induction on Definition \ref{def_mun}. If $G$ is a complete graph with $n+1$ vertices, clearly is not $n$-colourable. Then let $G_1$ and $G_2$ as in the Definition \ref{def_mun}; by inductive hypothesis they are not  $n$-colourable, then the empty set is derivable in both calculus $H_{G_1,n}$ and $H_{G_2,n}$.
+Let $G=(V,E)$; we proceed by induction on Definition \ref{def_mun}. If $G$ is a complete graph with $n+1$ vertices, clearly is not $n$-colourable. Then let $G_1$ and $G_2$ as in the Definition \ref{def_mun}; by inductive hypothesis they are not  $n$-colourable, then the empty set is derivable in both calculus $H_{G_1,n}$ and $H_{G_2,n}$.
 Since $G$ does not have the edges $ab$ and $bc$, we have two deductions in $H_{G,n}$:
 $$
- D_1:\; \vdash_{G,n} \{\E ab \} \quad D_2:\; \vdash_{G,n} \{\E bc \}
+ D_1:\; \vdash_{G,n} \E ab  \quad D_2:\; \vdash_{G,n} \E bc 
 $$
 
 Recalling that $ac$ is en edge of $G$ by definition, we get the following deduction of the empty set in $H_{G,n}$, which implies that $G$ is not $n$-colourable
@@ -981,10 +1115,10 @@ Recalling that $ac$ is en edge of $G$ by definition, we get the following deduct
 
 
 \begin{equation*}
-\prftree[r]{(\ref{jred})} 
+\prftree[l,r]{(\ref{jred})} {$ac\in E$}
 {  \prftree[r]{(\ref{trans})}  
-{  \prfsummary[$D_1$]{\emptyset}{\{\E ab \},} }{ \prfsummary[$D_2$]{\emptyset}{\{\E bc \} }} 
- {\{\E ac \}} } 
+{  \prfsummary[$D_1$]{\emptyset}{\E ab } }{ \prfsummary[$D_2$]{\emptyset}{\E bc  }} 
+ {\E ac } } 
 {\emptyset}
 \end{equation*}
 
@@ -1018,7 +1152,7 @@ It may be interesting to notice that, because of this last corollary, the four c
 
 \textit{Every $\mu_n$ graph has the complete graph with $n+1$ vertices as minor }
 
-\noindent Indeed, by Kuratowski's Theorem any graph that has $K^5$ as minor, is not planar. For $n=1$, the conjecture is trivially true. For $n=2$, it follows from Proposition \ref{contains-odd}, since odd cycles has $K^3$ as minor. 
+\noindent Indeed, by Kuratowski's Theorem any graph that has $K^5$ as minor, is not planar. For $n=1$, the conjecture is trivially true. For $n=2$, it follows from Proposition \ref{contains-odd}, since any cycle has $K^3$ as minor. 
 
 \newpage
 \phantomsection
