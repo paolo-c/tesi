@@ -80,7 +80,7 @@ Paolo Comensoli}, pagebackref=false,bookmarksopen=true]{hyperref}
 
 %\chapter*{Introduction}
 %\addcontentsline{toc}{chapter}{Introduction}
-
+%gianni\newpage
 
 
 
@@ -89,11 +89,13 @@ Paolo Comensoli}, pagebackref=false,bookmarksopen=true]{hyperref}
 \chapter{Hyper-resolution principle}
 In 1965, Robinson presented a first order logic which is specifically designed for use as theoretical instrument of a computer theorem-proving program \cite{robinson}. A prominent feature of this logic system is that is based on one single inference principle, the resolution principle. 
 The formalism is based upon the notions on unsatisfiability and refutation rather than upon validity and proof. The resolution technique uses proof by contradiction, and is based on the fact that any formula in propositional logic can be transformed into an equivalent formula in conjunctive normal form. 
-The hyper-resolution principle is a generalization \cite{rob,robinson-general} that simplifies the steps 
-\section{Formal prelimaries}
+The main perk of resolution principles is its ability to avoid the major combinatorial obstacles in the theorem proving procedures  \cite{robinson}.
+The hyper-resolution principle is a natural generalization which was formulated by Robinson\cite{rob,robinson-general} few months after the resolution principle. Starting from this principle and from Matiyasevich's work \cite{mat-1}, Lifschitz \cite{lifschitz} developed a way to apply the hyper-resolution principle to parts of mathematics other than proof theory.
 
-The syntax of the hyper-resolution calculs 
+\newpage
+\section{Formal preliminaries}
 
+.....
 \begin{itemize}
 \item A \textit{literal:} is either an atomic formula, or has the form $\neg A$ where $\neg$ is the negation symbol and $A$ is an atomic formula. The literals $A,\,\neg A$ are \textit{complementary}, and each is the \textit{complement} of the other. Literals will be denoted using capital Latin letters $A,B,C,...$.
 \item A \textit{clause:} is a finite set of literals. Clauses are denoted by Greek capital letters $\Gamma,\Sigma ,\Pi,...$. The singleton $\{A\}$ is denoted by its element $A$, so that $\Gamma\cup A$ stands for $\Gamma\cup\{A\}$.
@@ -108,7 +110,7 @@ The \textit{resolution principle} can be stated as follow:
 \textit{If $\Pi$ is unsatisfiable and is the resolvent of  $\Gamma_1$ and $\Gamma_2$; then  $\Gamma_1$ and $\Gamma_2$ are unsatisfiable.}
 A tree of clause is called \textit{resolution tree}, if it is binary, and each node is either a leaf or the resolvent of its two immediate predecessor.
 
-\textbf{Examples\\}
+\newpage\noindent\textbf{Examples\\}
 \begin{center}
 \begin{tabular}{ccc}
 $\prftree{A}{\neg A}{\emptyset}$& \hspace{4cm}&
@@ -139,23 +141,26 @@ This two trees are resolution trees, both with only one application of the resol
 
 The examples suggest that the clause shall be read as a disjunction of its elements and the empty clause as \textit{false}. Indeed we interpret the disjunction symbol $\bigvee$ as a function from truth values to truth values, which is defined for a clause $\Gamma$ as follow:
 \begin{itemize}
-\item $\bigvee \Gamma$ is  \textit{True} if there is $A\in\Gamma$ such that $A$ is true
-\item  $\bigvee \Gamma$ is \textit{False} otherwise
+\item $\bigvee \Gamma$ is  \textit{true} if there is $A\in\Gamma$ such that $A$ is true
+\item  $\bigvee \Gamma$ is \textit{false} otherwise
 \end{itemize}
 Therefore $\bigvee\emptyset$ is false. We say that, if the empty set is the conclusion of some resolution tree, such tree is a \textit{refutation} of its leaves; the soundness theorem ensure that if there is a refutation for a set of clauses $S$, such set is also \textit{unsatisfiable}. The Robinson's theorem \cite{robinson} give us also the completeness.
 \begin{theorem}[Robinson's]
 If a set $S$ of clauses is unsatisfiable, then there is a refutation of $S$.
 \end{theorem}
 
+\newpage\noindent
+The resolution principle is generalized by the following hyper-resolution principle:
+
+\textit{From $\Gamma_1\cup A_1,\cdots\Gamma_m\cup A_m $ one may infer the resolvent $\Gamma_1\cup\cdots\cup\Gamma_m\cup \Sigma$, whenever $A_1\e\cdots\e A_m\rightarrow \overline{\Sigma}$}\\  
+This inference priciple gives rise to the hyper-resolution calculus, which is sound and complete \cite{rob,robinson-general}. While the proof trees made with the resolution principle are binary, any node in a hyper-resolution tree can have any number of predecessors.
 
 
 
 
 
-
-
-
-\section{Lifschitz's calculus}
+\section{Lifschitz's versions}
+Matiyasevich was the first to see that the hyper-resolution calculus and the Robinson's theorem on its completeness can be successfully applied to discrete mathematics \cite{mat-1,mat-2}. Lifschitz applied Robinson's theorem to algebra\cite{lifschitz}; in order to do so  he defined the hyper-resolution calculus in a more convenient way, and he stated several versions of the completeness theorem which can be applied to many kind of problems.
 
 Let $T$ be a set of propositional formulae, each of the form:
 \begin{equation}\label{prototipo}
@@ -164,7 +169,7 @@ Let $T$ be a set of propositional formulae, each of the form:
 Where the $A_i$'s and $B_j$'s are literals and $m+n>0$. For $m=0$, the formula is an axiom and will be denoted only by the disjunction $B_1\o\cdots\o B_n$. While for $n=0$, we interpret the empty disjunction as falsum, and we denote the formula by $\neg (A_1\e\cdots\e A_m)$.\\
 Consider the following calculus $H_T$: the objects derivable are clauses and the rules of inference are:
 \begin{equation}\label{axiom}
-\prftree{\Gamma_1 \cup \{A_1\} ,} {\cdots,} {\Gamma_m \cup \{A_m\} } 
+\prftree{\Gamma_1 \cup A_1 ,} {\cdots,} {\Gamma_m \cup A_m } 
 {\Gamma_1\cup\cdots\cup\Gamma_m\cup\{ B_1 ,\cdots ,B_n\}}
 \end{equation}
 for every element of $T$. We write derivation in $H_T$ in tree form; the leaves of the tree are called \textit{assumptions}, and the root \textit{conclusion}.
@@ -198,13 +203,10 @@ Now Robinson's theorem can be state as follows
 \begin{theorem}[Robinson's theorem, version 1]
 If $T$ is contradictory, then $\vdash_{H_T} \emptyset$
 \end{theorem}
- 
-
-Lifschitz \cite{lifschitz} this theorem in order to be applied to 
-
+ ...
 \begin{theorem}[Robinson's, version 2]\label{robinson2}
 For any clauses $\Gamma_1,\cdots,\Gamma_l,\Delta$, 
-if  then $\Gamma_1,\cdots\Gamma_l\vdash_{H_T} \Delta'$ for some $\Delta'\subseteq\Delta$
+if  then $\Gamma_1,\cdots ,\Gamma_l\vdash_{H_T} \Delta'$ for some $\Delta'\subseteq\Delta$
 \end{theorem}
 
 \textit{Proof}: Let $\Delta=\{C_1,\cdots,C_m\}$, and $T'= T\cup\{ \overline{\Gamma}_1, \cdots ,\overline{\Gamma}_l, \neg C_1,\cdots ,\neg C_m\}  $; then $T'$ is contradictory.
@@ -247,7 +249,7 @@ then  $\Gamma_1, \cdots ,\Gamma_l \vdash_{H_T} \Delta'$ , for some $\Delta' \sub
 
 \textit{Proof:} If \ref{f_rob3} is valid in every model of $T$, since all the formulae in $T$ and \ref{f_rob3} are quantifier free; by completness of the propositional calculus $T\vdash (\overline{\Gamma}_1\e\cdots\e\overline{\Gamma}_l )\rightarrow\overline{\Delta}$. Then by the second version of Robinson's theorem, there is $\Delta' \subseteq \Delta$ such that $\Gamma_1, \cdots ,\Gamma_l \vdash_{H_T} \Delta'$ \QED
 
-
+\newpage
 \subsection*{Trivial applications}
 \addcontentsline{toc}{subsection}{Trivial applications}
 	

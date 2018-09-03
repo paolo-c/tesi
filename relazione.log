@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2016.12.28)  3 SEP 2018 16:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2016.12.28)  3 SEP 2018 21:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -400,18 +400,16 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 ]
 Chapter 1.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 98.
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+[2
+
+]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 100.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 98.
- [2
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
-
- []
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 100.
 
 
 Package Fancyhdr Warning: \headheight is too small (0.0pt): 
@@ -419,57 +417,62 @@ Package Fancyhdr Warning: \headheight is too small (0.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[3] [4] [5] [6] [7] [8]
-Chapter 2.
-[9
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
 
-] [10] [11] [12] [13]
-Overfull \hbox (8.74771pt too wide) in paragraph at lines 417--418
+ []
+
+[4] [5] [6] [7] [8] [9]
+Chapter 2.
+[10
+
+] [11] [12] [13] [14]
+Overfull \hbox (8.74771pt too wide) in paragraph at lines 419--420
 [][][]\OT1/cmr/bx/n/12 Proposition 2.6. \OT1/cmr/m/it/12 If ev-ery so-lu-tions 
 of a sys-tem of lin-ear equa-tions $\OML/cmm/m/it/12 r[] \OT1/cmr/m/n/12 = 0\OM
 L/cmm/m/it/12 ; :::; r[] \OT1/cmr/m/n/12 = 0$
  []
 
-[14] [15] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 474--477
+[15] [16] [17]
+Underfull \hbox (badness 10000) in paragraph at lines 476--479
 
  []
 
-[17]
-Overfull \hbox (36.79735pt too wide) in alignment at lines 520--535
+[18]
+Overfull \hbox (36.79735pt too wide) in alignment at lines 522--537
  [][][] []
  []
 
-[18] [19] [20]
+[19] [20] [21]
 Chapter 3.
-[21
+[22
 
-] [22] [23]
+] [23] [24]
 File: bipartite.eps Graphic file (type eps)
- <bipartite.eps> [24] [25]
+ <bipartite.eps> [25] [26]
 File: digraphs.eps Graphic file (type eps)
  <digraphs.eps>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[26] [27]
+[27] [28]
 File: vitaver.eps Graphic file (type eps)
- <vitaver.eps> [28] [29] [30]
-Overfull \hbox (26.60997pt too wide) in alignment at lines 815--824
+ <vitaver.eps> [29] [30] [31]
+Overfull \hbox (26.60997pt too wide) in alignment at lines 817--826
  [][][] []
  []
 
-[31]
-Overfull \hbox (48.44539pt too wide) in alignment at lines 862--874
+[32]
+Overfull \hbox (48.44539pt too wide) in alignment at lines 864--876
  [][][] []
  []
 
-[32] [33]
+[33] [34]
 File: oddcycles1.eps Graphic file (type eps)
- <oddcycles1.eps> [34]
+ <oddcycles1.eps> [35]
 File: oddcycles-interceptions.eps Graphic file (type eps)
- <oddcycles-interceptions.eps> [35] [36]
-[37]
+ <oddcycles-interceptions.eps> [36] [37]
+[38]
 File: ./simboli/predecessor.eps Graphic file (type eps)
  <./simboli/predecessor.eps>
 File: ./simboli/predecessor.eps Graphic file (type eps)
@@ -493,7 +496,7 @@ File: ./simboli/predecessor.eps Graphic file (type eps)
 
 <./simboli/predecessor.eps>
 File: ./simboli/predecessor.eps Graphic file (type eps)
- <./simboli/predecessor.eps> [38]
+ <./simboli/predecessor.eps> [39]
 File: ./simboli/predecessor.eps Graphic file (type eps)
 
 <./simboli/predecessor.eps>
@@ -556,62 +559,52 @@ File: ./simboli/not-predecessor.eps Graphic file (type eps)
  <./simboli/not-predecessor.eps>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1053.
+(hyperref)                removing `math shift' on input line 1055.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mu' on input line 1053.
+(hyperref)                removing `\mu' on input line 1055.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1053.
+(hyperref)                removing `subscript' on input line 1055.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1053.
+(hyperref)                removing `math shift' on input line 1055.
 
-[39] [40]
+[40] [41]
 File: mu2.eps Graphic file (type eps)
  <mu2.eps>
 File: mu2-con1.eps Graphic file (type eps)
  <mu2-con1.eps>
-Overfull \hbox (43.89035pt too wide) in paragraph at lines 1083--1084
+Overfull \hbox (43.89035pt too wide) in paragraph at lines 1085--1086
  [][] 
  []
 
-[41] [42] [43] [44
+[42] [43] [44] [45
 
 ]
 Missing character: There is no Ì in font cmr12!
 Missing character: There is no ‹ in font cmr12!
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1225.
- [45]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1225.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1227.
+ [46]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1227.
  (./relazione.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1225.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1225.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1227.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1227.
 
-
-
-Package rerunfilecheck Warning: File `relazione.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `relazione.out':
-(rerunfilecheck)             Before: 35062712524150AF4DAA0B7353936388;1197
-(rerunfilecheck)             After:  131ED041000B9C7972B0365FF57B9D09;1148.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1225.
+Package rerunfilecheck Info: File `relazione.out' has not changed.
+(rerunfilecheck)             Checksum: 9C065A8012D9A8BE0E5C7E01AB8E52AA;1150.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1227.
  ) 
 Here is how much of TeX's memory you used:
- 7508 strings out of 494911
- 109370 string characters out of 6179861
+ 7507 strings out of 494911
+ 109357 string characters out of 6179861
  207238 words of memory out of 5000000
- 10711 multiletter control sequences out of 15000+600000
+ 10710 multiletter control sequences out of 15000+600000
  15210 words of font info for 61 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  36i,23n,53p,1036b,448s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on relazione.dvi (46 pages, 194396 bytes).
+Output written on relazione.dvi (47 pages, 197624 bytes).
