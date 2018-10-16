@@ -24,7 +24,7 @@
 %\renewcommand{\footrulewidth}{1pt}   %not visible if commented 
 
 \usepackage[pdfauthor={Paolo Comensoli},
-pdftitle={Applications of hyper-resolution principle, 
+pdftitle={Applications of hyper-resolution, 
 Paolo Comensoli}, pagebackref=false,bookmarksopen=true]{hyperref}
 % pagebackref: se vero, ad ogni voce di bibliografia aggiunge il numero della pagine in cui viene citata
 % bookmarksopen: se  vero, il pdf mostra il menu' dei contenuti gia' esploso
@@ -49,14 +49,21 @@ Paolo Comensoli}, pagebackref=false,bookmarksopen=true]{hyperref}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
 
 \newcommand{\E}{\mathscr{E}}
+\newcommand{\D}{\mathscr{D}}
+
 \newcommand*{\QEDF}{\hfill\ensuremath{\blacksquare}}
 \newcommand*{\QED}{\hfill\ensuremath{\square}}
 
 
-\newcommand*\npred{\,\includegraphics[scale=0.02]{./simboli/not-predecessor.eps}\,}
-\newcommand*\pred{\,\includegraphics[scale=0.02]{./simboli/predecessor.eps}\,}
+\newcommand*\npred{\,\includegraphics[scale=0.023]{./simboli/not-predecessor.eps}\,}
+\newcommand*\pred{\,\includegraphics[scale=0.023]{./simboli/predecessor.eps}\,}
+
+
 
 \let\oldemptyset\emptyset
 \let\emptyset\varnothing
@@ -64,38 +71,40 @@ Paolo Comensoli}, pagebackref=false,bookmarksopen=true]{hyperref}
 \let\e\wedge
 \let\bottom\perp
 
-\title{Applications of hyper-resolution principle}
+\title{Applications of hyper-resolution}
 \author{Paolo Comensoli}
 \date{03/09/2018}
 
 \begin{document}
  
-\maketitle
-\thispagestyle{empty}
-\setlength{\parskip}{-0.5mm} 
+\include {frontespizio} % qui include il frontespizio
+
+\setlength{\parskip}{-0.7mm} 
 \pdfbookmark{\contentsname}{Contents}
 \tableofcontents
-\setlength{\parskip}{1mm} 
+\thispagestyle{empty}
 \newpage
-
-%\chapter*{Introduction}
-%\addcontentsline{toc}{chapter}{Introduction}
-%gianni\newpage
+\setlength{\parskip}{1mm} 
 
 
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+In 1972 Matiyasevich published an article titled \textit{Application of the methods of the theory of logical derivation to graph theory} \cite{mat-2}, in which the author successfully applies proof theoretic tools to graph theory, a field of mathematics that can appear quite far from logic. In that paper Matiyasevich  gives an inductive definition of "a graph which cannot be colored with $n$ colors." and uses it to formulate  the Hadwiger's conjecture and the four colour theorem. Such formulations are said by  Matiyasevich to be "useful in investigation of the above hypotheses" \cite{mat-2}; this may be one of the reasons that made him publish, in 1974 and 1975, two further papers \cite{mat-3,mat-1} on the argument. In those articles he generalizes his approach, and finds new applications such as the Vitaver's theorem on coloring of directed graphs.
+
+The main proof theoretic tool used by Matiyasevich is the hyper-resolution calculus, which was developed by Robinson in 1965 \cite{robinson,rob,robinson-general}. In the paper \textit{A Machine-oriented logic based on the resolution principle} \cite{robinson} Robinson defines the \textit{resolution principle}, a single inference principle which provides, by itself, a complete system of propositional calculus.  In the following papers  \cite{rob,robinson-general} he generalizes the resolution principle to hyper-resolution principle. The main advantage of the latter  is that, while deduction trees in resolution calculus are binary, the trees in hyper-resolution calculus can branch more  and deductions are more compact.
+
+In 1980 Lifschitz 
 
 
-
-\chapter{Hyper-resolution principle}
-In 1965, Robinson presented a first order logic which is specifically designed for use as theoretical instrument of a computer theorem-proving program \cite{robinson}. A prominent feature of this logic system is that is based on one single inference principle, the resolution principle. 
+\chapter{Hyper-resolution}
+In 1965, Robinson presented a propositional logic which is specifically designed for use as theoretical instrument of a computer theorem-proving program \cite{robinson}. A prominent feature of this logic system is that is based on one single inference principle, the resolution principle. 
 The formalism is based upon the notions on unsatisfiability and refutation rather than upon validity and proof. The resolution technique uses proof by contradiction, and is based on the fact that any formula in propositional logic can be transformed into an equivalent formula in conjunctive normal form. 
 The main perk of resolution principles is its ability to avoid the major combinatorial obstacles in the theorem proving procedures  \cite{robinson}.
-The hyper-resolution principle is a natural generalization which was formulated by Robinson\cite{rob,robinson-general} few months after the resolution principle. Starting from this principle and from Matiyasevich's work \cite{mat-1}, Lifschitz \cite{lifschitz} developed a way to apply the hyper-resolution principle to parts of mathematics other than proof theory.
+The hyper-resolution principle is a natural generalization which was formulated by Robinson \cite{rob,robinson-general} few months after the resolution principle. Starting from this principle and from Matiyasevich's work \cite{mat-1}, Lifschitz \cite{lifschitz} developed a way to apply the hyper-resolution principle to parts of mathematics other than proof theory.
 
 \newpage
-\section{Formal preliminaries}
-
-.....
+\section{Preliminaries}
+The aim of this section is to introduce the resolution calculus. First of all we introduce some elements which are necessary to define the trees of this calculus; secondly we state the resolution principle. We take for granted some basic notions such as terms, relation symbols and atomic formulae. 
 \begin{itemize}
 \item A \textit{literal:} is either an atomic formula, or has the form $\neg A$ where $\neg$ is the negation symbol and $A$ is an atomic formula. The literals $A,\,\neg A$ are \textit{complementary}, and each is the \textit{complement} of the other. Literals will be denoted using capital Latin letters $A,B,C,...$.
 \item A \textit{clause:} is a finite set of literals. Clauses are denoted by Greek capital letters $\Gamma,\Sigma ,\Pi,...$. The singleton $\{A\}$ is denoted by its element $A$, so that $\Gamma\cup A$ stands for $\Gamma\cup\{A\}$.
@@ -106,18 +115,19 @@ The hyper-resolution principle is a natural generalization which was formulated 
 \begin{definition}[resolvent]
 Let $\Gamma_1$ and $\Gamma_2$ be two clauses, if there is a literal $P$ such that $P\in\Gamma_1$ and $\neg P\in\Gamma_2$; then $\Pi =\Gamma_1\cup\Gamma_2\setminus\{P,\neg P\}$ is called the resolvent of $\Gamma_1$ and $\Gamma_2$.
 \end{definition}
-The \textit{resolution principle} can be stated as follow:
+The \textit{\textbf{resolution principle}} can be stated as follow:
 \textit{If $\Pi$ is unsatisfiable and is the resolvent of  $\Gamma_1$ and $\Gamma_2$; then  $\Gamma_1$ and $\Gamma_2$ are unsatisfiable.}
 A tree of clause is called \textit{resolution tree}, if it is binary, and each node is either a leaf or the resolvent of its two immediate predecessor.
 
-\newpage\noindent\textbf{Examples\\}
+\newpage\noindent\begin{example}
+\end{example}
 \begin{center}
 \begin{tabular}{ccc}
 $\prftree{A}{\neg A}{\emptyset}$& \hspace{4cm}&
 $\prftree{\{A,P \}}{\{B, \neg P \}}{\{A,B \}}$
 \end{tabular}
 \end{center}
-This two trees are resolution trees, both with only one application of the resolution principle. If the clauses are interpreted as disjunction of their elements, the second tree has an analogous made with the rules of natural deduction 
+This two trees are resolution trees, both with only one application of the resolution principle. If the clauses are interpreted as disjunction of their elements, the second tree has an analog made with the rules of natural deduction 
 \begin{equation*}
 \prftree{\prfassumption{A\o P}}
 {\prftree{\prfboundedassumption{A} }{A\o B}}
@@ -126,6 +136,7 @@ This two trees are resolution trees, both with only one application of the resol
 { A\o B} }
 {A\o B}
 \end{equation*}
+
 %alternativa che richiede DNA
 %\begin{equation*}
 %\prfsummary{ \prftree{ \prftree{A\o B\;} {\prfboundedassumption{A} }
@@ -145,7 +156,7 @@ The examples suggest that the clause shall be read as a disjunction of its eleme
 \item  $\bigvee \Gamma$ is \textit{false} otherwise
 \end{itemize}
 Therefore $\bigvee\emptyset$ is false. We say that, if the empty set is the conclusion of some resolution tree, such tree is a \textit{refutation} of its leaves; the soundness theorem ensure that if there is a refutation for a set of clauses $S$, such set is also \textit{unsatisfiable}. The Robinson's theorem \cite{robinson} give us also the completeness.
-\begin{theorem}[Robinson's]
+\begin{theorem}[Robinson]\label{originalRob}
 If a set $S$ of clauses is unsatisfiable, then there is a refutation of $S$.
 \end{theorem}
 
@@ -156,17 +167,14 @@ The resolution principle is generalized by the following hyper-resolution princi
 This inference priciple gives rise to the hyper-resolution calculus, which is sound and complete \cite{rob,robinson-general}. While the proof trees made with the resolution principle are binary, any node in a hyper-resolution tree can have any number of predecessors.
 
 
-
-
-
 \section{Lifschitz's versions}
-Matiyasevich was the first to see that the hyper-resolution calculus and the Robinson's theorem on its completeness can be successfully applied to discrete mathematics \cite{mat-1,mat-2}. Lifschitz applied Robinson's theorem to algebra\cite{lifschitz}; in order to do so  he defined the hyper-resolution calculus in a more convenient way, and he stated several versions of the completeness theorem which can be applied to many kind of problems.
+Matiyasevich was presumably the first to see that the hyper-resolution calculus and the Robinson's theorem on its completeness can be successfully applied to discrete mathematics \cite{mat-1,mat-2}. Lifschitz applied Robinson's theorem to algebra\cite{lifschitz}; in order to do so  he defined the hyper-resolution calculus in a more convenient way, and he stated several versions of the completeness theorem which can be applied to many kind of problems.
 
 Let $T$ be a set of propositional formulae, each of the form:
 \begin{equation}\label{prototipo}
 \bigwedge_{i=1}^m A_i \rightarrow \bigvee_{j=1}^n B_j 
 \end{equation}
-Where the $A_i$'s and $B_j$'s are literals and $m+n>0$. For $m=0$, the formula is an axiom and will be denoted only by the disjunction $B_1\o\cdots\o B_n$. While for $n=0$, we interpret the empty disjunction as falsum, and we denote the formula by $\neg (A_1\e\cdots\e A_m)$.\\
+Where the $A_i$'s and $B_j$'s are literals and $m+n>0$. For $m=0$, the formula is an axiom and will be denoted only by the disjunction $B_1\o\cdots\o B_n$. While for $n=0$, we interpret the empty disjunction as falsum, and we denote the formula by $\neg (A_1\e\cdots\e A_m)$.
 Consider the following calculus $H_T$: the objects derivable are clauses and the rules of inference are:
 \begin{equation}\label{axiom}
 \prftree{\Gamma_1 \cup A_1 ,} {\cdots,} {\Gamma_m \cup A_m } 
@@ -175,7 +183,8 @@ Consider the following calculus $H_T$: the objects derivable are clauses and the
 for every element of $T$. We write derivation in $H_T$ in tree form; the leaves of the tree are called \textit{assumptions}, and the root \textit{conclusion}.
 
 
-\noindent\textbf{Example} Let $T=\{ A \e B \rightarrow C \o D ,\; A,\; B,\; \neg C \}$, then $H_T$ has four rules:
+\noindent\begin{example}
+\end{example} Let $T=\{ A \e B \rightarrow C \o D ,\; A,\; B,\; \neg C \}$, then $H_T$ has four rules:
 
 \begin{center}
 \begin{tabular}{cccc}
@@ -199,11 +208,11 @@ $$
 $$
 and we write $\emptyset \vdash_{H_T} D$.  When the only assumption is the empty set, as in the example, it can be dropped and write $\vdash_{H_T} D$.
 
-Now Robinson's theorem can be state as follows
-\begin{theorem}[Robinson's theorem, version 1]
+Now Robinson's theorem \ref{originalRob} can be state as follows
+\begin{theorem}[Robinson's, version 1]
 If $T$ is contradictory, then $\vdash_{H_T} \emptyset$
 \end{theorem}
- ...
+\noindent Starting from this version, Lifschitz develops three more equivalent versions, the first one is the following
 \begin{theorem}[Robinson's, version 2]\label{robinson2}
 For any clauses $\Gamma_1,\cdots,\Gamma_l,\Delta$, 
 if  then $\Gamma_1,\cdots ,\Gamma_l\vdash_{H_T} \Delta'$ for some $\Delta'\subseteq\Delta$
@@ -216,11 +225,10 @@ The calculs $H_{T'}$, consists of the rules of $H_T$, the axioms $\Gamma_1,\cdot
 \end{equation}
 By Robinson's theorem, there exists a derivation of $\emptyset$ in $H_{T'}$. If none of the rules (\ref{negCi}) appear in such derivation, then $\Gamma_1,\cdots\Gamma_l\vdash_{H_T} \Delta'$ with $\Delta'=\emptyset$. Otherwise, consider an application of (\ref{negCi}), replace every clause $\Sigma$ that appears below it with $\Sigma\cup C_i$; the result is still a derivation in $H_{T'}$, and now the conclusion also has the literal $C_i$. Repeat this procedures until all applications of (\ref{negCi}) are eliminated, the conclusion is some subset $\Delta'$ of 	$\{C_1,\cdots,C_m\}$; the final tree uses only rules of $H_T$ or some of the axioms $\Gamma_i$, then 
 $\Gamma_1,\cdots\Gamma_l\vdash_{H_T} \Delta'$
-
 \QED
 
 
-\noindent\textbf{Example} Let $T=\{ A ,\; \neg A \}$. Then for any $B$, $T\vdash A\rightarrow B$.
+\begin{example} Let $T=\{ A ,\; \neg A \}$. Then for any $B$, $T\vdash A\rightarrow B$.
 By the second version of Robinson's theorem, either $ A \vdash_{H_T} B $ or  $ A \vdash_{H_T} \emptyset$. \\Now the calculus $H_T$ has two rules:
 
 \begin{center}
@@ -234,12 +242,12 @@ $$
 \end{tabular}
 \end{center}
 Using this two rules, the clause $B$ is not derivable from $A$; however using the second rule we get $ A \vdash_{H_T} \emptyset$.
-
+\end{example}
  
 
 In the next chapters we deal with applications of hyper-resolution principle which are in first order logic, while formulae of the kind \ref{prototipo} are quantifier free. For this reason, we consider a third version of Robinson's theorem. 
 
-\begin{theorem}[\textbf{Robinson's , version 3}] \label{Robinson3}
+\begin{theorem}[{Robinson's , version 3}] \label{Robinson3}
 For any clauses $\Gamma_1, \cdots ,\Gamma_l , \Delta$, if in every model of $T$, the following is valid 
 \begin{equation}\label{f_rob3}
 \overline{\Gamma}_1\e\cdots\e\overline{\Gamma}_l \rightarrow \overline{\Delta}
@@ -253,9 +261,9 @@ then  $\Gamma_1, \cdots ,\Gamma_l \vdash_{H_T} \Delta'$ , for some $\Delta' \sub
 \subsection*{Trivial applications}
 \addcontentsline{toc}{subsection}{Trivial applications}
 	
-Given a rule in the form (\ref{axiom}) and an application of it in a derivation, whenever $A_i \in \Gamma_i$ for some $i$, we call such application \textit{trivial}. The following two lemmas ensure that such kind of applications can always be removed.
+Given a rule in the form (\ref{axiom}) and an application of it in a derivation, whenever $A_i \in \Gamma_i$ for some $i$, we call such application \textit{trivial} according to Lifschitz's terminology. The following two lemmas ensure that such kind of applications can always be removed.
 
-\begin{lemma}
+\begin{lemma}\label{lemma1}
 Let $\Pi$ be obtained from $\Sigma_1,...,\Sigma_m$ by one application of a rule $H_T$. For any $\Sigma_1' \subseteq \Sigma_1,...,\Sigma_m' \subseteq \Sigma_m  $, one of the two following holds:\\
 (a) $\Sigma_i' \subseteq \Pi$ for some $i$\\
 (b) some $\Pi '\subseteq\Pi$ can be obtained from $\Sigma_1 ',...,\Sigma_m '$ by an application of the same rule
@@ -269,22 +277,35 @@ Consider the following two cases:\\
 \\(b) $A_i \in \Sigma_i '$ for every $i$. Then $\Sigma_i '=\Gamma_i ' \cup A_i$ where $\Gamma_i '=\Sigma_i '\backslash A_i $, one application of (\ref{axiom}) to 
 $\Sigma_1 ',...,\Sigma_m '$ gives 
 $\Pi '=\Gamma_1 '\cup ...\cup\Gamma_m '\cup\{B_1,...,B_n\}\subseteq\Pi$
-
 \QED
+
+\newpage
 \begin{lemma}
 For every derivation of a clause $\Pi$ in $H_T$ there exists a derivation of some $\Pi '\subset\Pi $ in $H_T$ without trivial application of rules of inference.
 \end{lemma}
 
-\textit{Proof:} Consider a trivial application of a rule in a given derivation
+\textit{Proof:} Consider a derivation as follow
+\begin{equation*}
+\prftree[r]{(2)}{\prfassumption{\Sigma_1}}{\cdots}
+{ \prftree[r]{(1)}{ \prfsummary{\D_1}{\Gamma_1\cup A_1} } {\cdots } { \prfsummary{\D_m}{\Gamma_m\cup A_m}} {\Sigma_k=\Gamma_1\cup\cdots\cup\Gamma_m\cup\{B_1,\cdots,B_m\}} }
+{\cdots}{\prfassumption{\Sigma_l}}{\Pi}
+\end{equation*}
+Suppose that $(1)$ is trivial, say $A_1\in\Gamma_1$. Then $\D_1$ is a derivation of $\Gamma_1$ and we can consider the following tree
 
-$$
-\prftree{\prfsummary[$D_1$]{}{\Sigma_1}}{\cdots}{\prfsummary[$D_m$]{}{\Sigma_m}}
-{\prfsummary{\Pi}{}}
-$$
-Say, without loss of generality, that $\Sigma_1\subseteq\Pi$\\ ....
+\begin{equation*}
+\prftree[r]{(2')}{\prfassumption{\Sigma_1}}{\cdots}
+{\prfsummary{\D_1}{\Gamma_1}}
+{\cdots}{\prfassumption{\Sigma_l}}{\Pi}
+\end{equation*}
+Now $(2')$ is not necessarily an application of a rule of inference. However, we can apply \ref{lemma1} with  $\Sigma'_1=\Sigma_1,\cdots, \Sigma'_k=\Gamma_1\subseteq\Sigma_k\cdots\Sigma'_l=\Sigma_l$ to get either:\\
+(a) $\Sigma_i' \subseteq \Pi$ for some $i$\\
+(b) some $\Pi '\subseteq\Pi$ can be obtained from $\Sigma_1 ',...,\Sigma_m '$ by an application of $(2)$\\
+If it is the case of (a), the applications $(2')$ is still trivial and we repeat the procedure. We keep repeating as required, the procedure terminates since at every step at least one literal is removed. \QED
 
-This last lemma and Theorem \ref{Robinson3}  let us give a final version of Robinson's theorem.
-\begin{theorem}[\textbf{Robinson's, version 4}] \label{Robinson}
+
+
+\noindent This last lemma and Theorem \ref{Robinson3}  let us give a final version of Robinson's theorem.
+\begin{theorem}[{Robinson's, version 4}] \label{Robinson}
 For any clauses $\Gamma_1, \cdots ,\Gamma_l , \Delta$, if in every model of $T$, the following is valid 
 $$
 \overline{\Gamma}_1\e\cdots\e\overline{\Gamma}_l \rightarrow \overline{\Delta}
@@ -304,7 +325,7 @@ In the second section we see the proof proposed by Lifschitz \cite{lifschitz} in
 
 
 
-\section{Recalls of commutative algebra}
+\section{Basic notions of commutative algebra}
 The aim of this section is to summarize few elements of algebra in order to show  Rabinowitsch's proof of the Hilbert's Nullstellensatz. All the notations and the proofs adopted here are from Lang's book \cite{Lang}. Many basic definitions, such as fields, polynomials and ideals, are not given here; indeed the main purpose is to show a classical proof of Nullstellensatz that can be compared with the Lifschitz's one.
 For the same reason, many results and theorems are taken for granted, and some proofs are not given.
 
@@ -335,7 +356,7 @@ Let $K$ be a field and $I$ an ideal in $K[x_1,...,x_n]$; then either $I=K[x]$ or
 \end{theorem}
 
 \textit{Proof:}
-Suppose $I\neq K[x]$. Then there is some maximal ideal $m$ that contains $I$, and $K[x]/m$ is a field. Such field is a finitely generated extension of $K$, because it is generated by $x_1, ... x_n$ mod $m$. By Lemma \ref{finit_gen} the field $K[x]/m$ is algebraic over $K$ and therefore can be embedded into $K^a$ by some map $e:K[x]/m \rightarrow\nobreak K^a$. Now consider the canonical map mod $m$ $\pi : K[x] \rightarrow K[x]/m$, then the homomorphism $h=e\circ\pi : K[x]\rightarrow K^a$ gives the desired zero of $I$. \QED
+Suppose $I\neq K[x]$. Then there is some maximal ideal $M$ that contains $I$, and $K[x]/M$ is a field. Such field is a finitely generated extension of $K$, because it is generated by $x_1, ... x_n$ mod $M$. By Lemma \ref{finit_gen} the field $K[x]/M$ is algebraic over $K$ and therefore can be embedded into $K^a$ by some map $e:K[x]/M \rightarrow\nobreak K^a$. Now consider the canonical map mod $M$  $\pi : K[x] \rightarrow K[x]/M$, then the homomorphism $h=e\circ\pi : K[x]\rightarrow K^a$ gives the desired zero of $I$. \QED
 
 Theorem \ref{zeros} implies that if a family of polynomials have a common zero in some field, then they have a common zero in the algebraic closure of $K$. 
 
@@ -619,14 +640,14 @@ because  $f^p$ is obtained by a series of applications of rules (\ref{eqpoly}) -
 
 
 \chapter{Applications to graph theory}
-In this chapter I discuss applications of the hyper-resolution principle to graph theory, in particular we  face two different and equivalent ways of describing $n$-colourable graphs via resolution. The first approach relies on propositions of the kind "the vertex $x$ has the same colour of the vertex $y$", this method is used to give a constructive proof that a graph is 2-colourable if and only if it does not contain odd cycles. The second approach assigns to each colour a number and relies on proposition of the kind "the vertex $x$ has a colour number smaller than the one of $y$", in other words this method introduces a partial order on the vertices and therefore it introduces a stronger transitivity rule; this method is used to prove Gallai-Hasse-Roy-Vitaver theorem, which gives a characterization of the chromatic number of a simple graph, by describing a partial order among vertices using directed paths and retrieving the $n$-colurable property by showing that such order can be used also for colours. 
+In this chapter we discuss applications of the hyper-resolution principle to graph theory, in particular we  face two different and equivalent ways of describing $n$-colourable graphs via resolution. The first approach relies on propositions of the kind "the vertex $x$ has the same colour of the vertex $y$", this method is used to give a constructive proof that a graph is 2-colourable if and only if it does not contain odd cycles. The second approach assigns to each colour a number, and relies on proposition of the kind "the vertex $x$ has a colour number smaller than the one of $y$", in other words this method introduces a partial order on the vertices and therefore it introduces a stronger transitivity rule. This method is used to prove the Gallai-Hasse-Roy-Vitaver theorem, which gives a characterization of the chromatic number of a simple graph, by describing a partial order among vertices using directed paths, and retrieving the $n$-colurable property by showing that such order can be used also for colours. 
 Both this methods are described by Matiyasevich in 1975\cite{mat-1}; in this article Matiyasevich defines how it is possible to apply hyper-resolutions to discrete mathematics, and applies his method to colouring problems.
-Last, we describe the $\mu_n$ graphs, a family of graphs introduced in 1972 by Matiyasevich \cite{mat-2}, in order to give an inductive definition of the property "a graph which cannot be coloured with $n$ colours". This definition let us generalizes the characterization of bipartite (2-colourable) graphs, and can be used to state the four colour theorem in terms of $\mu_4$ graphs.
+Last, we describe the $\mu_n$ graphs, a family of graphs introduced in 1972 by Matiyasevich \cite{mat-2}, in order to give an inductive definition of the property "a graph which cannot be coloured with $n$ colours". This definition let us generalizes the characterization of bipartite (2-colourable) graphs, and can be used to state the four colour theorem and the Hadwiger conjecture in terms of $\mu_n$ graphs.
 
 
-\section{Recalls of graph theory}
+\section{Basic notions of graph theory}
 
-In this section we briefly recall some notions of graph theory, for the part on simple graphs we adopt the notation and terminology of Diestel \cite{diestel}; while for directed graphs the main reference is Chartrand-Zhang \cite{chrom}. Some of the result shown here are also shown in the next section using resolution methods, it might be interesting to compare the proofs and how different they are.
+In this section we briefly recall some notions of graph theory, for the part on simple graphs we adopt the notation and terminology of Diestel \cite{diestel}; while for directed graphs the main reference is Chartrand-Zhang \cite{chrom}. Some of the results shown here are also shown in the next section using resolution methods, it might be interesting to compare the proofs and how different they are.
 
 A simple graph $G$ is a couple of sets $(V,E)$ such that the elements of $E$ are unordered couples of elements of $V$. The elements of $V$ are called \textit{vertices} and the elements of $E$ are called \textit{edges}. A vertex $v$ is \textit{incident} with an edge $e$ if $v$ is one of the two elements of $e$, the two vertices incidents an edge are called its \textit{ends} and are said to be \textit{adjacent}; an edge whose endpoints are $x$ and $y$ is denoted as $xy$. A graph is called  \textit{complete} if all of its vertices are pairwise adjacent; a complete graph with $n$ vertices is denoted with $K^n$.
 A graph $G'=(V',E')$ is a \textit{subgraph} of G if $V' \subseteq V$ and $E' \subseteq E$.
@@ -891,7 +912,7 @@ Let $G=(V,E)$ be a graph that contains an odd cycle; then $G$ is not 2-colourabl
 \textit{Proof:}
 We show that if there is an odd cycle in $G$, then the empty clause is derivable in $H_ {G,2}$, i.e. $\vdash_{H_{G,2}} \emptyset$, and that therefore the axioms \ref{symmetry-axiom} ,\ref{color-prop1}, \ref{color-prop2} and \ref{color-prop3} are inconsistent.
 
-Let $x_1, ..., x_{2n+1} $ be an odd cycle, by definition for $i=1,2,..., 2n$ $x_i x_{i+1} \in E$ and $ x_{2n+1} x_1 \in E$. For $i=1,2,...,2n-1$ consider the tree $A_i$ in $H_{G,2}$:
+Let $x_1, ..., x_{2n+1} $ be an odd cycle, by definition for $i=1,2,..., 2n$ $x_i x_{i+1} \in E$ and $ x_{2n+1} x_1 \in E$. For $i=1,2,...,2n-1$ consider the tree $\D_i$ in $H_{G,2}$:
 
 $$
 \prftree[r,l]{(\ref{jred})}{$x_{i+1} x_{i+2} \in E$}{
@@ -902,14 +923,14 @@ $$
 }
 {\E x_i x_{i+2}}
 $$
-\newpage Using the trees $A_1,...,A_{2n-1}$, we obtain the following derivation of the empty set in $H_{G,2}$:
+\newpage Using the trees $\D_1,...,\D_{2n-1}$, we obtain the following derivation of the empty set in $H_{G,2}$:
 $$
 \prftree[r,l]{(\ref{jred})}{$x_{2n+1}x_1\in E$}
 { \prftree[r]{(\ref{symm})}
 {\prftree[r]{(\ref{trans})} 
-{\prftree{ \prftree[l]{(\ref{trans})}{ \prfsummary{A_1} {\E x_1x_3}  }{  \prfsummary{A_3}{\E x_3x_5} }
-{\E x_1 x_5}}{\prfsummary{ A_5}{ }}{ \prfsummary{...}{} }{\prfsummary{ A_{2n-3}}{ }}
-{ \E x_1 x_{2n-1}}}{\prfsummary{A_{2n-1}} { \E x_{2n-1}x_{2n+1}}}
+{\prftree{ \prftree[l]{(\ref{trans})}{ \prfsummary{\D_1} {\E x_1x_3}  }{  \prfsummary{\D_3}{\E x_3x_5} }
+{\E x_1 x_5}}{\prfsummary{ \D_5}{ }}{ \prfsummary{...}{} }{\prfsummary{ \D_{2n-3}}{ }}
+{ \E x_1 x_{2n-1}}}{\prfsummary{\D_{2n-1}} { \E x_{2n-1}x_{2n+1}}}
 {\E x_1 x_{2n+1} } }  
 {\E x_{2n+1}x_1} }
 {\emptyset}
@@ -968,23 +989,21 @@ Then $xy,xz,yz \in E$ and the 3-cycle $xyz$ is a subgraph of $G$.
 For $k >0$ the tree is of the following form, 
 $$
 \prftree[r]{(\ref{trans})}
-{\prfsummary[$D_1$]{\emptyset}{\Gamma_1 \cup \E xy }}
-{\prfsummary[$D_2$]{\emptyset}{\Gamma_2 \cup \E yz }}
+{\prfsummary[$\D_1$]{\emptyset}{\Gamma_1 \cup \E xy }}
+{\prfsummary[$\D_2$]{\emptyset}{\Gamma_2 \cup \E yz }}
 {\prfsummary{\Sigma \cup \E xz }{\emptyset}}
 $$
-Let $E'=E\cup\{xy,yz\}$ and $G'=(V,E' )$ ; then the derivations $D_1$ and $D_2$ are valid also in $H_{G',2}$. 
+Let $E'=E\cup\{xy,yz\}$ and $G'=(V,E' )$ ; then the derivations $\D_1$ and $\D_2$ are valid also in $H_{G',2}$. 
 Since there are no trivial applications, $\E xy \notin \Gamma_1 $ and $\E yz \notin \Gamma_2 $; therefore for any $\E ab \in \Gamma_i$, $ab \in E'$, whence $\Gamma_i \vdash_{H_{G',2}} \emptyset$. \\Thus we have the two following trees in  $H_{G',2}$ :
 \begin{eqnarray*}
 \prfsummary{
-\prftree[r]{$xy \in E'$}{\prfsummary[$D_1$]{\emptyset}{\Gamma_1 \cup \E xy}}{\Gamma_1}}
+\prftree[r]{$xy \in E'$}{\prfsummary[$\D_1$]{\emptyset}{\Gamma_1 \cup \E xy}}{\Gamma_1}}
 {\emptyset}
 &\prfsummary{
-\prftree[r]{$yz \in E'$}{\prfsummary[$D_2$]{\emptyset}{\Gamma_2 \cup\E yz}}{\Gamma_2}}
+\prftree[r]{$yz \in E'$}{\prfsummary[$\D_2$]{\emptyset}{\Gamma_2 \cup\E yz}}{\Gamma_2}}
 {\emptyset}
 \end{eqnarray*}
-In both trees the number of applications of the rule (\ref{trans}) is certainly less than $k$; then by induction hypothesis $G'$ has two odd cycles $C_1$ and $C_2$.Then we can apply Lemma  \ref{tech-lemma-graph}, to get the required odd cycle of $G$.
-
-\QED
+In both trees the number of applications of the rule (\ref{trans}) is certainly less than $k$; then by induction hypothesis $G'$ has two odd cycles $C_1$ and $C_2$.Then we can apply Lemma  \ref{tech-lemma-graph}, to get the required odd cycle of $G$.\QED
 
 
 \subsection*{Gallai-Hasse-Roy-Vitaver theorem}
@@ -1042,9 +1061,7 @@ Thus if we consider the language  $\mathscr{L}=\{\npred\}\cup V\cup E$, the mode
 \end{align*}
 Clearly the rules have the same shape as the ones given for $\geq$. We can therefore conclude that $\npred$ describes an $n$-coloring for $G$ where
 $$n=1+\min\{\ell(D'), D' \textrm{ spanning acyclic digraph of an orientation } \textrm{ of }G\}$$
-If we consider an orientation $D$ of $G$ and a spanning acyclic digraph $D'$ of $D$, we have $\ell (D') \leq \ell(D)$ whence 
-$$n\leq 1+ \ell $$
-where $\ell$ is  $\min\{\ell(D), D \textrm{ orientation of }G\}$ as in corollary \ref{cor-vitaver}.\\
+If we consider an orientation $D$ of $G$ and a spanning acyclic digraph $D'$ of $D$, we have $\ell (D') \leq \ell(D)$ whence $n\leq 1+ \ell $ where $\ell$ is  $\min\{\ell(D), D \textrm{ orientation of }G\}$ as in corollary \ref{cor-vitaver}.
 Finally recalling that Proposition \ref{prop-vitaver-easy} says that for some orientation $D$
 $$\chi (G) \geq 1+ \ell (D)$$
 we reach the same conclusion of Corollary \ref{cor-vitaver}, i.e. 
@@ -1053,7 +1070,6 @@ $$\chi (G) = 1+\ell$$
 
 \subsection*{$\mu_n$ graphs}
 \addcontentsline{toc}{subsection}{$\mu_n$ graphs}
-
 The $\mu_n$ graphs are a family of graphs defined by Matiyasevich \cite{mat-2} with the purpose to characterize the graphs that cannot be coloured in $n$ colours. 
 Such graphs are build starting from the complete graphs with $n+1$ vertices, which is not $n$ colourable; 
 and every step of the construction ensures that the result is still not $n$ colourable. Matiyasevich's theorem tells us that every graph that cannot be coloured in $n$ colours, contains a $\mu_n$ graph.
@@ -1066,14 +1082,14 @@ $\mu_n-graph$
 \item[-] Every complete graph with $n+1$ vertices is a $\mu_n$-graph
 \item[-] If $G_1=(V_1,E_1)$ and $G_2=(V_2,E_2)$ are $\mu_n$-graphs and $a,b,c$ are distinct vertices such that
 $$ a,b\in V_1 \quad b,c\in V_2  $$
-and
 $$ ab\in E_1, ab\notin E_2 \qquad  bc\in E_2, bc\notin E_1$$
 Then the graph $G=(V_1\cup V_2, E_1\cup E_2\cup\{ac\} \setminus\{ab,bc\} )$ is a $\mu_n$-graph.
 \end{itemize} 
 
-The $\mu_1$ graphs are of little interest. The complete graph with two vertices, $K^2$, is a single edge; when two edges are composed according to the definition, the result is a single edge. Thus all $\mu_1$ graphs are single edges; and all graphs that contains  an edge, contains a $\mu_1$ graph. Clearly $\mu_1$ graphs are not 1-colourable; and graphs that are not 1-colourable contains at least one edge.
+To the best of our knowledge, in the literature there no other graphs defined in such a way; although we have found the $\mu_n$ graphs can be constructed using splitting methods which were introduced by Fleischner (1990) \cite{split}.
 
-\newpage
+The $\mu_1$ graphs are of little interest. The complete graph with two vertices, $K^2$, is a single edge; when two edges are composed according to the definition, the result is a single edge. Thus all $	\mu_1$ graphs are single edges; and all graphs that contains  an edge, contains a $\mu_1$ graph. Clearly $\mu_1$ graphs are not 1-colourable; and graphs that are not 1-colourable contains at least one edge.
+
 $\mu_2$ graphs are more interesting; they characterize bipartite graphs, and can give a better insight of generic $\mu_n$ graphs. Clearly all the odd cylces are $\mu_2$ graphs; on the other hand, not all $\mu_2$ graphs are odd cycles, the following example shows a $\mu_2$ graph which is not a cycle and which can be built using the definition and starting by a 3-cycle and a 5-cycle 
 \begin{figure*}[h]
 \centering\includegraphics[scale=0.25]{mu2.eps}
@@ -1101,12 +1117,15 @@ Now we move to a generic family $\mu_n$, first we show that they cannot be colou
 Let $G$ be a $\mu_n$ graph; then $G$ is not $n$-colourable.
 \end{proposition}
 \textit{Proof:} 
-Let $G=(V,E)$; we proceed by induction on Definition \ref{def_mun}. If $G$ is a complete graph with $n+1$ vertices, clearly is not $n$-colourable. Then let $G_1$ and $G_2$ as in the Definition \ref{def_mun}; by inductive hypothesis they are not  $n$-colourable, then the empty set is derivable in both calculus $H_{G_1,n}$ and $H_{G_2,n}$.
-Since $G$ does not have the edges $ab$ and $bc$, we have two deductions in $H_{G,n}$:
+Let $G=(V,E)$; we proceed by induction on Definition \ref{def_mun}. If $G$ is a complete graph with $n+1$ vertices, clearly is not $n$-colourable. Then let $G_1$ and $G_2$ as in the Definition \ref{def_mun}; by inductive hypothesis they are not  $n$-colourable, and therefore the empty set is derivable in both calculus $H_{G_1,n}$ and $H_{G_2,n}$, namely we have two deductions:
 $$
- D_1:\; \vdash_{G,n} \E ab  \quad D_2:\; \vdash_{G,n} \E bc 
+ \D'_1:\; \vdash_{G_1,n} \emptyset  \quad \D'_2:\; \vdash_{G_2,n} \emptyset
 $$
-
+If the literals $\E ab, \E bc$ does not appear in one of the two deductions, then such deduction is also valid in $H_{G,n}$ and $G$ is not $n$-colourable.
+Otherwise, since $G$ does not have the edges $ab$ and $bc$, by dropping the rules that eliminates $\E ab$ and $\E bc$, we get two derivations in $H_{G,n}$
+$$
+ \D_1:\; \vdash_{G,n} \E ab  \quad \D_2:\; \vdash_{G,n} \E bc 
+$$
 Recalling that $ac$ is en edge of $G$ by definition, we get the following deduction of the empty set in $H_{G,n}$, which implies that $G$ is not $n$-colourable
 
 %\prftree[r]{(\ref{jred})}{
@@ -1119,13 +1138,12 @@ Recalling that $ac$ is en edge of $G$ by definition, we get the following deduct
 \begin{equation*}
 \prftree[l,r]{(\ref{jred})} {$ac\in E$}
 {  \prftree[r]{(\ref{trans})}  
-{  \prfsummary[$D_1$]{\emptyset}{\E ab } }{ \prfsummary[$D_2$]{\emptyset}{\E bc  }} 
+{  \prfsummary[$\D_1$]{\emptyset}{\E ab } }{ \prfsummary[$\D_2$]{\emptyset}{\E bc  }} 
  {\E ac } } 
 {\emptyset}
 \end{equation*}
 
 \QED
-
 
 
 \begin{theorem}[Matiyasevich]\label{mati-thm}
@@ -1142,19 +1160,33 @@ If $G$ is not 2-colurable, by Theorem \ref{mati-thm} it contains a $\mu_2$ graph
 
 Matiyasevich's theorem and $\mu_n$ graphs can be used to rewrite several problems of graph theory, for instance we can rephrase the four colour Theorem as follows
 
-\begin{corollary}
+\begin{corollary}\label{cor-4}
 Every planar graph is 4-colourable if and only if no $\mu_4$ is planar.
 \end{corollary}
 \textit{Proof:}
 Suppose first that every planar graph is 4-colourable, then every graph which is not 4-colourable is not planar. By Proposition \ref{pr-nocolor} $\mu_4$ graphs are not 4-colourable, and therefore are not planar.
-Conversely suppose that no $\mu_4$ is planar. If a graph is planar, then it does not contain $\mu_4$ subgraphs and by Matiyasevich's theorem is 4-colourable.
+Conversely suppose that no $\mu_4$ is planar; if a graph is planar, then it does not contain $\mu_4$ subgraphs and by Matiyasevich's theorem is 4-colourable.
 \QED
 
-It may be interesting to notice that, because of this last corollary, the four colour theorem would   immediately follow from the conjecture below
+\newpage
+Another important problem that can be written using $\mu$ graphs is the Hadwiger's conjecture (1946)\cite{hadwiger}. In 1980 this conjecture was define by Bollobás, Catlin and  Erd\"os  "One of the deepest unsolved problems in graph theory" \cite{erdos}. Here we see first the original conjecture, and then the equivalent version stated by Matiyasevich using $\mu$ graphs \cite{mat-2}.
 
-\textit{Every $\mu_n$ graph has the complete graph with $n+1$ vertices as minor }
+\begin{conjecture}[Hadwiger]\label{hadw}
+Every graph $G$ with chromatic number $\chi (G)=n$ has the complete graph $K^n$  as minor \end{conjecture}
 
-\noindent Indeed, by Kuratowski's Theorem any graph that has $K^5$ as minor, is not planar. For $n=1$, the conjecture is trivially true. For $n=2$, it follows from Proposition \ref{contains-odd}, since any cycle has $K^3$ as minor. 
+\begin{conjecture}\label{hadw_mu}
+Every graph that contains a $\mu_n$ graph has $K^{n+1}$  as minor \end{conjecture}
+
+\begin{corollary}
+Hadwiger's conjecture is equivalent to \ref{hadw_mu}\end{corollary}
+\textit{Proof:} First we show that \ref{hadw_mu} implies \ref{hadw}. Let $G$ be a graph such that $\chi (G)=n$, then it is not $n-1$ colourable and by Matiyasevich's theorem \ref{mati-thm} it contains a $\mu_{n-1}$ graph; therefore by \ref{hadw_mu} it contains $K^n$.
+Conversely, suppose that $G$ contains $\mu_n$, by \ref{pr-nocolor} $\,G$ is not $n$ colourable i.e. for some $m>n$, $\chi (G)=m$. By \ref{hadw} $G$ has $K^m$ as minor; since $K^m$ is complete, it has $K^l$ as minor for any $l\leq m$ and in particular for $l=n+1$. \QED
+
+\noindent The Matiyasevich's version \ref{hadw_mu} clearly shows  that Hadwiger's conjecture implies the four colour theorem; indeed if $\mu_4$ graphs has $K^5$ as minor, by Kuratowski's theorem they are not planar, and the four color theorem would follow from \ref{cor-4}.
+
+
+\chapter*{Conclusion}
+\addcontentsline{toc}{chapter}{Conclusion}
 
 \newpage
 \phantomsection
@@ -1175,7 +1207,7 @@ Int. J. Comp. Math. , Vol. 1, 1965, Pages: 227-234
 \bibitem{robinson-general} 
 John Alan Robinson.  
 \textit{The generalized resolution principle.} 
-??????
+
 
 \bibitem{gallier} Jean H. Gallier. \textit{Logic for Computer Science, Foundations of automatic theorem proving }
 
@@ -1187,11 +1219,21 @@ American Mathematical Society, Vol. 79 No. 1, May 1980, Pages: 89-96
 \bibitem{Hilbert}
 David Hilbert. \textit{\"Uber die vollen Invariantensysteme.} Math. Ann. 42, September 1892, Pages: 313-373
 
+
+
 \bibitem{Lang}
-Lang, \textit{Algebra}
+Serge Lang, \textit{Algebra}
 
 \bibitem{Rabin}
 J.L. Rabinowitsch, \textit{Zum Hilbertschen Nullstellensatz} Math. Ann. , 102 (1929) Page: 520
+ 
+\bibitem{mat-2}
+Jurij Vladimirovi\v{c} Matijasevi\v{c}.
+\textit{Application of the methods of the theory of logical derivation to graph theory.} Mathematicheskie Zametki, Vol. 12 No. 6, December 1972, Pages: 781-790
+
+\bibitem{mat-3}
+Jurij Vladimirovi\v{c} Matijasevi\v{c}.
+\textit{One scheme for proofs in discrete mathematics} Studies in constructive mathematics and mathematical logic. Part VI, Zap. Nauchn. Sem. LOMI, 40, "Nauka", Leningrad. Otdel., Leningrad, 1974, 94-100 
 
 
 \bibitem{mat-1} 
@@ -1199,12 +1241,10 @@ Jurij Vladimirovi\v{c} Matijasevi\v{c}.
 \textit{Mathematical approach to proving theorems of discrete mathematics.} 
 Seminar in mathematics, Steklov mathematical institute, Leningrad, 1975, Pages: 31-48
 
-\bibitem{mat-2}
-Jurij Vladimirovi\v{c} Matijasevi\v{c}.
-\textit{Application of the methods of the theory of logical derivation to graph- theory.} Mathematicheskie Zametki, Vol. 12 No. 6, December 1972, Pages: 781-790
- 
-
 \bibitem{diestel} Reinhard Diestel. \textit{Graph Theory}
+
+
+
 
 \bibitem{chrom} Gary Chartrand, Ping Zhang. \textit{Chromatic Graph Theory}
 
@@ -1217,6 +1257,13 @@ Jurij Vladimirovi\v{c} Matijasevi\v{c}.
 
 \bibitem{gallai}T. Gallai, \textit{On directed paths and circuits}. In: Theory of Graphs; Proceedings of the Colloquium held at Tihany, Hungary, 1969 (P. Erd ̋s and G. Katona,eds). Academic Press, New York (1969) 115-118.
 
+\newpage
+
+\bibitem{split} H. Fleischner, \textit{Eulerian Graphs and Related Topics, vol. 1, part 1}, North Holland, 1990.
+
+\bibitem{hadwiger} Hugo Hadwiger, \textit{Ungeloste probleme 26}, Elem. Math. 13 (1958), 128-129.
+
+\bibitem{erdos} B. Bollobás, P. A. Catlin, P.  Erd\"os , \textit{Hadwiger's conjecture is true for almost every graph}, European Journal of Combinatorics (1980), 1: 195-199
 
 
 

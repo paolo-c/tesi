@@ -1,18 +1,20 @@
 \select@language {english}
-\contentsline {chapter}{\numberline {1}Hyper-resolution principle}{2}{chapter.1}
-\contentsline {section}{\numberline {1.1}Formal preliminaries}{3}{section.1.1}
-\contentsline {section}{\numberline {1.2}Lifschitz's versions}{5}{section.1.2}
-\contentsline {subsection}{Trivial applications}{8}{section*.2}
-\contentsline {chapter}{\numberline {2}Applications to commutative algebra}{10}{chapter.2}
-\contentsline {section}{\numberline {2.1}Recalls of commutative algebra}{11}{section.2.1}
-\contentsline {section}{\numberline {2.2}Applications}{14}{section.2.2}
-\contentsline {subsection}{Linear equations}{14}{section*.3}
-\contentsline {subsection}{Nullstellensatz}{16}{section*.4}
-\contentsline {chapter}{\numberline {3}Applications to graph theory}{22}{chapter.3}
-\contentsline {section}{\numberline {3.1}Recalls of graph theory}{23}{section.3.1}
-\contentsline {subsection}{Directed graphs}{27}{section*.6}
-\contentsline {section}{\numberline {3.2}Hyper-resolution approach to colouring}{31}{section.3.2}
-\contentsline {subsection}{Bipartite graphs}{34}{section*.9}
-\contentsline {subsection}{Gallai-Hasse-Roy-Vitaver theorem}{38}{section*.12}
-\contentsline {subsection}{$\mu _n$ graphs}{41}{section*.13}
-\contentsline {chapter}{Bibliography}{45}{section*.16}
+\contentsline {chapter}{Introduction}{3}{chapter*.2}
+\contentsline {chapter}{\numberline {1}Hyper-resolution}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}Preliminaries}{6}{section.1.1}
+\contentsline {section}{\numberline {1.2}Lifschitz's versions}{8}{section.1.2}
+\contentsline {subsection}{Trivial applications}{11}{section*.3}
+\contentsline {chapter}{\numberline {2}Applications to commutative algebra}{13}{chapter.2}
+\contentsline {section}{\numberline {2.1}Basic notions of commutative algebra}{14}{section.2.1}
+\contentsline {section}{\numberline {2.2}Applications}{17}{section.2.2}
+\contentsline {subsection}{Linear equations}{17}{section*.4}
+\contentsline {subsection}{Nullstellensatz}{19}{section*.5}
+\contentsline {chapter}{\numberline {3}Applications to graph theory}{25}{chapter.3}
+\contentsline {section}{\numberline {3.1}Basic notions of graph theory}{26}{section.3.1}
+\contentsline {subsection}{Directed graphs}{30}{section*.7}
+\contentsline {section}{\numberline {3.2}Hyper-resolution approach to colouring}{34}{section.3.2}
+\contentsline {subsection}{Bipartite graphs}{37}{section*.10}
+\contentsline {subsection}{Gallai-Hasse-Roy-Vitaver theorem}{41}{section*.13}
+\contentsline {subsection}{$\mu _n$ graphs}{44}{section*.14}
+\contentsline {chapter}{Conclusion}{49}{chapter*.17}
+\contentsline {chapter}{Bibliography}{50}{section*.18}
