@@ -103,10 +103,11 @@ Such formulations are said by  Matiyasevich to be "useful in investigation of th
 
 The main proof theoretic tool used by Matiyasevich is the hyper-resolution calculus, which was developed by Robinson in 1965 \cite{robinson,rob,robinson-general}. 
 In the paper \textit{A Machine-oriented logic based on the resolution principle} \cite{robinson} Robinson defines the \textit{resolution principle}, a single inference principle which provides, by itself, a complete system of propositional calculus.  
-In the following papers  \cite{rob,robinson-general} he generalizes the resolution principle to hyper-resolution principle. 
+In the following papers  \cite{rob,robinson-general}, he generalizes the resolution principle to hyper-resolution principle. 
 The main advantage of the latter  is that, while deduction trees in resolution calculus are binary, the trees in hyper-resolution calculus can branch more  and deductions are more compact.
 
 
+\newpage\vspace*{1mm}
 In 1980 Lifschitz, starting from Matiyasevich's work, applied hyper-resolution to algebra \cite{lifschitz}; in particular he proved Hilbert's Nullstellensatz using the Robinson's completeness theorem of hyper-resolution calculs. 
 To achieve that proof, Lifschitz elaborated four equivalent versions of the completeness theorem; the last one is formulated in such a way that can be readily applied to many kind of problems.
 
@@ -114,7 +115,7 @@ In this work we will see several applications of the hyper-resolution calculus t
 In the first chapter, we will give a definition of the hyper-resolution calculus; since we are interested in applications, we will take in particular account the Lifschitz's versions of the completeness theorem. The second chapter is dedicated to algebraic applications; the main goal is to see how the tools developed in chapter 1 can be applied to commutative algebra. To that aim, first we will see how it is possible to represent vector space and fields using hyper-resolutions, then we will use such knowledge to prove the Nullstellensatz. 
 
 In the last chapter we will see several applications to graph theory. We will focus on coloring problems, and we will see two different ways to describe a coloring map using hyper-resolution. We will move from 
-Matiyasevich's work \cite{mat-2,mat-3,mat-1}, and we will see his results using Lifschitz's versions of complete theorem.  We preferred to use Lifschitz's approach since it is more direct and clear than Matiyasevich's original one. 
+Matiyasevich's work \cite{mat-2,mat-3,mat-1}, and we will see his results using Lifschitz's versions of the completeness theorem.  We preferred to use Lifschitz's approach since it is more direct and clear than Matiyasevich's original one. 
 
 
 
@@ -420,10 +421,10 @@ We want to give a hyper-resolution interpretation to the vector spaces over a gi
 - the unary relation symbol $=0$\\
 Terms of this language are the linear forms of $K$, and atomic formulae are \\homogeneous linear equations. For any terms $r,s$, $r=s$ stands for $r-s=0$. Now consider the following axioms
 \begin{eqnarray}
-&0\cdot r =0 \\
+&0\cdot r =0 \\ \label{vec.spac1}
 &r_1=0\rightarrow r_2 =0  \qquad (r_1,r_2 \texttt{ represent the same linear form}) \\
 & ( r=0 \e s=0 )\rightarrow r+s =0 \\
-& r=0 \rightarrow \alpha\cdot r =0
+& r=0 \rightarrow \alpha\cdot r =0 \label{vec.spac.ultimo}
 \end{eqnarray}
 These axioms imply all equality axioms and axioms of vector spaces over $K$. The models of this theory, factorized with respect to $x=y$, are precisely the vector spaces over $K$.
 We will refer to the set of all possible instances of these axioms as the set $L$, which gives rise to the calculus $H_L$. 
@@ -1212,16 +1213,52 @@ Conversely, suppose that $G$ contains $\mu_n$, by \ref{pr-nocolor} $\,G$ is not 
 \addcontentsline{toc}{chapter}{Conclusions}
 
 In these pages we saw that the hyper-resolution calculus is a powerful tool not only in proof theory, but also in fields apparently very different such as algebra and graph theory. 
-A remarkable point is that proof based on Robinson's theorem are constructive, and an implementation of the proof with a  programming language such as \textsc{Coq} or \textsc{Agda}, would give rise to an actual algorithm. 
+A remarkable point is that proof based on Robinson's theorem are constructive, and an implementation of the proof with a  proof assistant such as \textsc{COQ} or \textsc{AGDA}, would give rise to an actual algorithm. 
 For example, it would be interesting to implement the proof of the proposition \ref{mio} on bipartite graphs, the expected result is a program that takes a non-bipartite graph as input, and returns an odd cycle of such graph.
 
-The chapter about algebra showed how it is possible to represent fields and vector spaces using hyper-resolution calculus. We used this representation and the Robinson's theorem to prove the Hilbert's Nullstellensatz
+The chapter about algebra showed how it is possible to represent fields and vector spaces using hyper-resolution calculus. We used this representation and the Robinson's theorem to prove the Hilbert's Nullstellensatz, it may be interesting to use the same approach for other theorems about fields and polynomials.
+Possible further applications are about partially ordered groups; in particular, a challenging application may be Levi's theorem \cite{fuchs}, which says that a p.o. group is totally orderable if and only if is torsion free. 
+
+In the last chapter we saw few problems about coloring graphs. We saw two different ways to represent the property of a graph "to be colorable with $n$ colors"; one based on the relation among vertices $\E xy$ which is interpreted to be true when $x$ and $y$ have the same color, and one on the relation $x\geq y$ which is true when "$x$ has a color-number greater or equal than the color-number of $y$".
+ These two different approaches are equally good, however we saw that the first one was useful to deal with bipartite and $\mu_n$ graphs, while the second one with problems related to orientations of a graph.
+ 
+In all these different applications, we can distinguish at least two different steps which are equally important; first of all one should find a good set of axioms that represent the environment of the problem.
+ Then, one tries to get the required result out of the derivation provided by Robinson's theorem.
+The chapter about graphs shows that, when the second step seems not feasible, it may be useful to go back to the first one and look for another set of axioms.
+
+Besides this last observation, we can notice that any formula of the kind  
+$\bigwedge_{i=1}^m A_i \rightarrow \bigvee_{j=1}^n B_j $
+is classically equivalent to $\bigwedge_{j=1}^n \neg B_j \rightarrow \bigvee_{i=1}^m \neg A_i $. For instance the set of axioms \ref{symmetry-axiom}, \ref{color-prop1}, \ref{color-prop2}, \ref{color-prop3} is equivalent to the following one
+
+\begin{center}
+\begin{tabular}{cc}
+$\neg \E yx \rightarrow \neg \E xy  $&
+$\neg \E xz \rightarrow \neg \E xy \o \neg\E yz $\\
+$( xy \in E \Rightarrow ) \;  \neg \E xy $&
+$\neg(\neg\E x_0x_1\e\cdots\e\neg\E x_{n-1}x_n ) $
+\end{tabular}
+\end{center}
+which gives rise to the following rules
+\begin{center}
+\begin{tabular}{rc}
+\prftree{\Gamma \cup \neg \E yx }{ \Gamma\cup \neg \E xy } &
+\prftree{\Gamma \cup \neg \E xz }{\Gamma \cup \{ \neg\E xy, \neg\E yz \} }\\
+\prftree[l]{$\quad xy \in E $}{\Gamma }{ \Gamma \cup \neg\E xy } &
+\prftree{\Gamma_1\cup \E x_0 x_1 } {\cdots} {\Gamma_n \cup \E x_{n-1} x_n }{\Gamma_1\cup\cdots\cup\Gamma_n}
+\end{tabular}
+\end{center}
+This means that, any set of axioms corresponds to at least to different hyper-resoluton calculus.
 
 
 
 
 
 
+
+
+
+
+ 
 
 \include{bibliography}
 
