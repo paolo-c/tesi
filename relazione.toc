@@ -14,7 +14,7 @@
 \contentsline {subsection}{Directed graphs}{29}{section*.7}
 \contentsline {section}{\numberline {3.2}Hyper-resolution approach to coloring}{33}{section.3.2}
 \contentsline {subsection}{Bipartite graphs}{36}{section*.10}
-\contentsline {subsection}{Gallai-Hasse-Roy-Vitaver theorem}{40}{section*.13}
-\contentsline {subsection}{$\mu _n$ graphs}{43}{section*.14}
-\contentsline {chapter}{Conclusions}{48}{chapter*.17}
-\contentsline {chapter}{Bibliography}{50}{section*.18}
+\contentsline {subsection}{Gallai-Hasse-Roy-Vitaver theorem}{41}{section*.13}
+\contentsline {subsection}{$\mu _n$ graphs}{44}{section*.14}
+\contentsline {chapter}{Conclusions}{49}{chapter*.17}
+\contentsline {chapter}{Bibliography}{51}{section*.18}
