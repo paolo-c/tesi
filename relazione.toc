@@ -6,7 +6,7 @@
 \contentsline {subsection}{Trivial applications}{10}{section*.3}
 \contentsline {chapter}{\numberline {2}Applications to commutative algebra}{12}{chapter.2}
 \contentsline {section}{\numberline {2.1}Basic notions of commutative algebra}{13}{section.2.1}
-\contentsline {section}{\numberline {2.2}Applications}{16}{section.2.2}
+\contentsline {section}{\numberline {2.2}Applications}{15}{section.2.2}
 \contentsline {subsection}{Linear equations}{16}{section*.4}
 \contentsline {subsection}{Nullstellensatz}{18}{section*.5}
 \contentsline {chapter}{\numberline {3}Applications to graph theory}{24}{chapter.3}
@@ -14,7 +14,7 @@
 \contentsline {subsection}{Directed graphs}{29}{section*.7}
 \contentsline {section}{\numberline {3.2}Hyper-resolution approach to coloring}{33}{section.3.2}
 \contentsline {subsection}{Bipartite graphs}{36}{section*.10}
-\contentsline {subsection}{Gallai-Hasse-Roy-Vitaver theorem}{41}{section*.13}
-\contentsline {subsection}{$\mu _n$ graphs}{44}{section*.14}
-\contentsline {chapter}{Conclusions}{49}{chapter*.17}
-\contentsline {chapter}{Bibliography}{51}{section*.18}
+\contentsline {subsection}{Gallai-Hasse-Roy-Vitaver theorem}{41}{section*.12}
+\contentsline {subsection}{$\mu _n$ graphs}{44}{section*.13}
+\contentsline {chapter}{Conclusions}{49}{chapter*.16}
+\contentsline {chapter}{Bibliography}{51}{section*.17}

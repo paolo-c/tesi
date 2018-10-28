@@ -98,7 +98,7 @@ Paolo Comensoli}, pagebackref=false,bookmarksopen=true]{hyperref}
 \markboth{Introduction}{Introduction}
 
 In 1972 Matiyasevich published an article titled \textit{Application of the methods of the theory of logical derivation to graph theory} \cite{mat-2}, in which the author successfully applies proof theoretic tools to graph theory, a field of mathematics that can appear quite far from logic. 
-In that paper Matiyasevich  gives an inductive definition of "a graph which cannot be colored with $n$ colors." and uses it to formulate  Hadwiger's conjecture and the four colour theorem. 
+In that paper Matiyasevich  gives an inductive definition of "a graph which cannot be colored with $n$ colors." and uses it to formulate  Hadwiger's conjecture and the four color theorem. 
 Such formulations are said by  Matiyasevich to be "useful in investigation of the above hypotheses" \cite{mat-2}; this may be one of the reasons that made him publish, in 1974 and 1975, two further papers \cite{mat-3,mat-1} on the argument.
  In those articles he generalizes his approach, and finds new applications such as Vitaver's theorem on coloring of directed graphs.
 
@@ -188,7 +188,7 @@ If a set $S$ of clauses is unsatisfiable, then there is a refutation of $S$.
 The resolution principle is generalized by the following hyper-resolution principle:
 
 \textit{From $\Gamma_1\cup A_1,\cdots\Gamma_m\cup A_m $ one may infer the resolvent $\Gamma_1\cup\cdots\cup\Gamma_m\cup \Sigma$, whenever $A_1\e\cdots\e A_m\rightarrow \overline{\Sigma}$}\\  
-This inference priciple gives rise to the hyper-resolution calculus, which is sound and complete \cite{rob,robinson-general}. While the proof trees made with the resolution principle are binary, any node in a hyper-resolution tree can have any number of predecessors.
+This inference principle gives rise to the hyper-resolution calculus, which is sound and complete \cite{rob,robinson-general}. While the proof trees made with the resolution principle are binary, any node in a hyper-resolution tree can have any number of predecessors.
 
 
 \section{Lifschitz's versions}
@@ -279,7 +279,7 @@ For any clauses $\Gamma_1, \cdots ,\Gamma_l , \Delta$, if in every model of $T$,
 then  $\Gamma_1, \cdots ,\Gamma_l \vdash_{H_T} \Delta'$ , for some $\Delta' \subseteq \Delta$.
 \end{theorem}
 
-\textit{Proof:} If \ref{f_rob3} is valid in every model of $T$, since all the formulae in $T$ and \ref{f_rob3} are quantifier free; by completness of the propositional calculus $T\vdash (\overline{\Gamma}_1\e\cdots\e\overline{\Gamma}_l )\rightarrow\overline{\Delta}$. Then by the second version of Robinson's theorem, there is $\Delta' \subseteq \Delta$ such that $\Gamma_1, \cdots ,\Gamma_l \vdash_{H_T} \Delta'$ \QED
+\textit{Proof:} If \ref{f_rob3} is valid in every model of $T$, since all the formulae in $T$ and \ref{f_rob3} are quantifier free; by completeness of the propositional calculus $T\vdash (\overline{\Gamma}_1\e\cdots\e\overline{\Gamma}_l )\rightarrow\overline{\Delta}$. Then by the second version of Robinson's theorem, there is $\Delta' \subseteq \Delta$ such that $\Gamma_1, \cdots ,\Gamma_l \vdash_{H_T} \Delta'$ \QED
 
 \newpage
 \subsection*{Trivial applications}
@@ -344,9 +344,9 @@ The second section presents actual applications of the hyper-resolution principl
 Second a proof of Hilbert's Nullstellensatz is presented; to do so we also need to represent the products between polynomials, so more axioms are required and the resolution calculus becomes richer.
 
 The Nullstellensatz was first proved by Hilbert \cite{Hilbert} in 1892 , and is widely known to be a fundamental theorem for algebraic geometry. Lang, in his book,  shows Rabinowitsch's proof (1929) which is so terse that the original article \cite{Rabin} consists only of one page. 
-In the second section we see the proof proposed by Lifschitz \cite{lifschitz} in 1980, this proof relies on Robinson's theorem and has two main perks; it is completely constructive, and requires a minimal algebraic background. 
+In the second section we see the proof proposed by Lifschitz \cite{lifschitz} in 1980, this proof relies on Robinson's theorem.% and has two main perks; it is completely constructive, and requires a minimal algebraic background. 
 
-
+%----------------------------------------qua
 
 
 \section{Basic notions of commutative algebra}
@@ -464,9 +464,9 @@ If $\Gamma_i$ is a singleton for $i=1,..,l$, then all the nodes of the derivatio
 If every solution of a system of linear equations $r_1=0,...,r_l=\nobreak 0$  is a solution of a linear equation $s=0$; then $s$ is linear combination of $r_1,...,r_l$
 \end{proposition}
 
-\textit{Proof:} Let $\Delta$ be the singleton clause $\{s=0\}$, for each equation $r_i=0$  let $\Gamma_i=\{r_i=0\}$; then 
+\textit{Proof:} Let $\Delta$ be the singleton clause $\{s=0\}$, for each equation $r_i=0$  let $\Gamma_i=\{r_i=0\}$; then the hypothesis can be written as
 $$ \bigwedge_{i=1}^l \Gamma_i \rightarrow \Delta $$
-by Robinson's Theorem, there is a derivation in $H_T$ of some $\Delta' \subseteq\Delta$ without trivial application. By Lemma \ref{lemma_nempty} $\Delta'$ is not the empty set,  and  since $\Delta$ is a singleton , $\Delta'=\Delta$ and $ \Gamma_1,...,\Gamma_l \vdash_{H_L} \Delta  $.
+Therefore, by Robinson's Theorem, there is a derivation in $H_T$ of some $\Delta' \subseteq\Delta$ without trivial application. By Lemma \ref{lemma_nempty} $\Delta'$ is not the empty set,  and  since $\Delta$ is a singleton , $\Delta'=\Delta$ and $ \Gamma_1,...,\Gamma_l \vdash_{H_L} \Delta  $.
 Since all the premises are singletons, by Lemma \ref{lemma_onlysingletons} all the nodes are singletons. The literals in $H_L$ are linear equations and when used as premises for rules (\ref{rule2}), (\ref{rule3}), (\ref{rule4}), the conclusion is a linear combination of the premises. 
 Hence $s$ is linear combination of $r_1,...,r_l$.\QED
 
@@ -664,7 +664,7 @@ because  $f^p$ is obtained by a series of applications of rules (\ref{eqpoly}) -
 
 
 \chapter{Applications to graph theory}%----------------------------- CAPITOLO 3
-In this chapter we discuss applications of the hyper-resolution principle to graph theory, in particular we  face two different and equivalent ways of describing $n$-colorable graphs via resolution. The first approach relies on propositions of the kind "the vertex $x$ has the same color of the vertex $y$", this method is used to give a constructive proof that a graph is 2-colorable if and only if it does not contain odd cycles. The second approach assigns to each color a number, and relies on proposition of the kind "the vertex $x$ has a color number smaller than the one of $y$", in other words this method introduces a partial order on the vertices and therefore it introduces a stronger transitivity rule. This method is used to prove the Gallai-Hasse-Roy-Vitaver theorem, which gives a characterization of the chromatic number of a simple graph, by describing a partial order among vertices using directed paths, and retrieving the $n$-colurable property by showing that such order can be used also for colors. 
+In this chapter we discuss applications of the hyper-resolution principle to graph theory, in particular we  face two different and equivalent ways of describing $n$-colorable graphs via resolution. The first approach relies on propositions of the kind "the vertex $x$ has the same color of the vertex $y$", this method is used to give a proof that a graph is 2-colorable if and only if it does not contain odd cycles. The second approach assigns to each color a number, and relies on proposition of the kind "the vertex $x$ has a color number smaller than the one of $y$", in other words this method introduces a partial order on the vertices and therefore it introduces a stronger transitivity rule. This method is used to prove the Gallai-Hasse-Roy-Vitaver theorem, which gives a characterization of the chromatic number of a simple graph, by describing a partial order among vertices using directed paths, and retrieving the $n$-colorable property by showing that such order can be used also for colors. 
 Both methods are described by Matiyasevich in 1975 \cite{mat-1}; in this article Matiyasevich defines how it is possible to apply hyper-resolutions to discrete mathematics, and applies his method to coloring problems.
 Last, we describe the $\mu_n$ graphs, a family of graphs introduced in 1972 by Matiyasevich \cite{mat-2}, in order to give an inductive definition of the property "a graph which cannot be colored with $n$ colors". This definition lets us generalize the characterization of bipartite (2-colorable) graphs, and lets state the four color theorem and the Hadwiger conjecture in terms of $\mu_n$ graphs.
 
@@ -798,7 +798,7 @@ $$\chi (G)=1+\ell$$
 \textit{Proof:}
 Let $D$ be an orientation of $G$ such that 
 $$\ell(D)=\ell=\textrm{min}\{\ell(D') \; 	,D' \textrm{ orientation of } G\}$$ 
-then by Theorem \ref{vitaver} $\chi(G) \leq 1+\ell$. On the other hand by Proposition \ref{prop-vitaver-easy} for some orientatin $D'$  of $G$, $\chi(G)\geq 1+\ell(D')$; therefore, since $\ell(D')\geq\ell$ 
+then by Theorem \ref{vitaver} $\chi(G) \leq 1+\ell$. On the other hand by Proposition \ref{prop-vitaver-easy} for some orientation $D'$  of $G$, $\chi(G)\geq 1+\ell(D')$; therefore, since $\ell(D')\geq\ell$ 
 $$\chi (G)=1+\ell$$\QED
 
  
@@ -824,7 +824,7 @@ Also for an $n$-coloring we require that whenever we pick $n+1$ vertices, at lea
 \end{equation}
 Conversely if a binary symbol satisfies the above axioms, then it corresponds to some coloring map. More formally, for every graph $G=(V,E)$, we consider the language $\mathscr{L}=\{\E\}\cup V\cup E$, where $\E$ is a binary relation symbol, and $V\cup E$ contains the constants. The models of the formulae (\ref{symmetry-axiom})-(\ref{color-prop3}) are the $n$-colorable graphs that contain $G$; and if $G$ is not $n$-colorable, then  the axioms are inconsistent and there are no models. 
 \begin{definition}
-Let $G$ be a simple graph and $n$ a positive natural number; then we call $C_{G,n}$ the set of all possible formualae of the form (\ref{color-prop1}), (\ref{symmetry-axiom}), (\ref{color-prop2}), and (\ref{color-prop3}). The resolution calculus that comes from $C_{G,n}$ is denoted as $H_{G,n}$.
+Let $G$ be a simple graph and $n$ a positive natural number; then we call $C_{G,n}$ the set of all possible formulae of the form (\ref{color-prop1}), (\ref{symmetry-axiom}), (\ref{color-prop2}), and (\ref{color-prop3}). The resolution calculus that comes from $C_{G,n}$ is denoted as $H_{G,n}$.
 \end{definition}
 The hyper-resolution calculus $H_{G,n}$ has the following rules
 \begin{equation}
@@ -928,7 +928,7 @@ Here $\Delta$ is the second premise in the case that $x$ is (\ref{trans}), other
 \subsection*{Bipartite graphs}
 \addcontentsline{toc}{subsection}{Bipartite graphs}
 Now we see, using resolution methods, that a graph is bipartite  if and only if it does not contain odd cycles. First we show that any graph $G$ with an odd cycle is not 2-colorable and therefore not bipartite; this can be done by directly showing that the empty set can be derived in $H_{G,2}$. 
-Second, that whenever a graph $G$ is not 2-colorable, there is an odd cylce in $G$. This second proof relies on Robinson's Theorem and is constructive; given a non bipartite graph, it shows how to build an odd cycle which is a subgraph of it. 
+Second, that whenever a graph $G$ is not 2-colorable, there is an odd cycle in $G$. This second proof relies on Robinson's Theorem; given a non bipartite graph, it shows how to build an odd cycle which is a subgraph of it. 
 
 \begin{proposition}
 Let $G=(V,E)$ be a graph that contains an odd cycle; then $G$ is not 2-colorable 
@@ -965,36 +965,63 @@ The idea shown by the last tree is that, if the graph is 2-colorable with a ($2n
 
 The opposite direction is less trivial, and the proof requires  Robinson's theorem; before showing it, we need the following lemma about odd cycles.
 
-\begin{lemma}\label{tech-lemma-graph}
-Let $C_1=(V_1,E_1)$ and $C_1=(V_2,E_2)$ be two odd cycle such that $xy\in E_1\setminus E_2$ and 
-$yz\in E_2\setminus E_1$;  then the graph $G=(V_1\cup V_2, E_1\cup E_2\setminus\{xy,yz\}\cup\{xz\})$ contains an odd cycle.
-\end{lemma}
-\textit{Proof:} 
-Let $2n+1$ and $2m+1$ respectively the length of $C_1$ and $C_2$, if $y$ is the only vertex in the intersection,	 by removing the edges $xy,yz$ and adding $xz$ we get a cycle in $G$ of length $2(n+m)+1$. 
-\begin{figure*}[h]
-\includegraphics[scale=0.23]{oddcycles1.eps}
-\end{figure*}
+%\begin{lemma}\label{tech-lemma-graph}
+%Let $C_1=(V_1,E_1)$ and $C_1=(V_2,E_2)$ be two odd cycle such that $xy\in E_1\setminus E_2$ and 
+%$yz\in E_2\setminus E_1$;  then the graph $G=(V_1\cup V_2, E_1\cup E_2\setminus\{xy,yz\}\cup\{xz\})$ contains an odd cycle.
+%\end{lemma}
+%\textit{Proof:} 
+%Let $2n+1$ and $2m+1$ respectively the length of $C_1$ and $C_2$, if $y$ is the only vertex in the intersection,	 by removing the edges $xy,yz$ and adding $xz$ we get a cycle in $G$ of length $2(n+m)+1$. 
+%\begin{figure*}[h]
+%\includegraphics[scale=0.23]{oddcycles1.eps}
+%\end{figure*}
+%
+%\newpage
+%It remains to consider when $C_1$ and $C_2$ intersect multiple times, let $P$ and $Q$ be the longest path respectively of $C_1$ and $C_2$ with $y\in P\cap Q$ and where the only vertices that belong to $V_1\cap V_2$ are the endpoints of the paths.
+%Then $P\cup Q$ is a cycle that passes trough the edges $xy$ and $yz$, if the length of such cycle is even, by removing $xy,yz$ and adding $xz$ we get an odd cycle in $G$.
+%
+%\begin{figure}[h]
+%\centering
+%\includegraphics[scale=0.5]{oddcycles-interceptions.eps}
+%\caption{In blue $C_1 \backslash C_2 $, in green $C_2\backslash C_1 $ and in black the intersection }
+%\end{figure}
+%If $P\cup Q$ is an odd cycle, consider the remaining part which namely consists of $C_1\cap C_2$ and of $\tilde{C}_1,..,\tilde{C}_l$ cycles, then at at least one of them must be odd since $|P\cup Q|$ is odd and the following holds $$2n+1+2m+1-|P\cup Q| = \sum^l_{i=1} length(\tilde{C}_i) + 2\cdot |V_1\cap V_2|   $$
+%Finally, since $xy\in P$ and $yz\in Q$, such odd cycle is also in $G$. 
+%\QED
 
-\newpage
-It remains to consider when $C_1$ and $C_2$ intersect multiple times, let $P$ and $Q$ be the longest path respectively of $C_1$ and $C_2$ with $y\in P\cap Q$ and where the only vertices that belong to $V_1\cap V_2$ are the endpoints of the paths.
-Then $P\cup Q$ is a cycle that passes trough the edges $xy$ and $yz$, if the length of such cycle is even, by removing $xy,yz$ and adding $xz$ we get an odd cycle in $G$.
+\vspace*{-0.1cm}
+\begin{lemma}\label{tech-lemma-graph}
+Let $C_1=(V_1,E_1)$ and $C_2=(V_2,E_2)$ be two odd cycle such that $xy\in E_1\setminus E_2$ and 
+$yz\in E_2\setminus E_1$;  then the graph $G=C_1\cup C_2\setminus\{xy,yz\}\cup\{xz\}$ contains an odd cycle.
+\end{lemma}\textit{Proof: }Let $2n+1$ and $2m+1$ respectively the length of $C_1$ and $C_2$. If $y$ is the only vertex in the intersection, then  $G$ is a cycle of length $2(n+m)+1$. 
+\vspace*{-0.1cm}
+\begin{center}
+\includegraphics[scale=0.2]{oddcycles1.eps}
+\end{center}
+
+
+\newpage\noindent
+If the two cycles intersect multiple times, let $V'=V_1\cup V_2$, $E'=E_1\cup E_2\setminus (E_1\cap E_1)$, and consider the graph $G'=(V',E')$ .
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{oddcycles-interceptions.eps}
-\caption{In blue $C_1 \backslash C_2 $, in green $C_2\backslash C_1 $ and in black the intersection }
+\includegraphics[scale=0.11]{oddcycles-interceptions.eps}
+\caption{The two cycles $C_1$ and $C_2$. In blue $C_1 \backslash C_2 $, in green $C_2\backslash C_1 $, and in black the $C_1\cap C_2$. $G'$ is obtained by removing the black part.} 
 \end{figure}
-If $P\cup Q$ is an odd cycle, consider the remaining part which namely consists of $C_1\cap C_2$ and of $\tilde{C}_1,..,\tilde{C}_l$ cycles, then at at least one of them must be odd since $|P\cup Q|$ is odd and the following holds $$2n+1+2m+1-|P\cup Q| = \sum^l_{i=1} length(\tilde{C}_i) + 2\cdot |V_1\cap V_2|   $$
-Finally, since $xy\in P$ and $yz\in Q$, such odd cycle is also in $G$. 
-\QED
 
+We notice three facts about $G'$. First that it is composed only by primitive cycles, say $\tilde{C_1},\cdots,\tilde{C_l}$, that are pairwise edge-disjoint; that it has an even number of edges, since $|E'|=2n+1+2m+1-2|E_1\cap E_2|$; and that $xy,yz\in E'$, since $xy,yz\notin E_1\cap E_2$.
+
+If there is a cycle $\tilde{C_i}$ which is odd and does not contain either $xy$ nor $yz$, then such cycle is also in $G$. 
+Thus suppose that every $\tilde{C_i}$ such that $xy,yz\notin \tilde{C_i}$ is of even length. 
+Now we distinguish two cases, first that  $xy,yz\in\tilde{C_1}$, second that $xy\in\tilde{C_1}$ and $yz\in\tilde{C_2}$. 
+In the first case $\tilde{C_1}$ is even since $|\tilde{C_1}|=|E'|-\Sigma_{i=1}^l |\tilde{C_i}|$; thus we take $C=\tilde{C_1}\setminus\{xy,yz\}\cup\{xz\}$ which is an odd cycle.
+In the second case $|\tilde{C_1}\cup\tilde{C_2}|$ is even, and we take $C=\tilde{C_1}\cup\tilde{C_2}\setminus\{xy,yz\}\cup\{xz\}$ . In both cases $C$ is an odd cycle of $G$. \QED\newpage
 
 
 \begin{proposition} \label{mio}
 If a graph $G=(V,E)$ is not 2-colorable, then it has an odd cycle
 \end{proposition}
 \textit{Proof:}
-If $G$ is not 2-colorbale, also every graph that contains $G$ is not 2-colorable; therefore by Robinson's Theorem, we know that  $\vdash_{H_{G,2}} \emptyset$. Consider a derivation of $\emptyset$  that respects Lemma \ref{lemma_rules}, in particular that it does not have trivial application, and all the applications of the elimination rule (\ref{jred}) are close to the root.
+If $G$ is not 2-colorable, also every graph that contains $G$ is not 2-colorable; therefore by Robinson's Theorem, we know that  $\vdash_{H_{G,2}} \emptyset$. Consider a derivation of $\emptyset$  that respects Lemma \ref{lemma_rules}, in particular that it does not have trivial application, and all the applications of the elimination rule (\ref{jred}) are close to the root.
 Now we proceed by induction on the number $k$ of applications of the transitivity rule (\ref{trans}).
 If $k=0$ the tree is of the form:
 \begin{eqnarray*}
@@ -1027,17 +1054,19 @@ Let $E'=E\cup\{xy,yz\}$ and $G'=(V,E' )$ ; then the derivations $\D_i$ and $\D'_
 {\emptyset}
 \end{eqnarray*}
 In both trees the number of applications of the rule (\ref{trans}) is certainly less than $k$; then by induction hypothesis $G'$ has two odd cycles $C_1$ and $C_2$. If $C_1=C_2$, $\E xy \in \Gamma_2$, and $\E yz \in \Gamma_1$, whence $xy,yz\in E$ and $C_1$ is also in $G$.
-\\Let $E_i$ be the set that contains the edges of $C_i$, such sets cannot coincides otherwise $C_1=C_2$.
+
+Let $E_i$ be the set that contains the edges of $C_i$, such sets cannot coincides otherwise $C_1=C_2$.
 If $xy,yz \notin E_1$, then $E_1\subseteq E$ and $C_1$ is a cycle of $G$. 
+Thus suppose it is not the case that $xy,yz \notin E_1$, i.e. $xy \in E_1 \o yz\in E_1 $. 
 
-Thus suppose is not the case that $xy,yz \notin E_1$, i.e. $xy \in E_1 \o yz\in E_1 $. Suppose first that $yz\in E_1$, then $\E yz\in\Gamma_1$ and $yz\in E$; if $xy\notin E_2$, then $E_2\subseteq E$, otherwise $\E xy \in \Gamma_2$ and $xy\in E$, in both cases  $E_2\subseteq E$ and $G$ contains $C_2$. Therefore it remain 
-the case $yz\notin E_1 \e xy\in E_1$. Similarly we can conclude  $yz\in E_2 \e xy\notin E_2$, whence $xy\in E_1\setminus E_2$ and $yz\in E_2\setminus E_1$
+Suppose that $yz\in E_1$, then $\E yz\in\Gamma_1$ and $yz\in E$; if $xy\notin E_2$, then $E_2\subseteq E$, otherwise $\E xy \in \Gamma_2$ and $xy\in E$, in both cases  $E_2\subseteq E$ and $G$ contains $C_2$.
+ Therefore it remain the case $yz\notin E_1 \e xy\in E_1$. Similarly we conclude  $xy\notin E_2 \e yz\in E_2$, whence $xy\in E_1\setminus E_2$ and $yz\in E_2\setminus E_1$.
 
-Finally we can apply Lemma  \ref{tech-lemma-graph}, the resulting graph is a subgraph of $G$ since $E_1\cup E_2\setminus\{xy,yz\}\cup\{xz\} \subseteq E $, and therefore it has the required odd cycle. 
-\QEDn
+Finally we can apply Lemma  \ref{tech-lemma-graph}, the resulting graph is a subgraph of $G$ since $E_1\cup E_2\setminus\{xy,yz\}\cup\{xz\} \subseteq E $, and $G$ has the required odd cycle. 
+\QED
 
-\newpage
-\subsection*{Gallai-Hasse-Roy-Vitaver theorem}
+ 
+\newpage\subsection*{Gallai-Hasse-Roy-Vitaver theorem}
 \addcontentsline{toc}{subsection}{Gallai-Hasse-Roy-Vitaver theorem}
 
 Another way to describe a proper coloring of a graph, is by introducing a partial order on the colors, indeed we may use the binary symbol $<$ and write $x<y$ to say "the vertex $x$ is colored in a color smaller than the one of the vertex $y$". We shall write $x\geq y $ instead of $\neg (x<y)$. The role of the formulas (\ref{color-prop1}), (\ref{color-prop2}) and (\ref{color-prop3}) is now played by 
@@ -1121,7 +1150,7 @@ To the best of our knowledge, in the literature there are no other graphs define
 
 The $\mu_1$ graphs are of little interest. The complete graph with two vertices, $K^2$, is a single edge; when two edges are composed according to the definition, the result is a single edge. Thus all $	\mu_1$ graphs are single edges; and every graph that contains  an edge, contains a $\mu_1$ graph. Clearly $\mu_1$ graphs are not 1-colorable; and graphs that are not 1-colorable contain at least one edge.
 
-$\mu_2$ graphs are more interesting; they characterize bipartite graphs, and can give a better insight of generic $\mu_n$ graphs. Clearly all the odd cylces are $\mu_2$ graphs; on the other hand, not all $\mu_2$ graphs are odd cycles, the following example shows a $\mu_2$ graph which is not a cycle and which can be built using the definition and starting by a 3-cycle and a 5-cycle 
+$\mu_2$ graphs are more interesting; they characterize bipartite graphs, and can give a better insight of generic $\mu_n$ graphs. Clearly all the odd cycles are $\mu_2$ graphs; on the other hand, not all $\mu_2$ graphs are odd cycles, the following example shows a $\mu_2$ graph which is not a cycle and which can be built using the definition and starting by a 3-cycle and a 5-cycle 
 \begin{figure*}[h]
 \centering\includegraphics[scale=0.25]{mu2.eps}
 \end{figure*}
@@ -1221,8 +1250,8 @@ Conversely, suppose that $G$ contains $\mu_n$, by \ref{pr-nocolor} $\,G$ is not 
 \addcontentsline{toc}{chapter}{Conclusions}
 
 In these pages we saw that the hyper-resolution calculus is a powerful tool not only in proof theory, but also in fields apparently very different such as algebra and graph theory. 
-A remarkable point is that proofs based on Robinson's theorem are constructive, and an implementation of the proof with a  proof assistant such as \textsc{COQ} or \textsc{AGDA}, would give rise to an actual algorithm. 
-For example, it would be interesting to implement the proof of the Proposition \ref{mio} on bipartite graphs, the expected result is a program that takes a non-bipartite graph as input, and returns an odd cycle of such graph.
+A remarkable point is that proofs based on hyper-resolution and Robinson's theorem can be implemented in a  proof assistant such as \textsc{COQ} or \textsc{AGDA}.
+For example, it may be interesting to implement the proof of the Proposition \ref{mio} on bipartite graphs, the expected result is a program that takes a non-bipartite graph as input, and returns an odd cycle of such graph.
 
 The chapter about algebra showed how it is possible to represent fields and vector spaces using hyper-resolution calculus. We used this representation and the Robinson's theorem to prove the Hilbert's Nullstellensatz, it may be interesting to use the same approach for other theorems about fields and polynomials.
 Possible further applications are about partially ordered groups; in particular, a challenging application may be Levi's theorem, which says that a p.o. group is totally orderable if and only if it is torsion free\cite{fuchs}. 
@@ -1255,7 +1284,7 @@ which gives rise to the following rules
 \prftree{\Gamma_1\cup \E x_0 x_1 } {\cdots} {\Gamma_n \cup \E x_{n-1} x_n }{\Gamma_1\cup\cdots\cup\Gamma_n}
 \end{tabular}
 \end{center}
-This means that, any set of axioms corresponds to at least two different hyper-resoluton calculi.
+This means that, any set of axioms corresponds to at least two different hyper-resolution calculi.
 
 
 
