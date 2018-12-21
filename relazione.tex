@@ -35,11 +35,9 @@ Paolo Comensoli}, pagebackref=false,bookmarksopen=true]{hyperref}
 \setlength{\topmargin}{.25in}     % Distance from top to PAGE'S HEAD -1 inch
 \setlength{\textheight}{225mm}    % Height of the body of page
 \setlength{\headheight}{0mm}      % Height of a box containing the head
-\setlength{\parskip}{1mm}         % Extra vertical space before a paragraph
+\def \Myparskip {1mm} \setlength{\parskip}{\Myparskip}         % Extra vertical space before a paragraph
 \setlength{\parindent}{9mm}       % Width of the indentation 
-\linespread{1.65}                 % Line spacing        
-
-
+\def \Mylinespacing{1.65}\linespread{\Mylinespacing}                 % Line spacing        
 
 
 
@@ -81,15 +79,17 @@ Paolo Comensoli}, pagebackref=false,bookmarksopen=true]{hyperref}
 %\include{epigrafe}
 
 
+
+
 %----------------------------------Page of table of contents
 
-\setlength{\parskip}{-0.7mm} 
+\setlength{\parskip}{-0.65mm}%-0.7 
 \pdfbookmark{\contentsname}{Contents}
 \setcounter{page}{1}
 \tableofcontents
 \thispagestyle{empty}
 \newpage
-\setlength{\parskip}{1mm} 
+\setlength{\parskip}{\Myparskip} 
 
 
 
@@ -130,7 +130,7 @@ The hyper-resolution principle is a natural generalization which was formulated 
 \section{Preliminaries}
 The aim of this section is to introduce the resolution calculus. First of all we introduce some elements which are necessary to define the trees of this calculus; secondly we state the resolution principle. We take for granted some basic notions such as terms, relation symbols and atomic formulae. 
 \begin{itemize}
-\item A \textit{literal:} is either an atomic formula, or has the form $\neg A$ where $\neg$ is the negation symbol and $A$ is an atomic formula. The literals $A,\,\neg A$ are \textit{complementary}, and each is the \textit{complement} of the other. Literals will be denoted using capital Latin letters $A,B,C,...$.
+\item A \textit{literal:} is either an atomic formula, or has the form $\neg A$ where $\neg$ is the negation symbol and $A$ is an atomic formula. The literals $A,\,\neg A$ are \textit{complementary}, and each is the \textit{complement} of the other. Literals will be denoted using Latin capital  letters $A,B,C,...$.
 \item A \textit{clause:} is a finite set of literals. Clauses are denoted by Greek capital letters $\Gamma,\Sigma ,\Pi,...$. The singleton $\{A\}$ is denoted by its element $A$, so that $\Gamma\cup A$ stands for $\Gamma\cup\{A\}$.
 \item if $\Gamma$ is a clause, $\overline{\Gamma}$ is the disjunction of the elements of $\Gamma$ in a fixed order.
 \item A \textit{tree of clauses} is a tree to each node of which is attached a clause. The leafs are called \textit{assumptions of the tree}, and the root \textit{conclusion of the tree}.
@@ -143,7 +143,7 @@ The \textit{\textbf{resolution principle}} can be stated as follow:
 \textit{If $\Pi$ is unsatisfiable and is the resolvent of  $\Gamma_1$ and $\Gamma_2$; then  $\Gamma_1$ and $\Gamma_2$ are unsatisfiable.}
 A tree of clauses is called \textit{resolution tree}, if it is binary, and each node is either a leaf or the resolvent of its two immediate predecessors.
 
-\newpage\noindent\begin{example}
+\newpage\noindent\begin{example}\label{example}
 \end{example}
 \begin{center}
 \begin{tabular}{ccc}
@@ -151,7 +151,29 @@ $\prftree{A}{\neg A}{\emptyset}$& \hspace{4cm}&
 $\prftree{\{A,P \}}{\{B, \neg P \}}{\{A,B \}}$
 \end{tabular}
 \end{center}
-These two trees are resolution trees, both with only one application of the resolution principle. If the clauses are interpreted as disjunction of their elements, the second tree has an analog made with the rules of natural deduction 
+These two trees are resolution trees, both with only one application of the resolution principle. 
+
+\subsection*{Semantics}
+\pdfbookmark[2]{Semantics}{Semantics}
+
+Here we briefly show some hints of semantics of hyper-resolution; Robinson treats semantics in \cite{robinson-general}, and we follow closely his approach.
+
+Literals and terms become meaningful only when an \textit{interpretation} is provided for the symbols in the language over which they are written; thus each literal and term acquires a \textit{denotation}, that is to say \textit{something which it denotes}.
+Literals always denote one or other of the two \textit{truth values} $\mathbf{true, false}$. 
+Terms always denote some specific object in the \textit{domain} of the interpretation. 
+
+Formally an interpretation is a mapping $I$ of a \textit{language} $\mathscr{L}$ onto a collection of entities. Specifically $I$ maps every function symbol of degree $n$ in $\mathscr{L}$ onto a function from $D^n$ to $D$, and each relation symbol of degree $n$ onto a function from $D^n$ to $\{\mathbf{true, false}\}$. 
+
+The negation symbol $\neg$ denotes a function from truth values to truth values, which when applied to $\mathbf{true}$ returns $\mathbf{false}$ and conversely. The disjunction symbol $\bigvee$ denotes a function from a set of truth values $\Gamma$ to truth values, defined as:
+\begin{itemize}
+\item $\bigvee \Gamma$ is $\mathbf{true}$ if there is $A\in\Gamma$ such that $A$ is $\mathbf{true}$
+\item  $\bigvee \Gamma$ is $\mathbf{false}$ otherwise
+\end{itemize}
+Therefore $\bigvee\emptyset$ is $\mathbf{false}$.
+
+\newpage
+The clauses are intended to be read as disjunction of their elements. With this in mind, we see that the second tree of the Example \ref{example} is a deduction of $A\o B$ from $A\o P$ and $B\o \neg B$, which is a correct derivation also according to the rules of the natural deduction as shown by the following tree.
+
 \begin{equation*}
 \prftree{\prfassumption{A\o P}}
 {\prftree{\prfboundedassumption{A} }{A\o B}}
@@ -160,7 +182,6 @@ These two trees are resolution trees, both with only one application of the reso
 { A\o B} }
 {A\o B}
 \end{equation*}
-
 %alternativa che richiede DNA
 %\begin{equation*}
 %\prfsummary{ \prftree{ \prftree{A\o B\;} {\prfboundedassumption{A} }
@@ -174,23 +195,21 @@ These two trees are resolution trees, both with only one application of the reso
 %{B\o C}
 %\end{equation*}
 
-The examples suggest that the clause shall be read as a disjunction of its elements and the empty clause as \textit{false}. Indeed we interpret the disjunction symbol $\bigvee$ as a function from truth values to truth values, which is defined for a clause $\Gamma$ as follow:
-\begin{itemize}
-\item $\bigvee \Gamma$ is  \textit{true} if there is $A\in\Gamma$ such that $A$ is true
-\item  $\bigvee \Gamma$ is \textit{false} otherwise
-\end{itemize}
-Therefore $\bigvee\emptyset$ is false. We say that, if the empty set is the conclusion of some resolution tree, such tree is a \textit{refutation} of its leaves; the soundness theorem ensures that if there is a refutation for a set of clauses $S$, such set is also \textit{unsatisfiable}. Robinson's theorem \cite{robinson} give us also the completeness.
+
+Also, we see that the first tree of  \ref{example} is a deduction of $\bigvee\emptyset$ from a literal $A$ and is complement $\neg A$; in other words we deduce $\mathbf{false}$ if the literals are complementary.
+
+We say that, if the empty set is the conclusion of some resolution tree, such tree is a \textit{refutation} of its leaves; the soundness theorem ensures that if there is a refutation for a set of clauses $S$, such set is also \textit{unsatisfiable}. Robinson's theorem \cite{robinson} give us also the completeness.
 \begin{theorem}[Robinson]\label{originalRob}
 If a set $S$ of clauses is unsatisfiable, then there is a refutation of $S$.
 \end{theorem}
 
-\newpage\noindent
+\noindent
 The resolution principle is generalized by the following hyper-resolution principle:
 
 \textit{From $\Gamma_1\cup A_1,\cdots\Gamma_m\cup A_m $ one may infer the resolvent $\Gamma_1\cup\cdots\cup\Gamma_m\cup \Sigma$, whenever $A_1\e\cdots\e A_m\rightarrow \overline{\Sigma}$}\\  
 This inference principle gives rise to the hyper-resolution calculus, which is sound and complete \cite{rob,robinson-general}. While the proof trees made with the resolution principle are binary, any node in a hyper-resolution tree can have any number of predecessors.
 
-
+\newpage
 \section{Lifschitz's versions}
 Matiyasevich was presumably the first to see that the hyper-resolution calculus and Robinson's theorem on its completeness can be successfully applied to discrete mathematics \cite{mat-1,mat-2}. Lifschitz applied Robinson's theorem to algebra \cite{lifschitz}; in order to do so  he defined the hyper-resolution calculus in a more convenient way, and he stated several versions of the completeness theorem which can be applied to many kinds of problems.
 
@@ -206,7 +225,7 @@ Consider the following calculus $H_T$: the objects derivable are clauses and the
 \end{equation}
 for every element of $T$. We write a derivation in $H_T$ in tree form; the leaves of the tree are called \textit{assumptions}, and the root \textit{conclusion}.
 
-
+\newpage
 \noindent\begin{example}
 \end{example} Let $T=\{ A \e B \rightarrow C \o D ,\; A,\; B,\; \neg C \}$, then $H_T$ has four rules:
 
@@ -230,7 +249,7 @@ $$
 \prftree{\prftree{\emptyset}{A}}{\prftree{\emptyset}{B}}
 {\prftree{\{C , D\}}{D}}
 $$
-and we write $\emptyset \vdash_{H_T} D$.  When the only assumption is the empty set, as in the example, it can be dropped and we write $\vdash_{H_T} D$.
+and we write $\emptyset \vdash_{H_T} D$.  When the only assumption is the empty set, as in the example, it can be dropped to write $\vdash_{H_T} D$.
 
 Now Robinson's theorem \ref{originalRob} can be state as follows
 \begin{theorem}[Robinson's, version 1]
@@ -281,7 +300,7 @@ then  $\Gamma_1, \cdots ,\Gamma_l \vdash_{H_T} \Delta'$ , for some $\Delta' \sub
 
 \textit{Proof:} If \ref{f_rob3} is valid in every model of $T$, since all the formulae in $T$ and \ref{f_rob3} are quantifier free; by completeness of the propositional calculus $T\vdash (\overline{\Gamma}_1\e\cdots\e\overline{\Gamma}_l )\rightarrow\overline{\Delta}$. Then by the second version of Robinson's theorem, there is $\Delta' \subseteq \Delta$ such that $\Gamma_1, \cdots ,\Gamma_l \vdash_{H_T} \Delta'$ \QED
 
-\newpage
+
 \subsection*{Trivial applications}
 \addcontentsline{toc}{subsection}{Trivial applications}
 	
@@ -303,7 +322,6 @@ $\Sigma_1 ',...,\Sigma_m '$ gives
 $\Pi '=\Gamma_1 '\cup ...\cup\Gamma_m '\cup\{B_1,...,B_n\}\subseteq\Pi$
 \QED
 
-\newpage
 \begin{lemma}
 For every derivation of a clause $\Pi$ in $H_T$ there exists a derivation of some $\Pi '\subset\Pi $ in $H_T$ without trivial application of rules of inference.
 \end{lemma}
@@ -325,8 +343,6 @@ Now $(2')$ is not necessarily an application of a rule of inference. However, we
 (a) $\Sigma_i' \subseteq \Pi$ for some $i$\\
 (b) some $\Pi '\subseteq\Pi$ can be obtained from $\Sigma_1 ',...,\Sigma_m '$ by an application of $(2)$.\\
 If it is the case of (a), the application $(2')$ is still trivial and we repeat the procedure. We keep repeating as required, the procedure terminates since at every step at least one literal is removed. \QED
-
-
 
 \noindent This last lemma and Theorem \ref{Robinson3}  let us give a final version of Robinson's theorem.
 \begin{theorem}[{Robinson's, version 4}] \label{Robinson}
@@ -373,7 +389,7 @@ The following lemma gives a property about rings of polynomials that is used lat
 Let $K$ be a field and $K[\mathbf{x}]$ a finitely generated extension of it. If $K[\mathbf{x}]$ is a field then it is also algebraic over $K$
 \end{lemma}
 
-A field $K$ is called \textit{algebraically closed} if every non constant polynomial in $K[x]$ has a root in $K$. It is known that for any field $K$, there is an extension which is algebraically closed, algebraic over $K$ and unique up to isomorphism;  such extension will be called \textit{algebraic closure of $K$} and denoted as $K^a$. The algebraic closure is the maximal extension, indeed a field is algebraically closed if and only if it does not have proper algebraic extensions. 
+A field $K$ is called \textit{algebraically closed} if every non constant polynomial in $K[\mathbf{x}]$ has a root in $K$. It is known that for any field $K$, there is an extension which is algebraically closed, algebraic over $K$ and unique up to isomorphism;  such extension will be called \textit{algebraic closure of $K$} and denoted as $K^a$. The algebraic closure is the maximal extension, indeed a field is algebraically closed if and only if it does not have proper algebraic extensions. 
 
 \begin{theorem}\label{zeros}
 Let $K$ be a field and $I$ an ideal in $K[x_1,...,x_n]$; then either $I=K[\mathbf{x}]$ or $I$ has a zero in $K^a$
@@ -406,9 +422,9 @@ f^p = \sum_{i=1}^l h_i \cdot f_i
 $$
 
 \noindent The premise of this version is equivalent of the one stated in \ref{langsnulls}, that says\\ \textit{Let $f$ be a polynomial of $K[\mathbf{x}]$ such that $f(c)=0$ for every zero of $I$ in $K^a$}.
- Indeed if $f$ vanishes at all common zeros of $f_1,\cdots, f_l$, then $f$ belongs to the ideal $I$ generated by the polynomials  $f_i$. Conversely if $f$ vanishes for every zero of $I$, this is true in particular for some generators $f_1,...,f_l$ of $I$. Also if this happens in all extensions this is true in particular for $K^a$; and if it is true for all the zeros of $K^a$ it also holds for every zeros of every extensions.
+ Indeed if $f$ vanishes at all common zeros of $f_1,\cdots, f_l$, then $f$ belongs to the ideal $I$ generated by the polynomials  $f_i$. Conversely if $f$ vanishes for every zero of $I$, this is true in particular for some generators $f_1,...,f_l$ of $I$. Here we have used the Hilbert's basis theorem to get a finite set of generators of $I$. Also if this happens in all extensions, this is true in particular for $K^a$; and if it is true for all the zeros of $K^a$, then it also holds for every zeros of every extensions.
 
-
+\newpage
 \section{Applications}
 Now two concrete cases are presented; both are described by Lifschitz \cite{lifschitz} with the purpose of establishing connections between proof theory and algebra. Besides that, the following examples show how it is possible to encode algebraic items, such as vector spaces and polynomials, into a hyper-resolution calculus. Once the calculus is properly defined, the problem becomes mainly proof theoretic, and we can use Robinson's theorem.
 
@@ -477,7 +493,7 @@ Hence $s$ is linear combination of $r_1,...,r_l$.\QED
 
 We want to prove the Nullstellensatz as stated here:
 
-\noindent\textit{Let $K$ be a field and $f,f_1,\cdots, f_l \in K[{x}]$, if in any extension of $K$, $f$ vanishes at all common zeros of $f_1,\cdots, f_l$, then there exists $p\in \mathbb{N}$ and $h_1,\cdots, h_l \in K[{x}]$ such that} 
+\noindent\textit{Let $K$ be a field and $f,f_1,\cdots, f_l \in K[\mathbf{x}]$, if in any extension of $K$, $f$ vanishes at all common zeros of $f_1,\cdots, f_l$, then there exists $p\in \mathbb{N}$ and $h_1,\cdots, h_l \in K[\mathbf{x}]$ such that} 
 $$
 f^p = \sum_{i=1}^l h_i \cdot f_i
 $$
@@ -598,7 +614,7 @@ By a series of application of this procedure, we obtain a derivation as required
 \QED
 
 \begin{theorem}[Hilbert's Nullstellensatz]
-Let $K$ be a field and $f,f_1,\cdots, f_l \in K[{x}]$, if in any extension of $K$, $f$ vanishes at all common zeros of $f_1,\cdots, f_l$, then there exists $p\in \mathbb{N}$ and $h_1,\cdots, h_l \in K[{x}]$ such that
+Let $K$ be a field and $f,f_1,\cdots, f_l \in K[\mathbf{x}]$, if in any extension of $K$, $f$ vanishes at all common zeros of $f_1,\cdots, f_l$, then there exists $p\in \mathbb{N}$ and $h_1,\cdots, h_l \in K[\mathbf{x}]$ such that
 $$
 f^p = \sum_{i=1}^l h_i \cdot f_i
 $$
@@ -619,7 +635,7 @@ $$
 \prftree[r]{(\ref{non1=0})}
 { \prftree[r]{(\ref{eqpoly}) - ( \ref{mol})}
 { \Gamma_1, }{\cdots ,}{\Gamma_l}
-{\hspace{5mm}\{1=0\}\hspace{5mm}	} 
+{\hspace{5mm}\{1=0\}\hspace{5mm}} 
 }
 {\emptyset }
 $$
@@ -657,8 +673,7 @@ Since the root of the tree must be the singleton $\Delta '=\{f=0\}$, it is the c
 Therefore $\Sigma= \{ f^p =0 \}$ and we conclude 
 $$f^p = \sum_{i=1}^l h_i \cdot f_i $$
 because  $f^p$ is obtained by a series of applications of rules (\ref{eqpoly}) - (\ref{mol}).
-
-\QED
+\QEDn
 
 
 
@@ -707,7 +722,7 @@ If it's maximally acyclic it is also connected, indeed if the vertices $u,v$ are
 (3)$\Rightarrow$(4):\\
 Let $u,v$ be two distinct vertices of $T$, such that $uv$ is not an edge of $T$, if $u,v$ are connected by a path, there is a cycle in $T+uv$, hence $T$ is maximally acyclic. \QED
 
- For any connected graph $G$, it is always possible to obtain a tree by only removing edges; this tree is called \textit{spanning tree} and its existence is ensured by the following constructive proof.
+ For any connected graph $G$, it is always possible to obtain a tree by only removing edges; this tree is called \textit{spanning tree} and its existence is ensured by the following proof.
 \begin{proposition}[Spanning Tree]
 Let $G=(V,E)$ be a connected graph; then there is a tree $T=(V,E')$ such that $E'\subseteq E$
 \end{proposition}
@@ -1000,7 +1015,7 @@ $yz\in E_2\setminus E_1$;  then the graph $G=C_1\cup C_2\setminus\{xy,yz\}\cup\{
 
 
 \newpage\noindent
-If the two cycles intersect multiple times, let $V'=V_1\cup V_2$, $E'=E_1\cup E_2\setminus (E_1\cap E_1)$, and consider the graph $G'=(V',E')$ .
+If the two cycles intersect multiple times, let $V'=V_1\cup V_2$, $E'=E_1\cup E_2\setminus (E_1\cap E_2)$, and consider the graph $G'=(V',E')$ .
 
 \begin{figure}[h]
 \centering
@@ -1254,7 +1269,7 @@ A remarkable point is that proofs based on hyper-resolution and Robinson's theor
 For example, it may be interesting to implement the proof of the Proposition \ref{mio} on bipartite graphs, the expected result is a program that takes a non-bipartite graph as input, and returns an odd cycle of such graph.
 
 The chapter about algebra showed how it is possible to represent fields and vector spaces using hyper-resolution calculus. We used this representation and the Robinson's theorem to prove the Hilbert's Nullstellensatz, it may be interesting to use the same approach for other theorems about fields and polynomials.
-Possible further applications are about partially ordered groups; in particular, a challenging application may be Levi's theorem, which says that a p.o. group is totally orderable if and only if it is torsion free\cite{fuchs}. 
+Possible further applications are about partially ordered groups; in particular, a challenging application may be Levi's theorem, which says that a p.o. group is totally orderable if and only if it is torsion free \cite{fuchs}. 
 
 In the last chapter we saw few problems about coloring graphs. We saw two different ways to represent the property of a graph "to be colorable with $n$ colors"; one based on the relation among vertices $\E xy$ which is interpreted to be true when $x$ and $y$ have the same color, and one on the relation $x\geq y$ which is true when "$x$ has a color-number greater or equal than the color-number of $y$".
  These two different approaches are equally good, however we saw that the first one was useful to deal with bipartite and $\mu_n$ graphs, while the second one with problems related to orientations of a graph.
