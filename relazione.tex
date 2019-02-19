@@ -71,7 +71,7 @@ Paolo Comensoli}, pagebackref=false,bookmarksopen=true]{hyperref}
 
 \title{Applications of hyper-resolution}
 \author{Paolo Comensoli}
-\date{19/10/2018}
+\date{\today}
 
 \begin{document}
  
@@ -97,8 +97,8 @@ Paolo Comensoli}, pagebackref=false,bookmarksopen=true]{hyperref}
 \addcontentsline{toc}{chapter}{Introduction}
 \markboth{Introduction}{Introduction}
 
-In 1972 Matiyasevich published an article titled \textit{Application of the methods of the theory of logical derivation to graph theory} \cite{mat-2}, in which the author successfully applies proof theoretic tools to graph theory, a field of mathematics that can appear quite far from logic. 
-In that paper Matiyasevich  gives an inductive definition of "a graph which cannot be colored with $n$ colors." and uses it to formulate  Hadwiger's conjecture and the four color theorem. 
+In 1972 Matiyasevich published an article entitled \textit{Application of the methods of the theory of logical derivation to graph theory} \cite{mat-2}, in which the author successfully applies proof theoretic tools to graph theory, a field of mathematics that can appear quite far from logic. 
+In that paper Matiyasevich  gives an inductive definition of "a graph which cannot be colored with $n$ colors" and uses it to formulate  Hadwiger's conjecture and the four color theorem. 
 Such formulations are said by  Matiyasevich to be "useful in investigation of the above hypotheses" \cite{mat-2}; this may be one of the reasons that made him publish, in 1974 and 1975, two further papers \cite{mat-3,mat-1} on the argument.
  In those articles he generalizes his approach, and finds new applications such as Vitaver's theorem on coloring of directed graphs.
 
@@ -112,11 +112,11 @@ The main advantage of the latter  is that, while deduction trees in resolution c
 In 1980 Lifschitz, starting from Matiyasevich's work, applied hyper-resolution to algebra \cite{lifschitz}; in particular he proved Hilbert's Nullstellensatz using Robinson's completeness theorem of hyper-resolution calculus. 
 To achieve that proof, Lifschitz elaborated four equivalent versions of the completeness theorem; the last one is formulated in such a way that can be readily applied to many kinds of problems.
 
-In this work we will see several applications of the hyper-resolution calculus to fields of mathematics different from proof theory. 
-In the first chapter, we will give a definition of the hyper-resolution calculus; since we are interested in applications, we will take in particular account Lifschitz's versions of the completeness theorem. The second Chapter is dedicated to algebraic applications; the main goal is to see how the tools developed in chapter 1 can be applied to commutative algebra. To that aim, first we will see how it is possible to represent vector spaces and fields using hyper-resolutions, then we will use such knowledge to prove the Nullstellensatz. 
+In this work we will see to several applications of the hyper-resolution calculus to fields of mathematics different from proof theory. 
+In the first chapter, we will give a definition of the hyper-resolution calculus; since we are interested in applications, we will take in particular account Lifschitz's versions of the completeness theorem. The second chapter is dedicated to algebraic applications; the main goal is to see how the tools developed in chapter 1 can be applied to commutative algebra. To that aim, first we will see how it is possible to represent vector spaces and fields using hyper-resolutions, then we will use such knowledge to prove the Nullstellensatz. 
 
 In the last chapter we will see several applications to graph theory. We will focus on coloring problems, and we will see two different ways to describe a coloring map using hyper-resolution. We will move from 
-Matiyasevich's work \cite{mat-2,mat-3,mat-1}, and we will see his results using Lifschitz's versions of the completeness theorem.  We prefer to use Lifschitz's approach since it is more direct and clear than Matiyasevich's original one. 
+Matiyasevich's work \cite{mat-2,mat-3,mat-1}, and we will see his results using Lifschitz's versions of the completeness theorem.  We prefer to use Lifschitz's approach since it is more direct and clearer than Matiyasevich's original one. 
 
 
 
@@ -134,6 +134,7 @@ The aim of this section is to introduce the resolution calculus. First of all we
 \item A \textit{clause:} is a finite set of literals. Clauses are denoted by Greek capital letters $\Gamma,\Sigma ,\Pi,...$. The singleton $\{A\}$ is denoted by its element $A$, so that $\Gamma\cup A$ stands for $\Gamma\cup\{A\}$.
 \item if $\Gamma$ is a clause, $\overline{\Gamma}$ is the disjunction of the elements of $\Gamma$ in a fixed order.
 \item A \textit{tree of clauses} is a tree to each node of which is attached a clause. The leafs are called \textit{assumptions of the tree}, and the root \textit{conclusion of the tree}.
+\item A set $S$ of clause is \textit{satisfiable} if there is a model of $S$; otherwise $S$ is \textit{unsatisfiable} \cite{robinson}.
 \end{itemize}
 
 \begin{definition}[resolvent]
@@ -162,7 +163,7 @@ Literals and terms become meaningful only when an \textit{interpretation} is pro
 Literals always denote one or other of the two \textit{truth values} $\mathbf{true, false}$. 
 Terms always denote some specific object in the \textit{domain} of the interpretation. 
 
-Formally an interpretation is a mapping $I$ of a \textit{language} $\mathscr{L}$ onto a collection of entities. Specifically $I$ maps every function symbol of degree $n$ in $\mathscr{L}$ onto a function from $D^n$ to $D$, and each relation symbol of degree $n$ onto a function from $D^n$ to $\{\mathbf{true, false}\}$. 
+Formally an interpretation is a map $I$ of a \textit{language} $\mathscr{L}$ onto a collection $D$ of entities. Specifically $I$ maps every function symbol of degree $n$ in $\mathscr{L}$ onto a function from $D^n$ to $D$, and each relation symbol of degree $n$ onto a function from $D^n$ to $\{\mathbf{true, false}\}$. 
 
 The negation symbol $\neg$ denotes a function from truth values to truth values, which when applied to $\mathbf{true}$ returns $\mathbf{false}$ and conversely. The disjunction symbol $\bigvee$ denotes a function from a set of truth values $\Gamma$ to truth values, defined as:
 \begin{itemize}
@@ -172,7 +173,7 @@ The negation symbol $\neg$ denotes a function from truth values to truth values,
 Therefore $\bigvee\emptyset$ is $\mathbf{false}$.
 
 \newpage
-The clauses are intended to be read as disjunction of their elements. With this in mind, we see that the second tree of the Example \ref{example} is a deduction of $A\o B$ from $A\o P$ and $B\o \neg B$, which is a correct derivation also according to the rules of the natural deduction as shown by the following tree.
+The clauses are intended to be read as disjunction of their elements. With this in mind, we see that the second tree of the Example \ref{example} is a deduction of $A\o B$ from $A\o P$ and $B\o \neg P$, which is a correct derivation also according to the rules of the natural deduction as shown by the following tree.
 
 \begin{equation*}
 \prftree{\prfassumption{A\o P}}
@@ -198,7 +199,7 @@ The clauses are intended to be read as disjunction of their elements. With this 
 
 Also, we see that the first tree of  \ref{example} is a deduction of $\bigvee\emptyset$ from a literal $A$ and is complement $\neg A$; in other words we deduce $\mathbf{false}$ if the literals are complementary.
 
-We say that, if the empty set is the conclusion of some resolution tree, such tree is a \textit{refutation} of its leaves; the soundness theorem ensures that if there is a refutation for a set of clauses $S$, such set is also \textit{unsatisfiable}. Robinson's theorem \cite{robinson} give us also the completeness.
+We say that, if the empty set is the conclusion of some resolution tree, such tree is a \textit{refutation} of its leaves; the soundness theorem ensures that if there is a refutation for a set of clauses $S$, such set is also unsatisfiable. Robinson's theorem \cite{robinson} give us also the completeness.
 \begin{theorem}[Robinson]\label{originalRob}
 If a set $S$ of clauses is unsatisfiable, then there is a refutation of $S$.
 \end{theorem}
@@ -224,6 +225,7 @@ Consider the following calculus $H_T$: the objects derivable are clauses and the
 {\Gamma_1\cup\cdots\cup\Gamma_m\cup\{ B_1 ,\cdots ,B_n\}}
 \end{equation}
 for every element of $T$. We write a derivation in $H_T$ in tree form; the leaves of the tree are called \textit{assumptions}, and the root \textit{conclusion}.
+
 
 \newpage
 \noindent\begin{example}
@@ -257,8 +259,8 @@ If $T$ is contradictory, then $\vdash_{H_T} \emptyset$
 \end{theorem}
 \noindent Starting from this version, Lifschitz develops three more equivalent versions, the first one is the following
 \begin{theorem}[Robinson's, version 2]\label{robinson2}
-For any clauses $\Gamma_1,\cdots,\Gamma_l,\Delta$, 
-if  then $\Gamma_1,\cdots ,\Gamma_l\vdash_{H_T} \Delta'$ for some $\Delta'\subseteq\Delta$
+For any clauses $\Gamma_1,\cdots,\Gamma_l,\Delta$\\ 
+if $\Gamma_1,\cdots ,\Gamma_l\vdash \Delta$,  then $\Gamma_1,\cdots ,\Gamma_l\vdash_{H_T} \Delta'$ for some $\Delta'\subseteq\Delta$
 \end{theorem}
 
 \textit{Proof}: Let $\Delta=\{C_1,\cdots,C_m\}$, and $T'= T\cup\{ \overline{\Gamma}_1, \cdots ,\overline{\Gamma}_l, \neg C_1,\cdots ,\neg C_m\}  $; then $T'$ is contradictory.
@@ -382,7 +384,7 @@ For a field $K$, the ring of the polynomials with coefficients in $K$ and $n$ va
 
 If $K$ is a field and $E$ an extension of it, we say that an element $x$ of $E$ is \textit{algebraic} over $K$ if there are $a_0, ..., a_n\in K$ not all zero, such that
 $$ a_0 + a_1 \cdot \alpha + ...+ a_n \cdot \alpha^n=0 $$ 
-which amounts to require that $\alpha$  is a zero of some polynomial with coefficients in $K$. The extension $E$ is called \textit{algebraic} if every element of $E$ is algebraic over $K$. 
+which amounts to require that $\alpha$  is a root of some non-zero polynomial with coefficients in $K$. The extension $E$ is called \textit{algebraic} if every element of $E$ is algebraic over $K$. 
 Also, for $\alpha_1, ...,\alpha_n $, we denote as $K(\alpha_1, ...,\alpha_n) $ the smallest subfield of $E$ that contains $\alpha_1, ...,\alpha_n$. The field $E$ is said to be \textit{finitely generated} if for some $\alpha_1, ...,\alpha_n$, we have that $E=K(\alpha_1, ...,\alpha_n)$. 
 The following lemma gives a property about rings of polynomials that is used later.
 \begin{lemma}\label{finit_gen}
@@ -416,7 +418,7 @@ that means $f^p\in I$  \QED
 
 \noindent Later we will see a proof of this theorem that uses resolutions methods, the formulation will be slightly different as follows:
 
-\noindent\textit{Let $K$ be a field and $f,f_1,\cdots, f_l \in K[\mathbf{x}]$, if in any extension of $K$, $f$ vanishes at all common zeros of $f_1,\cdots, f_l$, then there exists $p\in \mathbb{N}$ and $h_1,\cdots, h_l \in K[\mathbf{x}]$ such that} 
+\noindent\textit{Let $K$ be a field and $f,f_1,\cdots, f_l \in K[\mathbf{x}]$, if in any algebraic extension of $K$, $f$ vanishes at all common zeros of $f_1,\cdots, f_l$, then there exists $p\in \mathbb{N}$ and $h_1,\cdots, h_l \in K[\mathbf{x}]$ such that} 
 $$
 f^p = \sum_{i=1}^l h_i \cdot f_i
 $$
@@ -439,7 +441,7 @@ We want to give a hyper-resolution interpretation to the vector spaces over a gi
 Terms of this language are the linear forms of $K$, and atomic formulae are homo\-geneous linear equations. For any terms $r,s$, $r=s$ stands for $r-s=0$. Now consider the following axioms
 \begin{eqnarray}
 &0\cdot r =0 \\ \label{vec.spac1}
-&r_1=0\rightarrow r_2 =0  \qquad (r_1,r_2 \texttt{ represent the same linear form}) \\
+&r_1=0\rightarrow r_2 =0  \qquad (r_1,r_2 \text{ represent the same linear form}) \\
 & ( r=0 \e s=0 )\rightarrow r+s =0 \\
 & r=0 \rightarrow \alpha\cdot r =0 \label{vec.spac.ultimo}
 \end{eqnarray}
@@ -503,7 +505,7 @@ We need to describe the extensions of a field and the polynomials over it. To th
 \begin{eqnarray}
 & 0=0  \label{ax00} \\
 & \neg (1 =0) \\
-& r_1=0 \rightarrow r_2 =0 \qquad (r_1,r_2 \texttt{ are equal polynomials}) \\
+& r_1=0 \rightarrow r_2 =0 \qquad (r_1,r_2 \text{ are equal polynomials}) \\
 & ( r=0 \e s=0) \rightarrow r+s=0 \\
 & r=0 \rightarrow r\cdot s=0 \\
 & r\cdot s=0 \rightarrow (r=0 \o s=0) \label{axintdom}
@@ -517,7 +519,7 @@ Let $N$ be the set of all possible instances of the axioms; the calculus $H_N$ c
 \end{equation}
 
 \begin{equation}\label{eqpoly}
-\prftree{\Gamma \cup r_1=0 } { \Gamma \cup r_2=0 } \qquad r_1,r_2\texttt{ are equal polynomials}
+\prftree{\Gamma \cup r_1=0 } { \Gamma \cup r_2=0 } \qquad r_1,r_2\text{ are equal polynomials}
 \end{equation}
 
 \begin{equation}\label{somm}
@@ -680,7 +682,7 @@ because  $f^p$ is obtained by a series of applications of rules (\ref{eqpoly}) -
 
 \chapter{Applications to graph theory}%----------------------------- CAPITOLO 3
 In this chapter we discuss applications of the hyper-resolution principle to graph theory, in particular we  face two different and equivalent ways of describing $n$-colorable graphs via resolution. The first approach relies on propositions of the kind "the vertex $x$ has the same color of the vertex $y$", this method is used to give a proof that a graph is 2-colorable if and only if it does not contain odd cycles. The second approach assigns to each color a number, and relies on proposition of the kind "the vertex $x$ has a color number smaller than the one of $y$", in other words this method introduces a partial order on the vertices and therefore it introduces a stronger transitivity rule. This method is used to prove the Gallai-Hasse-Roy-Vitaver theorem, which gives a characterization of the chromatic number of a simple graph, by describing a partial order among vertices using directed paths, and retrieving the $n$-colorable property by showing that such order can be used also for colors. 
-Both methods are described by Matiyasevich in 1975 \cite{mat-1}; in this article Matiyasevich defines how it is possible to apply hyper-resolutions to discrete mathematics, and applies his method to coloring problems.
+Both methods are described by Matiyasevich in 1975 \cite{mat-1}; in this article Matiyasevich shows how it is possible to apply hyper-resolutions to discrete mathematics, and applies his method to coloring problems.
 Last, we describe the $\mu_n$ graphs, a family of graphs introduced in 1972 by Matiyasevich \cite{mat-2}, in order to give an inductive definition of the property "a graph which cannot be colored with $n$ colors". This definition lets us generalize the characterization of bipartite (2-colorable) graphs, and lets state the four color theorem and the Hadwiger conjecture in terms of $\mu_n$ graphs.
 
 
@@ -858,7 +860,7 @@ The hyper-resolution calculus $H_{G,n}$ has the following rules
  \label{ax-col}
 \prftree{\Gamma}{ \Gamma \cup \{\E x_0 x_1 , ... , \E x_{n-1} x_n  \}}
 \end{equation}
-Note that, since (\ref{ax-col}) is the only rule with empty premise, any tree made in $H_{G,n}$  has (\ref{ax-col}) as leaves. The following lemma ensures that every tree can be rearranged in such a way that the rules appear in a precise order: First the literals are introduced from $\emptyset$ by the rule (\ref{ax-col}); second all the symmetry rules (\ref{symm}) apply, followed by the transitivity rule (\ref{trans}); last literals are eventually removed by the elimination rule (\ref{jred}).
+Note that, since (\ref{ax-col}) is the only rule with possible empty premise, any tree made in $H_{G,n}$  has (\ref{ax-col}) as leaves. The following lemma ensures that every tree can be rearranged in such a way that the rules appear in a precise order: First the literals are introduced from $\emptyset$ by the rule (\ref{ax-col}); second all the symmetry rules (\ref{symm}) apply, followed by the transitivity rule (\ref{trans}); last literals are eventually removed by the elimination rule (\ref{jred}).
 
 
 \begin{lemma}\label{lemma_rules}
@@ -1268,10 +1270,10 @@ In these pages we saw that the hyper-resolution calculus is a powerful tool not 
 A remarkable point is that proofs based on hyper-resolution and Robinson's theorem can be implemented in a  proof assistant such as \textsc{COQ} or \textsc{AGDA}.
 For example, it may be interesting to implement the proof of the Proposition \ref{mio} on bipartite graphs, the expected result is a program that takes a non-bipartite graph as input, and returns an odd cycle of such graph.
 
-The chapter about algebra showed how it is possible to represent fields and vector spaces using hyper-resolution calculus. We used this representation and the Robinson's theorem to prove the Hilbert's Nullstellensatz, it may be interesting to use the same approach for other theorems about fields and polynomials.
-Possible further applications are about partially ordered groups; in particular, a challenging application may be Levi's theorem, which says that a p.o. group is totally orderable if and only if it is torsion free \cite{fuchs}. 
+The chapter about algebra showed how it is possible to represent fields and vector spaces using hyper-resolution calculus. We used this representation and Robinson's theorem to prove the Hilbert's Nullstellensatz, it may be interesting to use the same approach for other theorems about fields and polynomials.
+Possible further applications are about partially ordered groups; in particular, a challenging application may be Levi's theorem, which says that a partially ordered group is totally orderable if and only if it is torsion free \cite{fuchs}. 
 
-In the last chapter we saw few problems about coloring graphs. We saw two different ways to represent the property of a graph "to be colorable with $n$ colors"; one based on the relation among vertices $\E xy$ which is interpreted to be true when $x$ and $y$ have the same color, and one on the relation $x\geq y$ which is true when "$x$ has a color-number greater or equal than the color-number of $y$".
+In the last chapter we saw some problems about coloring graphs. We saw two different ways to represent the property of a graph "to be colorable with $n$ colors"; one based on the relation among vertices $\E xy$ which is interpreted to be true when $x$ and $y$ have the same color, and another one based on the relation $x\geq y$ which is true when "$x$ has a color-number greater or equal than the color-number of $y$".
  These two different approaches are equally good, however we saw that the first one was useful to deal with bipartite and $\mu_n$ graphs, while the second one with problems related to orientations of a graph.
  
 In all these different applications, we can distinguish at least two different steps which are equally important; first of all one should find a good set of axioms that represent the environment of the problem.
@@ -1296,7 +1298,7 @@ which gives rise to the following rules
 \prftree{\Gamma \cup \neg \E yx }{ \Gamma\cup \neg \E xy } &
 \prftree{\Gamma \cup \neg \E xz }{\Gamma \cup \{ \neg\E xy, \neg\E yz \} }\\
 \prftree[l]{$\quad xy \in E $}{\Gamma }{ \Gamma \cup \neg\E xy } &
-\prftree{\Gamma_1\cup \E x_0 x_1 } {\cdots} {\Gamma_n \cup \E x_{n-1} x_n }{\Gamma_1\cup\cdots\cup\Gamma_n}
+\prftree{\Gamma_1\cup \neg\E x_0 x_1 } {\cdots} {\Gamma_n \cup \neg\E x_{n-1} x_n }{\Gamma_1\cup\cdots\cup\Gamma_n}
 \end{tabular}
 \end{center}
 This means that, any set of axioms corresponds to at least two different hyper-resolution calculi.
