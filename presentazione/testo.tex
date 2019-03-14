@@ -1,0 +1,185 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+
+\newcommand{\E}{\mathscr{E}}
+
+
+\author{Paolo Comensoli}
+\begin{document}
+\setcounter{section}{1}
+\setlength{\oddsidemargin}{-0.3in}
+
+\vspace*{-3cm}
+\section{Introduction}
+Good morning, I will speak of the hyper-resolution principle with a particular focus on its applications.
+
+The hyper-resolution principle is a single inference rule which alone provides to a complete system of propositional calculus, 
+
+This calculus was developed by Robinson in 1965 with the aim of describing a machine oriented logic. 
+
+In 1972 Matijasevich applied the completeness theorem of hyper-resolution to graph theory ,
+
+And in 1980 Vladimir Lifschitz, starting from Matijasevich's work, developed a standard method to apply hyper-resolution to fields of mathematics other than logic, and then he applied his method to algebra.
+
+In this presentation first I will show Lifschitz's method and how he applied it to prove Hilbert's zeros theorem; then we will apply this method and Matijasevich's ideas to bipartite graphs.
+
+\section{Preliminaries}
+Before starting, I will recall few elements.
+
+First, that an atomic formula is a formula that does not contain logical connectors, so only terms and relational symbols are allowed, for instance x+y=0 
+
+A literal is either an atomic formula or a negation of it, and it will be denoted by a Latin capital letter
+
+Clauses are sets of literals, and we denoted them by Greek capital letters. Expect for singletons which are denoted by their only element. 
+
+\section{Lifschitz's method}
+Now we see Lifschitz's method. We take a set $T$ of propositional formulae of this form, a conjunction that implies a disjunction. To each of these elements it corresponds a rule of inference of this form.
+
+Let's make an example, say that $T$ has these 4 elements, than the corresponding calculus is called $H_T$ and is made of these 4 rules.
+
+Using such rules we can make derivations. For instance we can use the second and the third rule with $\Gamma$ empty and deduce $A$ and $B$ at the same time.
+
+From A and B, we apply the first rule with $\Gamma_1$ and $\Gamma_2$ empty, and deduce the clause $\{C,D\}$.
+
+Since we have $C$ we can apply the last rule, remove the literal $C$ and conclude with the clause $D$.
+So we say that this is a derivation or a tree in the calculus $H_T$ of $D$ with empty premise.
+
+\section{Completeness theorem}
+As I already mentioned the hyper-resolution calculus is complete, here we do not see the original version from Robinson but an equivalent one by Lifschitz which is ready to be applied to many kinds of problem.
+
+So let $T$ be as before and consider the clauses $\Delta$, and $\Gamma_1$ up to $\Gamma_l$. If in every model of $T$, $\Delta$ is valid whenever all the $\Gamma_i$s are valid; then there exists a derivation of some $\Delta'$ starting from  $\Gamma_i$ where the $\Delta'$ is subset of $\Delta$.
+
+We can say that Lifschitz's method consists of two steps. First we  need to find a good set $T$ of axioms that represent the problem. Then we apply Robinson's theorem, we get a derivation and we work on it in order to obtain the required result.
+ 
+
+\section{Nullstellensatz}
+As first application of hyper-resolution, we see a proof of the the Hilbert's zeros theorem.
+ 
+The version that we are proving is as follow. We Fix a field $K$, and we let 
+$f$ and $f_1$ up to $f_l$ be polynomials; we say that if $f$ vanishes at all common zeros of the other polynomials, then for some natural number $p$, $f$ to the power of $p$ can be written in this way, as linear combination of $f_i$.
+
+\section{First step}
+The axioms that describe the problem are on the left, on the right we see the corresponding rules.
+
+The models of the axioms are the integral domains that contain $K$, which is the correct environment for our problem. 
+
+It will be useful to notice that the second and third rule transform singletons into singletons, this means  that if a derivation is composed only by this two rules, the conclusion must be a linear combination of the premises.
+
+The last axiom is the Zero-product property and it corresponds to the only rule that can potentially increase the number of elements in a clause.
+
+\newpage\section{Second step}
+As second step we want to apply Robinson's theorem.
+
+To describe the hypothesis that  "$f$  vanishes at all common zeros of the $f_i$", we define the clauses $\Delta$ to be $\{f=0\}$ and $\Gamma_i$ to be $\{f_i=0\}$, so the statement can be written as the conjunction of  $\Gamma_1$ up to $\Gamma_l$ implies $\Delta$. 
+
+Therefore, by Robinson's theorem there is a derivation of $\Delta'$ from all the  $\Gamma_i$, where $\Delta'$ is either the empty set or  $\{f=0\}$. In this presentation we only see  the second case which is the most interesting one.
+ 
+ 
+\section{Proof 1}
+One can prove that the derivation, given by Robinson's theorem, has to be made only by this 3 rules,
+and that rules 1 and 2 always appear before rule 3, 
+
+so the tree has this shape: first all the applications of rules 1 and 2; followed by namely $p-1$ applications of rule 3. And finally the conclusion $f=0$
+
+We call $\Sigma$ the first clause to be a premise of a rule 3. 
+\\Then $\Sigma$ is the conclusion of a tree made only by rules 1 and 2, and since the premises are singletons, $\Sigma$ has to be a singleton. 
+
+Also since $\Sigma$ is the premise of the rule 3, it must be of the form $t_1\cdot r_1=0$
+
+\section{Proof 2}
+Now let's see the tree more in details, we focus on the part below $\Sigma$.
+
+At each application of rule 3, there must be a literal of the form $t_i \cdot r_i =0 $, so at each step the clause's size potentially increase by 1.
+
+At the bottom, the conclusion is a clause with at most $p$ elements. \\
+But since it must be the singleton $f=0$, all the literals should coincide with $f=0$, and therefore for every i $t_i$ is equal to $f$; 
+
+Going backwards we find that $\Sigma$ is the singleton $f$ to the power of $p$ equal zero.
+
+Finally, since $\Sigma$ is obtained only by applications of rules 1 and 2, then $f$ to the power of $p$ is a linear combination of the premises, which is what we were seeking. 
+
+
+
+\newpage\section{coloring}
+Now we see how Matijasevich describes graph-coloring using hyper-resolution.
+
+Let's fix a graph $G$ and a number of colors $n$. We introduce the relational symbol $\E$ among vertices, and we say that $\E xy$ is true whenever $x$ and $y$ have the same color.
+
+This relation, in order to describe a proper coloring map should satisfy the following axioms.
+
+The first one says that whenever we pick $n+1$ vertices at least 2 of them should have the same color, for this reason I will refer to the corresponding rule as the colors rule. 
+
+The second one is the transitivity property.
+
+The third axiom says that $\E xy$ shall be false whenever xy is an edge of $G$. The corresponding rule will be called elimination rule, since it removes the literal $\E xy$.
+
+
+\section{bipartite}
+We apply Matijasevich's approach to bipartite graphs, which are the 2-colorable graphs. I will show that if a graph $G$ is not bipartite, then it contains an odd cycle. 
+
+If $G$ is not 2-colorable, the axioms, that we have just seen, are not consistent and therefore, by the completeness theorem, there exists a derivation of the empty set with empty premise.
+
+In this calculus every derivation can be rearranged in such a way that all the applications of the colors rule are at the top.
+
+The transitivity rule, in the middle
+
+And all the applications of the elimination rule at the bottom.
+
+\section{k=0}
+We proceed by induction on the number $k$ of applications of the transitivity rule, if $k=0$ the tree must be of this form.
+
+From the empty set we use the colors and we introduce the literals 
+$\E xy, \E yz, $ and $\E xz$. Since the conclusion must be the empty set, all the literals must be removed, which means that the graph $G$ has the edges xz yz and xy,therefore G contains the cycle xyz which is odd.
+
+\section{$k>0$ }
+For k greater than zero, the tree is of the following form.
+
+The highlighted rule is the last application of the transitivity rule, therefore above it there are no elimination rules, and below only elimination rules. 
+ 
+This means that $xz$ is certainly an edge while we cannot tell the same of $xy$ or $yz$  because the corresponding literals are removed by the transitivity rule.
+
+Also, for each literal in $\Gamma_1$ or $\Gamma_2$, there exists a corresponding edge in $G$.
+We call $D'_i$ the derivation that goes from $\Gamma_i$ to the empty set made only by elimination rules.
+
+\section{$k>0$ }
+Now consider the graph $G'$ which is obtained from the original graph $G$ by possibly adding the edges $xy$ and $yz$. 
+
+In the relative calculus, we have these two derivations: 
+
+from the empty set we deduce $\Gamma_1\cup \E xy$ using the derivation $D_1$ that comes from the original tree, 
+
+then we remove $\E xy$ since now $xy$ is certainly an edge, and then from $\Gamma_1$ we deduce the empty set using the derivation $D'_1$.
+
+On the right we do the same for $\Gamma_2$.
+
+These two derivations have less than $k$ applications of the transitivity rule, and therefore by induction $G'$ contains two odd cycles.
+
+\section{$k>0$ }
+We are at the end, because starting from these two odd cycles we can always obtain an odd cycle in $G$.
+
+The general case is ensured by a lemma, here we see only the basic case when $C_1$ and $C_2$ are edge-disjoint.
+
+As we already know, we are not sure that $G$ has the edges $xy$ and $yz$, but $G$ certainly has $xz$. The required odd cycle is obtained by the union of the two cycles with the edge $xz$.
+
+\newpage\section{Conclusion}
+We have seen only one application to graph coloring.  
+
+Using the same approach, Matyiasevich defined a family of graphs that characterize the graphs which are not n-colorable. 
+
+Using this graphs it is possible to rephrase famous problems such as: the four colors theorem and hadwiger's conjecture.
+
+A possible further application, that we found interesting, is about partially ordered groups, in particular it may be possible to study Levi’s theorem, which says that a  group is totally orderable if and only if it is torsion free.
+
+Another interesting development is to try to reproduce some proof based on hyper resolution with a proof assistant language such as COQ. 
+
+For example, we expect that an implementation of the proof that we have just seen would be a program that takes a non-bipartite graph as input, and returns an odd cycle of such graph.
+
+
+
+\end{document}
